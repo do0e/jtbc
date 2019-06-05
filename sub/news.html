@@ -1,0 +1,1049 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> news </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+   <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/newsHeadBack.png") no-repeat;}
+		/* ###### skipNav ###### */
+		#skipNav{width:100%; max-width:1920px; position:absolute; z-index:10; left:0;}
+         #skipNav a{color:#0E2F7A; font-size:15px; display:block; width:100%; max-width:1920px; height:33px; line-height:33px; outline:1px solid #eee;background-color:#eee; text-indent:10px; position:absolute; top:-50px; transition:all .3s ease-in-out; text-align:center; padding:5px 0;}
+
+         #skipNav a:focus{top:0;}
+			
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+		
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{position:absolute;left:0;top:25px;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#eee;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#fff;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+	/*############# navWrap : hover #############*/
+		#header #navWrap div#searchs:hover p.search1{display:none;}
+		#header #navWrap div#searchs:hover p.search2{display:block;}
+
+	
+
+	/*############ container ##############*/
+	#container{width:100%;margin-top:60px;}
+		.headNewsWrap{width:100%;}
+		.headNews{width:1265px;margin:0 auto;}
+			.headWrap{width:100%;height:47px;}
+			.headWrap ul{width:820px;height:47px;
+						text-align:center;}
+			.headWrap ul li{width:75px;height:41px;float:left;
+							margin-top:5px;line-height:40px;padding-left:3px;}
+			.headWrap ul li.big{font-size:20px;font-weight:bold;}
+
+				.headWrap ul li.big a{color:#0E2F7A;}
+				.headWrap ul li.big a:hover{color:#DC2E8C;}
+
+				.headWrap ul li a{color:#666;}
+				.headWrap ul li a:hover{color:#0E2F7A ;}
+
+	/*########## headNewsArea ####################*/
+		.headNewsArea{width:100%;overflow:hidden;}
+		.headNewsImg{width:1000px;height:383px;;background-color:#000;
+					position:relative;float:left;}
+		.headNewsImg p{width:540px;height:383px;float:right;}
+		.headNewsImg p img{width:100%;height:100%;}
+			/* ## headNesImg 1,2,3 ##*/
+			.headNewsImg1{display:none;width:1000px;height:383px;;background-color:#000;
+					position:relative;float:left;}
+			.headNewsImg1 p{width:540px;height:383px;float:right;}
+			.headNewsImg1 p img{width:100%;height:100%;}
+
+			.headNewsImg2{display:none;width:1000px;height:383px;;background-color:#000;
+					position:relative;float:left;}
+			.headNewsImg2 p{width:540px;height:383px;float:right;}
+			.headNewsImg2 p img{width:100%;height:100%;}
+
+			.headNewsImg3{display:none;width:1000px;height:383px;;background-color:#000;
+					position:relative;float:left;}
+			.headNewsImg3 p{width:540px;height:383px;float:right;}
+			.headNewsImg3 p img{width:100%;height:100%;}
+
+			.headNewsImg4{display:none;width:1000px;height:383px;;background-color:#000;
+					position:relative;float:left;}
+			.headNewsImg4 p{width:540px;height:383px;float:right;}
+			.headNewsImg4 p img{width:100%;height:100%;}
+
+	/*########## headNewsArea ####################*/
+		.newsDesc{width:550px;height:383px;position:absolute;top:0;left:0;}
+		.newsDesc ul{width:480px;height:300px;margin:40px auto;}
+		.newsDesc ul li{width:220px;height:44px;float:left;
+						margin-top:30px;}
+		.newsDesc ul li.right{margin-left:35px;}
+			.newsDesc ul li a{color:#eee;}
+			.newsDesc ul li a:hover{text-decoration:underline;}
+
+
+		.newsDesc ul li.mainNews{width:100%;height:95px;margin-top:20px;}
+		.newsDesc ul li.mainNews a{font-size:25px;font-weight:bold;
+									color:#eee;}
+		.newsDesc ul li.mainNews a:hover{text-decoration:underline;}
+	
+	/*############ newsList ###############*/
+		.newsList{width:265px;height:100%;background-color:#262626;float:left;
+				text-indent:25px;}
+		.newsList h3{font-size:13px;color:#ccc;border-bottom:1px solid #ccc;
+		padding-top:30px;width:100%;height:25px;}
+
+		.newsLineList{width:100%;}
+		.newsLineList li{width:100%;height:50px;line-height:50px;border-bottom:1px solid #666;}
+		.newsLineList li a{color:#eee;font-size:14px;}
+		
+		.newsLineList li:hover{background-color:#0E2F7A;}
+		.newsLineList li:hover a{font-weight:bold;}
+		
+		
+			/*### hover, select 미리보기 #########*/
+			.newsLineList li.first{border:none;background-color:#0E2F7A;}
+			.newsLineList li.first a{font-weight:bold;}
+
+		.newsList p{width:100%;height:73px;text-align:right;
+					font-size:13px;}
+		.newsList p a{display:block;color:#DC2E8C;padding:20px 15px 0 0;}
+		.newsList p a:hover{text-decoration:underline;}
+
+	/*############ newsContain ###############*/
+		#newsContain{width:1265px;height:666px;margin:55px auto 0;}
+		.newsArea{width:955px;height:666px;float:left;}
+			.newsArea div{width:953px;height:200px;border:1px solid #ccc;
+						background-color:#f4f4f4;margin-bottom:20px;}
+			.newsArea div .newsImg{width:290px;height:200px;float:left;}
+				.newsImg a{display:block;width:100%;height:100%;position:relative;margin-left:10px;}
+				.newsImg a img{width:100%;height:90%;}
+				.newsImg a em{width:100%;height:30px;line-height:30px;
+							text-indent:10px;color:#333;background-color:#f4f4f4;
+							position:absolute;left:0;top:0;font-style:normal;}
+				.newsImg a .hot{font-weight:bold;color:#DC2E8C;}
+				.newsImg a .title{display:block;position:absolute;left:0;bottom:0;
+				width:100%;height:35px;background-color:black;color:#eee;text-align:center;
+				font-size:14px;line-height:35px;}
+
+			.newsArea div .newsTitle{width:620px;height:190px;float:left;margin-top:10px;}
+				.newsTitle em{display:block;width:590px;height:30px;margin-top:15px;
+							margin-left:30px;line-height:35px;}
+					.newsTitle em a{font-style:normal;color:#333;}
+					.newsTitle em a:hover{text-decoration:underline;}
+
+	/*############ sideNews ###############*/	
+		.sideNews{width:250px;height:666px;float:left;margin-left:60px;}
+		.sideNews h3{color:#0E2F7A;font-size:14px;margin-bottom:5px;}
+			.sideNews .side{width:250px;height:180px;background-color:#f4f4f4;}
+			.sideNews .s2{height:160px;}
+				.sideText a{display:block;font-size:12px;width:245px;
+							color:#333;margin-left:5px;}
+				.sideText a:hover{text-decoration:underline;color:#DC2E8C;}
+
+			.sideNews .weather{height:123px;position:relative;overflow:hidden;}
+			.weather .weth{display:block;text-indent:10px;margin-top:15px;font-size:14px;}
+			
+			.weather .gray{display:block;width:110px;font-size:13px;height:30px;
+						position:absolute;bottom:12px;right:2px;
+						font-style:normal;color:#666;}
+
+			.weather .date{font-size:12px;display:block;font-style:normal;
+					width:80px;height:20px;position:absolute;top:25px;right:20px;}
+			.weather .area{display:block;width:87px;height:30px;
+							position:absolute;right:18px;top:50px;font-size:17px;}
+			
+	/*############ photoNews ###############*/
+		#photoNewsWrap{width:1265px;margin:30px auto 0;position:relative;overflow:hidden;
+					border-top:3px solid #ccc;border-bottom:3px solid #ccc;}
+		.photoNews{width:2304px;margin:30px auto 20px;overflow:hidden;}
+			.photoNews p{width:254px;height:210px;float:left;margin-right:63px;}
+			.photoNews p a{display:block;width:100%;height:100%;color:#333;}
+			.photoNews p a:hover{color:#DC2E8C;}
+			.photoNews .text{display:block;width:254px;height:60px;
+						font-size:14px;}
+			.photoNews .small{display:block;padding-top:10px;color:#0E2F7A;font-size:12px;}
+
+			 p.add{float:left;width:70px;height:48px;margin:0;font-size:13px;
+					margin-top:50px;position:absolute;right:-30px;top:50px;}
+	/*########### jtbc NewsRoom ##############################*/
+			#newsRoomWrap{width:100%;height:418px;overflow:hidden;position:relative;}
+			.newsRoom{width:1265px;margin:50px auto 50px;overflow:hidden;}
+			
+			.mainNews2{text-align:left;background-image:url("img/news_back.gif");
+						width:623px;height:318px;float:left;}
+			.mainNews3{margin-left:19px;}
+				.mainNews2 p{float:left;padding:61px 20px;}
+				.mainNews2 p.newsText{width:175px;height:195px;margin-left:25px;}
+					.mainNews2 p.newsText strong{color:#fff;font-size:18px;}
+					.mainNews2 p.newsText a{color:#fff;display:block;margin-top:30px;}
+				.mainNews2 p.newsPlay a span.img{width:340px;height:195px;}
+					.mainNews2 p.newsPlay a span.img img{width:100%;}
+				.mainNews2 p a:hover{color:#fff;text-decoration:underline;}
+				.mainNews2 p.newsPlay a span.img{position:relative;display:block;}
+				.mainNews2 p.newsPlay a span.playbtn{display:block;width:50px;height:50px;
+									position:absolute;left:154px;top:70px;
+									background-image:url("img/playbtn.png");background-size:100%;}
+
+				/* #### 모달팝업 ##### */
+				#view{width:880px;height:700px;
+					  position:absolute;left:50%;top:50%;background-color:rgba(0,0,0,0.7);
+				  margin-left:-440px;margin-top:-340px;box-shadow:10px 10px 10px rgba(0,0,0,0.5);z-index:7;}
+				  #view video{width:100%;height:100%;}
+
+				#full{position:fixed;width:100%;height:100%;background-color:rgba(0,0,0,0.5);
+				  left:0; top:0;}
+	
+	/*########### newstitlesWrap ##############################*/
+		#newstitlesWrap{width:100%;}
+			.newstitles{width:1265px;margin:0 auto;overflow:hidden;
+						border-top:3px solid #ccc;}
+			.newstitles div{margin-top:30px;}
+			.hotnews{width:400px;float:left;margin-right:110px;}
+				.hotnews h3,.roomnews h3{font-size:20px;color:#333;border-bottom:2px solid #ccc;
+										padding-bottom:6px;margin-bottom:10px;}
+				.hotnews p,.roomnews p{line-height:28px;}
+				.hotnews a,.roomnews a{color:#333;}
+				.hotnews a:hover,.roomnews a:hover{color:#DC2E8C;}
+
+			.roomnews{width:400px;float:left;}
+
+			.hotissue{width:280px;float:left;background-color:#f4f4f4;text-align:center;
+					margin-left:70px;}
+			.hotissue h3{font-size:15px;padding:5px 0 5px;}
+			.hotissue h3 span{color:#DC2E8C;}
+
+			.hotissue p{width:139px;;height:140px;float:left;}
+				.hotissue p a{width:100%;height:100%;}
+				.hotissue p.bgimg1{background:url("img/hot1.jpg") no-repeat;}
+				.hotissue p.bgimg2{background:url("img/hot2.jpg") no-repeat;}
+				.hotissue p.bgimg3{background:url("img/hot3.jpg") no-repeat;}
+				.hotissue p.bgimg4{background:url("img/hot4.jpg") no-repeat;}
+				.hotissue p a span{display:none;}
+				.hotissue p a .bg{width:129px;height:90px;padding:50px 5px 0 5px;
+				background-color:rgba(0,0,0,0.5);color:#eee;font-size:14px;}
+				.hotissue p:hover a .bg{display:block;}
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:93px auto 0;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+	
+  </style>
+  <script>
+	$(function(){
+		
+		$(".first").on("mouseover focusin",function(){
+			$(".headNewsImg1,.headNewsImg2,.headNewsImg3,.headNewsImg4").hide();
+			$(".headNewsImg").show();
+		});
+		$(".second,.headNewsImg1").on("mouseover focusin",function(){
+			$(".headNewsImg,.headNewsImg2,.headNewsImg3,.headNewsImg4").hide();
+			$(".headNewsImg1").show();
+		});
+		$(".third,.headNewsImg2").on("mouseover focusin",function(){
+			$(".headNewsImg,.headNewsImg1,.headNewsImg3,.headNewsImg4").hide();
+			$(".headNewsImg2").show();
+		});
+
+		$(".four,.headNewsImg3").on("mouseover focusin",function(){
+			$(".headNewsImg,.headNewsImg1,.headNewsImg2,.headNewsImg4").hide();
+			$(".headNewsImg3").show();
+		});
+		$(".five,.headNewsImg4").on("mouseover focusin",function(){
+			$(".headNewsImg,.headNewsImg1,.headNewsImg2,.headNewsImg3").hide();
+			$(".headNewsImg4").show();
+		});
+		
+		//mouseout
+		$(".headNewsArea").on("mouseout focusout",function(){
+			$(".headNewsImg1,.headNewsImg2,.headNewsImg3,.headNewsImg4").hide();
+			$(".headNewsImg").show();
+		});
+	
+		//포토뉴스 슬라이드
+		$(".add").click(function(){
+			$(".photoNews").stop().animate({"marginLeft":"-=310px"},500,"linear",function(){
+				$(".photoNews").append($(".photoNews p:first"));
+				$(".photoNews").css({"marginLeft":"0px"});
+			});
+		});
+		
+		//모달팝업
+		$("#full,#view").hide();
+		
+			$(".newsRoom a").click(function(){
+				$("#view,#full").show();
+				$("#view").html("<video autoplay controls muted><source src=' "+$(this).attr("href")+" ' type='video/mp4'/></video>");
+				
+				return false;
+			});
+			$("#view,#full").click(function(){$("#full,#view").hide();});
+	
+	
+	});
+  </script>
+ </head>
+ <body>
+	<div id="skipNav">
+	  <h2>스킵 네비게이션</h2>
+	  <a href="#wrap" title="JTBC 뉴스 본문 바로가기">JTBC 뉴스 본문 바로가기</a>
+	  <a href="#newsContain" title="주요뉴스 바로가기">주요뉴스 바로가기</a>
+	  <a href="#photoNewsWrap" title="포토뉴스 바로가기">포토뉴스 바로가기</a>
+	  <a href="#newsRoomWrap" title="오늘의 뉴스 바로가기">오늘의 뉴스 바로가기</a>
+	  <a href="#newstitlesWrap" title="많이 본 뉴스 바로가기">많이 본 뉴스 바로가기</a>
+	  <a href="#footer" title="꼬릿말 영역 바로가기">꼬릿말 영역 바로가기</a>
+	</div>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo0.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search3.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div class="headNewsWrap">
+				<div class="headNews">
+					<div class="headWrap">
+						<ul>
+							<li class="big"><a href="#none" title="뉴스홈">뉴스홈</a></li>
+							<li><a href="#none" title="속보">속보</a></li>
+							<li><a href="#none" title="정치">정치</a></li>
+							<li><a href="#none" title="경제">경제</a></li>
+							<li><a href="#none" title="사회">사회</a></li>
+							<li><a href="#none" title="국제">국제</a></li>
+							<li><a href="#none" title="문화">문화</a></li>
+							<li><a href="#none" title="연예">연예</a></li>
+							<li><a href="#none" title="스포츠">스포츠</a></li>
+							<li><a href="#none" title="날씨">날씨</a></li>
+						</ul>
+					</div>
+					<div class="headNewsArea">
+						<div class="headNewsImg">
+							<p>
+								<img src="img/headNews0.jpeg" alt="헤드뉴스이미지"/>
+							</p>
+							<div class="newsDesc">
+								<ul>
+									<li class="mainNews">
+										<a href="#none" title="트럼프 30일 연두교서..">
+											트럼프 30일 연두교서.."안전하고 강하고 자랑스러운 미국" 강조...
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="중 매체,트럼프의 미국 우선주의..">
+											중 매체 "트럼프의 '미국 우선주의'는 경제민족주의"
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="황창규,다보스포럼서 감염병 확산방지 플랫폼 제안">
+											황창규,다보스포럼서 감염병 확산방지 플랫폼 제안
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="다보스 달군 말·말·말">
+											다보스 달군 말·말·말
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="美, 뻔뻔한 경제 민족주의..">
+											"美, 뻔뻔한 경제 민족주의"무역 갈등 전의 불태우는..
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="headNewsImg1">
+							<p>
+								<img src="img/headNews1.jpg" alt="헤드뉴스이미지"/>
+							</p>
+							<div class="newsDesc">
+								<ul>
+									<li class="mainNews">
+										<a href="#none" title="5G시대 기회 노리는 2인자들">
+											"독주체제 막아라" 5G시대 기회 노리는 2인자들
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="5G 폭풍 전야..칼 가는 글로벌 ICT 기업들">
+											5G 폭풍 전야..칼 가는 글로벌 ICT 기업들
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="혁신의 한계 부딪힌 스마트폰 업계..'애플 따라하기'">
+											혁신의 한계 부딪힌 스마트폰 업계..'애플 따라하기'
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="MWC 2018에서 스마트 워치가 사라진 이유?">
+											MWC 2018에서 스마트 워치가 사라진 이유?
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="스마트폰 새 승부처 '베젤'">
+											"화면 넓혀라"..스마트폰 새 승부처 '베젤'
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="headNewsImg2">
+							<p>
+								<img src="img/headNews2.png" alt="헤드뉴스이미지"/>
+							</p>
+							<div class="newsDesc">
+								<ul>
+									<li class="mainNews">
+										<a href="#none" title="트럼프의 관세 폭탄, 글로벌 무역 전쟁으로 비화">
+											트럼프의 관세 폭탄, 글로벌 무역 전쟁으로 비화
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="한국 등 동맹, 철강·알루미늄 관세 대상서 제외하자">
+											"한국 등 동맹, 철강·알루미늄 관세 대상서 제외하자"
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="칼 아이칸, 미 관세폭탄 발표 직전 대규모 주식 처분">
+											칼 아이칸, 미 관세폭탄 발표 직전 대규모 주식 처분
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="고래 싸움에 새우등 터질라..통상보복 신중 대응">
+											고래 싸움에 새우등 터질라..통상보복 신중 대응
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="'트럼프 관세폭탄' 역설..알루미늄에 10% 붙이면 美...">
+											'트럼프 관세폭탄' 역설..알루미늄에 10% 붙이면 美...
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="headNewsImg3">
+							<p>
+								<img src="img/headNews3.png" alt="헤드뉴스이미지"/>
+							</p>
+							<div class="newsDesc">
+								<ul>
+									<li class="mainNews">
+										<a href="#none" title="군사대국·자유무역 천명..美와 본격 패권경쟁 예고">
+											군사대국·자유무역 천명..美와 본격 패권경쟁 예고
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="왕치산, 부주석 '확실시'..전인대에 中 톱7인과 동석">
+											왕치산, 부주석 '확실시'..전인대에 中 톱7인과 동석
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="'시진핑의 칼' 왕치산, 국가부주석 유력..장기집권 선...">
+											'시진핑의 칼' 왕치산, 국가부주석 유력..장기집권 선...
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="시진핑 집권 2기 공식 출범..인민대회당 현장은 지금">
+											시진핑 집권 2기 공식 출범..인민대회당 현장은 지금
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="중, 전인대 앞두고 반대목소리 통제..반체제 인사 '강...">
+											중, 전인대 앞두고 반대목소리 통제..반체제 인사 '강...
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="headNewsImg4">
+							<p>
+								<img src="img/headNews4.jpg" alt="헤드뉴스이미지"/>
+							</p>
+							<div class="newsDesc">
+								<ul>
+									<li class="mainNews">
+										<a href="#none" title="이윤택 사건, 2013년 친고죄 폐지 전 범행도 처벌 가능">
+											경찰 "이윤택 사건, 2013년 친고죄 폐지 전 범행도 처벌 가능"
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="진실게임으로 가는 '#미투'">
+											진실게임으로 가는 '#미투'
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="남학생 노골적 성추행이 '짓궂은 장난'?..속만 끓는 ...">
+											남학생 노골적 성추행이 '짓궂은 장난'?..속만 끓는 ...
+										</a>
+									</li>
+									<li>
+										<a href="#none" title="추가 폭로에도 사실 무근..'진실게임'으로 번지나">
+											추가폭로에도 "사실 무근"..'진실게임'으로 번지나
+										</a>
+									</li>
+									<li class="right">
+										<a href="#none" title="서울시립대서도 '#미투' 폭로">
+											"교수가 강제로 키스"..서울시립대서도 '#미투' 폭로
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="newsList">
+							<h3>주요이슈</h3> 
+							<ul class="newsLineList">
+								<li class="first">
+									<a href="#none" title="2018 다보스포럼">
+										2018 다보스포럼
+									</a>
+								</li>
+								<li class="second">
+									<a href="#none" title="MWC 2018">
+										MWC 2018
+									</a>
+								</li>
+								<li class="third">
+									<a href="#none" title="미,관세폭탄 무역전쟁">
+										미,관세폭탄 무역전쟁
+									</a>
+								</li>
+								<li class="four">
+									<a href="#none" title="시진핑,임기 제한 철폐 추진">
+										시진핑,임기 제한 철폐 추진
+									</a>
+								</li>
+								<li class="five">
+									<a href="#none" title="미투 운동 한국 확산">
+										미투 운동 한국 확산
+									</a>
+								</li>
+							</ul>
+							<p>
+								<a href="#none" title="전체 이슈보기">전체 이슈보기 ▷</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="newsContain">
+				<div class="newsArea">
+					<div class="news1">
+						<p class="newsImg">
+							<a href="#none" title="밀양 병원 화재 참사">
+								<img src="img/newsArea1.jpg" alt="뉴스이미지"/>
+								<em><span class="hot">HOT</span> 밀양 병원 화재 참사</em>
+								<span class="title">
+									"중환자 18명 한쪽 손 결박.. 구조 지연"
+								</span>
+							</a>
+						</p>
+						<p class="newsTitle">
+							<em>
+								<a href="#none" title="밀양 병원 화재 참사">
+									[화재원인] 경찰 "1층 응급실 안 천장서 최초 발화"
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="밀양 병원 화재 참사">
+									슬픔에 잠긴 밀양...합동분향소엔 시민들 발길 줄..
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="밀양 병원 화재 참사">
+									병실에 화재 알리고 숨진 간호조무사...안타까운...
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="밀양 병원 화재 참사">
+									[대피원칙]화재 시 '엘리베이터' 이용 말아야...
+								</a>
+							</em>
+						</p>
+					</div>
+					<div class="news2">
+						<p class="newsImg">
+							<a href="#none" title="MB수사 | 다스 실소유주">
+								<img src="img/newsArea2.jpg" alt="뉴스이미지"/>
+								<em><span class="hot">HOT</span> MB수사 | 다스 실소유주</em>
+								<span class="title">
+									검찰, 'MB일가' 녹음파일 분석...
+								</span>
+							</a>
+						</p>
+						<p class="newsTitle">
+							<em>
+								<a href="#none" title="MB수사 | 다스 실소유주">
+									[단독]"검찰, '다스 물납' MB청와대 검토 자료..."
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="MB수사 | 다스 실소유주">
+									MB,아들 통해 '다스 140억' 받아내려 한 정황 공개
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="MB수사 | 다스 실소유주">
+									다스 임원 "이시형,MB에게 갔다오더니 이동..."
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="MB수사 | 다스 실소유주">
+									MB 아들-조카 등 '녹취파일'입수...대화가...
+								</a>
+							</em>
+						</p>
+					</div>
+					<div class="news3">
+						<p class="newsImg">
+							<a href="#none" title="MB 수사 | 국정원 특활비">
+								<img src="img/newsArea3.jpg" alt="뉴스이미지"/>
+								<em><span class="hot">HOT</span> MB 수사 | 국정원 특활비</em>
+								<span class="title">
+									MB 청와대 예산 더 달라던 김백준...
+								</span>
+							</a>
+						</p>
+						<p class="newsTitle">
+							<em>
+								<a href="#none" title="MB 수사 | 국정원 특활비">
+									김백준도 태도 변화...현의 앞에서 무너지는 MB맨들
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="MB 수사 | 국정원 특활비">
+									김희중 "행정관이 내게 삿대질? 숨만 쉬고 계셨다"
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="MB 수사 | 국정원 특활비">
+									MB 국정원, '대북 공작금'도 빼돌린 정황...수사 착수
+								</a>
+							</em>
+							<em>
+								<a href="#none" title="MB 수사 | 국정원 특활비">
+									'사찰 입막음 의혹'장석명 영장 기각.. 검찰 반발
+								</a>
+							</em>
+						</p>
+					</div>
+				</div>
+				<div class="sideNews">
+					<h3>뉴스룸 속 코너 +</h3>
+					<p class="side">
+						<span class="sideimg">
+							<img src="img/newsSide1.jpg" alt="뉴스룸 사이드"/>
+						</span>
+						<span class="sideText">
+							<a href="#none" title="팩트체크">오대영 기자가 이슈가 된 내용,발언을 심층적으로 파헤쳐 사실관계를 따져봅니다.</a>
+						</span>
+					</p>
+					<p class="side s2">
+						<span class="sideimg">
+							<img src="img/newsSide2.jpg" alt="뉴스룸 사이드"/>
+						</span>
+						<span class="sideText">
+							<a href="#none" title="문화 초대석">뉴스룸 문화 초대석</a>
+						</span>
+					</p>
+					<p class="side s2">
+						<span class="sideimg">
+							<img src="img/newsSide3.jpg" alt="뉴스룸 사이드"/>
+						</span>
+						<span class="sideText">
+							<a href="#none" title="뉴스룸 클로징 음악">뉴스룸 클로징 음악 모음</a>
+						</span>
+					</p>
+					<p class="side weather">
+						<strong class="weth">날씨</strong>
+						<span class="weatherImg">
+							<img src="img/weather.jpg" alt="날씨이미지"/>
+						</span>
+						<em class="date">
+							2018.01.28(일)
+						</em>
+						<strong class="area">서울 <span>-2.1˚C</span></strong>
+						<em class="gray">맑음(대체로 맑음)</em>
+					</p>
+				</div>
+			</div>
+			<div id="photoNewsWrap">
+				<div class="photoNews">
+					<p>
+						<a href="#" title="교통 이모저모">
+							<span class="newsimg">
+								<img src="img/photonews1.jpeg" alt="포토뉴스이미지"/>
+							</span>
+							<span class="text">
+								'불면허'됐다더니..'운전면허 수출국'오명은 여전<br/>
+								<span class="small">
+									교통 이모저모
+								</span>
+							</span>
+						</a>
+					</p>
+					<p>
+						<a href="#" title="세계 사건사고">
+							<span class="newsimg">
+								<img src="img/photonews2.jpeg" alt="포토뉴스이미지"/>
+							</span>
+							<span class="text">
+								홍콩 도심에서 450kg 폭탄 발견돼 1천 300명 대피<br/>
+								<span class="small">
+									세계 사건사고
+								</span>
+							</span>
+						</a>
+					</p>
+					<p>
+						<a href="#" title="밀양 세종병원 화재">
+							<span class="newsimg">
+								<img src="img/photonews3.jpeg" alt="포토뉴스이미지"/>
+							</span>
+							<span class="text">
+								'통곡·애도의 밀양'..분향소엔 끝없는 추모 발길<br/>
+								<span class="small">
+									밀양 세종병원 화재
+								</span>
+							</span>
+						</a>
+					</p>
+					<p>
+						<a href="#" title="애플">
+							<span class="newsimg">
+								<img src="img/photonews4.jpeg" alt="포토뉴스이미지"/>
+							</span>
+							<span class="text">
+								국내 첫 애플스토어, 한파도 잊은 고객들...<br/>
+								<span class="small">
+									애플
+								</span>
+							</span>
+						</a>
+					</p>
+					<p>
+						<a href="#" title="문재인 정부">
+							<span class="newsimg">
+								<img src="img/photonews5.jpg" alt="포토뉴스이미지"/>
+							</span>
+							<span class="text">
+								문정인 "북 메세지, 트럼프 기대치 넘어서지 않았나 생각"<br/>
+								<span class="small">
+									문재인 정부
+								</span>
+							</span>
+						</a>
+					</p>
+					<p>
+						<a href="#" title="4대강 사업">
+							<span class="newsimg">
+								<img src="img/photonews6.jpg" alt="포토뉴스이미지"/>
+							</span>
+							<span class="text">
+								죽어가는 금강이었지만..오늘만큼은 빛났다<br/>
+								<span class="small">
+									4대강 사업
+								</span>
+							</span>
+						</a>
+					</p>
+					<p>
+						<a href="#" title="화성 탐사">
+							<span class="newsimg">
+								<img src="img/photonews7.jpg" alt="포토뉴스이미지"/>
+							</span>
+							<span class="text">
+								NASA, 화성서 신비한 바위 덩어리 포착<br/>
+								<span class="small">
+									화성 탐사
+								</span>
+							</span>
+						</a>
+					</p>
+				</div>
+				<p class="add">
+					<a href="#none" title="더보기"><img src="img/iconii.png" alt="next"/></a>
+				</p>
+			</div>
+			<div id="newsRoomWrap">
+				<div class="newsRoom">
+					<div class="mainNews2">
+					<h4>뉴스룸 영역</h4>
+					<p class="newsText">
+						<strong>오늘의 날씨</strong><br/><br/>
+						<a href="vod/newsRoom1.mp4" title="오늘의 날씨">
+						서울 아침 8도 오르며 한파 주춤....전국 건조특보</a>
+					</p>
+					<p class="newsPlay">
+						<a href="vod/newsRoom1.mp4" title="오늘의 날씨">
+							<span class="img"><img src="img/newsRoom1.jpg" alt="오늘의 날씨 이미지"/>
+								<span class="playbtn"></span>
+							</span>
+						</a>
+					</p>
+					</div>
+					<div class="mainNews2 mainNews3">
+					<p class="newsText">
+						<strong>JTBC 뉴스룸</strong><br/><br/>
+						<a href="vod/newsRoom2.mp4" title="앵커브리핑">
+						[앵커브리핑]<br/>세상은 '각하'를 잊지 않았다</a>
+					</p>
+					<p class="newsPlay">
+						<a href="vod/newsRoom2.mp4" title="앵커브리핑">
+							<span class="img"><img src="img/newsRoom2.jpg" alt="앵커브리핑 이미지"/>
+								<span class="playbtn"></span>
+							</span>
+						</a>
+					</p>
+					</div>
+				</div>
+				<div id="view"></div>
+				<div id="full"></div>
+			</div>
+			<div id="newstitlesWrap">
+				<div class="newstitles">
+					<div class="hotnews">
+						<h3>많이 본 JTBC 뉴스</h3>
+						<p>
+							<a href="#none" title="2월 6일 (화)뉴스룸 다시보기">
+								2월 6일 (화)뉴스룸 다시보기
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="[인터뷰] "'괴물', 그는 성폭력 상습범…피해자 셀 ..">
+								[인터뷰] "'괴물', 그는 성폭력 상습범…피해자 셀 ..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="1월 28일 (일)뉴스룸 다시보기">
+								[앵커브리핑] '한국에 있는 삼성 시티라는 항구도시는…..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="선수들의 가장 무서운 적은 추위?…이 시각 올림픽파크">
+								선수들의 가장 무서운 적은 추위?…이 시각 올림픽파크
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="[앵커브리핑] '권양. 그리고 199명의 변호인'">
+								[앵커브리핑] '권양. 그리고 199명의 변호인'
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="[밀착카메라] 뱃길 얼어붙자…고립된 주민들의 사투">
+								[밀착카메라] 뱃길 얼어붙자…고립된 주민들의 사투
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="[비하인드 뉴스] 이낙연 vs 이종구…'설전의 끝'?">
+								[비하인드 뉴스] 이낙연 vs 이종구…'설전의 끝'?
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="[인터뷰]">
+								[인터뷰] "사법부, 역사 시계 거꾸로"…김남근 민변 ..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="[Talk쏘는 정치]…채용비리 ..">
+								[Talk쏘는 정치] "○○대라 죄송합니다"…채용비리 ..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="1월 28일 (일)뉴스룸 다시보기">
+								정현 오른발 사진 공개...상처투성이 발로 쓴 '역사'
+							</a>
+						</p>
+					</div>
+					<div class="roomnews">
+						<h3>JTBC 뉴스룸</h3>
+						<p>
+							<a href="#none" title="2월 6일 (화) 뉴스룸 다시보기">
+								2월 6일 (화) 뉴스룸 다시보기
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="MB청와대, 국정원 특활비로 '총선 대비 여론조사'">
+								MB청와대, 국정원 특활비로 '총선 대비 여론조사'
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="여론조사 무기로…18대 한나라당 공천에선 무슨 일이?">
+								여론조사 무기로…18대 한나라당 공천에선 무슨 일이?
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="'시스템도 모른다'는 MB, 인정해도 부인해도…외통수?">
+								'시스템도 모른다'는 MB, 인정해도 부인해도…외통수?
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="특검 '술 마셨지만 음주운전 안 했다는 것'…상고 방침">
+								특검 '술 마셨지만 음주운전 안 했다는 것'…상고 방침
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="국정농단 유죄 이끈 안종범 수첩 '증거 부인'…논란 증..">
+								국정농단 유죄 이끈 안종범 수첩 '증거 부인'…논란 증..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="'이재용 판결' 정형식 판사에…'파면·감사' 청원 쏟아..">
+								'이재용 판결' 정형식 판사에…'파면·감사' 청원 쏟아..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="북 예술단 태운 만경봉호, 16년 만에 방남…묵호항 정..">
+								북 예술단 태운 만경봉호, 16년 만에 방남…묵호항 정..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="'북으로 돌아가라'…보수단체 반대 시위로 묵호항 '소동..">
+								'북으로 돌아가라'…보수단체 반대 시위로 묵호항 '소동..
+							</a>
+						</p>
+						<p>
+							<a href="#none" title="북 예술단·응원단 방남…서울 공연 경쟁률 468대1">
+								북 예술단·응원단 방남…서울 공연 경쟁률 468대1
+							</a>
+						</p>
+					</div>
+					<div class="hotissue">
+						<h3><span>HOT ISSUE</span> | JTBC 방송 속으로</h3>
+						<p class="bgimg1">
+							<a href="#none" title="슈가맨2,차은우 도플갱어 '얼굴천치'는?">
+								<span class="bg">슈가맨2,차은우 도플갱어 '얼굴천치'는?</span>
+							</a>
+						</p>
+						<p class="bgimg2">
+							<a href="#none" title="'이방인' 추신수, 생애 첫 캠핑 도전!">
+								<span class="bg">'이방인' 추신수, 생애 첫 캠핑 도전!</span>
+							</a>
+						</p>
+						<p class="bgimg3">
+							<a href="#none" title="'밤도깨비'김종현,'애교 종결자'등극?">
+								<span class="bg">'밤도깨비'김종현,'애교 종결자'등극?</span>
+							</a>
+						</p>
+						<p class="bgimg4">
+							<a href="#none" title="'그 사이'배우들이 직접 뽑은 명장면 명대사는?">
+								<span class="bg">'그 사이'배우들이 직접 뽑은 명장면 명대사는?</span>
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="footer_map.html" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+ </body>
+</html>

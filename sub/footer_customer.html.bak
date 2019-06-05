@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> footer_고객센터 </title>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/footerCompanyBack.png");}
+		a:link,a:visited{color:#666;}
+		a:hover,a:focus{color: #0E2F7A;}
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{width:115px;height:58px;position:absolute;left:0;top:25px;}
+		h1 img{width:100%;height:100%;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+			/*############# navWrap : hover #############*/
+			#header #navWrap div#searchs:hover p.search1{display:none;}
+			#header #navWrap div#searchs:hover p.search2{display:block;}
+
+	/* ######### container ########### */
+		#container{width:1245px;margin:70px auto 0;overflow:hidden;}
+		#customerHead{width:100%;}
+		#customerHead p{width:100%;} 
+		#customerHead p.right{text-align:right;}
+		
+		#customerDesc{width:100%;margin-top:30px;}
+		#customerDesc ul{width:1243px;height:260px;border:1px solid #ccc;overflow:hidden;}
+		#customerDesc li{width:205px;height:218px;float:left;margin-top:20px;
+						 border-right:1px solid #ccc;text-align:center;}
+			#customerDesc li:last-child{border:none;}
+		#customerDesc img{margin-top:40px;}
+		#customerDesc li a{display:block;font-size:14px;padding:20px 0;}
+		#customerDesc li a span{display:block;}
+
+		#customerList{width:100%;margin:70px auto 30px;}
+		.ListTitle{width:100%;text-align:center;}
+		.right{text-align:right;} .right a{font-size:14px;}
+		.listDesc{width:100%;margin-top:7px;border-top:2px solid #333;}
+		.listDesc p{width:100%;height:50px;line-height:50px;border-bottom:1px solid #ccc;}
+		.listDesc a{display:inline-block;width:89%;text-indent:20px;}
+		.listDesc .right{display:inline-block;width:10%;text-align:right;font-size:14px;}
+	
+
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:0 auto;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo5.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div id="customerHead">
+				<p>
+					<img src="img/customer00.gif" alt="무엇이든 물어보세요!"/>
+				</p>
+				<p class="right">
+					<span><a href="jtbcLogin.html" title="1:1문의">1:1문의 ▶</a></span>
+				</p>
+			</div>
+			<div id="customerDesc">
+				<ul>
+					<li>
+						<img src="img/customer01.png" alt="서비스 이용"/>
+						<a href="jtbcLogin.html" title="서비스 이용">
+							<span>이용문의</span>
+							<span>오류신고</span>
+						</a>
+					</li>
+					<li>
+						<img src="img/customer02.png" alt="이용권/결제"/>
+						<a href="jtbcLogin.html" title="이용권/결제">
+							<span>이용권</span>
+							<span>결제</span>
+							<span>해지/환불</span>
+						</a>
+					</li>
+					<li>
+						<img src="img/customer03.png" alt="동영상"/>
+						<a href="jtbcLogin.html" title="동영상">
+							<span>재생오류</span>
+							<span>플레이어 재생방법</span>
+						</a>
+					</li>
+					<li>
+						<img src="img/customer04.png" alt="방송"/>
+						<a href="jtbcLogin.html" title="방송">
+							<span>실시간 방송</span>
+							<span>편성표</span>
+							<span>성인인증</span>
+						</a>
+					</li>
+					<li>
+						<img src="img/customer05.png" alt="뉴스"/>
+						<a href="jtbcLogin.html" title="뉴스">
+							<span>온에어</span>
+							<span>제보하기</span>
+						</a>
+					</li>
+					<li>
+						<img src="img/customer06.png" alt="회원정보"/>
+						<a href="jtbcLogin.html" title="회원정보">
+							<span>가입/탈퇴</span>
+							<span>로그인</span>
+							<span>성인인증</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div id="customerList">
+				<div class="ListHead">
+					<p class="ListTitle">
+						<img src="img/customer07.png" alt="공지사항"/>
+					</p>
+					<p class="right">
+						<span><a href="#none" title="더보기">더보기 ▶</a></span>
+					</p>
+				</div>
+				<div class="listDesc">
+					<p>
+						<a href="#none" title="JTBC월정액 서비스 변경 안내">
+							JTBC월정액 서비스 변경 안내
+						</a>
+						<span class="right">2018.02.28</span>
+					</p>
+					<p>
+						<a href="#none" title="[안내] 2017년 JTBC 프로그램 평가 조사">
+							[안내] 2017년 JTBC 프로그램 평가 조사 
+						</a>
+						<span class="right">2018.01.30</span>
+					</p>
+					<p>
+						<a href="#none" title="[안내] 제작국 2018년 외부용역 계약 희망업체 모집">
+							[안내] 제작국 2018년 외부용역 계약 희망업체 모집
+						</a>
+						<span class="right">2018.01.29</span>
+					</p>
+					<p>
+						<a href="#none" title="[공고] 2018년 방송서비스기획/운영 경력사원 채용">
+							[공고] 2018년 방송서비스기획/운영 경력사원 채용
+						</a>
+						<span class="right">2018.01.10</span>
+					</p>
+					<p>
+						<a href="#none" title="[안내] 2018년 J Council 합격자 발표 안내">
+							[안내] 2018년 J Council 합격자 발표 안내
+						</a>
+						<span class="right">2017.12.29</span>
+					</p>
+					<p>
+						<a href="#none" title="[안내] JTBC TV 모바일앱이 'JTBC NOW'로 새로워졌습니다.">
+							[안내] JTBC TV 모바일앱이 'JTBC NOW'로 새로워졌습니다.
+						</a>
+						<span class="right">2017.12.29</span>
+					</p>
+					<p>
+						<a href="#none" title="[안내] 한국모바일인증 시스템 교체에 따른 PM안내 (12/14 02:00~05:00)">
+							[안내] 한국모바일인증 시스템 교체에 따른 PM안내 (12/14 02:00~05:00)
+						</a>
+						<span class="right">2017.12.29</span>
+					</p>
+					<p>
+						<a href="#none" title="JTBC 개인정보처리방침 개정 안내">
+							JTBC 개인정보처리방침 개정 안내
+						</a>
+						<span class="right">2017.11.03</span>
+					</p>
+					<p>
+						<a href="#none" title="[안내] JTBC 시스템 점검 안내 (9/13 23:30~9/14 05:00)">
+							[안내] JTBC 시스템 점검 안내 (9/13 23:30~9/14 05:00)
+						</a>
+						<span class="right">2017.09.12</span>
+					</p>
+					<p>
+						<a href="#none" title="IPTV 3사 내 JTBC 일반화질 다시보기(SD VOD) 서비스 종료 안내">
+							IPTV 3사 내 JTBC 일반화질 다시보기(SD VOD) 서비스 종료 안내
+						</a>
+						<span class="right">2017.08.28</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="footer_map.htm" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

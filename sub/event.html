@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> event </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/evntBack.png") no-repeat;}
+
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{position:absolute;left:0;top:25px;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px;
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+	/*############# navWrap : hover #############*/
+		#header #navWrap div#searchs:hover p.search1{display:none;}
+		#header #navWrap div#searchs:hover p.search2{display:block;}
+
+	/*############# container #############*/
+		#container{width:100%;margin:50px auto 0;}
+			.eventBigWrap{width:100%;height:415px;}
+			.eventBig{width:1245px;height:415px;margin:0 auto;}
+				.eventBig img{width:100%;height:100%;}
+
+	/*############# eventWrap #############*/
+		.eventWrap{width:100%;margin:30px auto 0;}
+		.eventSelect{width:100%;height:50px;}
+
+		.select{width:1245px;margin:0 auto;
+				height:50px;text-align:center;line-height:50px;border-bottom:1px solid #eaeaea;}
+		.select li{width:300px;height:50px;
+				float:left;}
+				.select li a{color:#333;font-size:20px;}
+				.select li a:hover{font-weight:bold;}
+
+		/*######################### border hover #####################*/
+
+						.select li.first a{position:relative;}
+						.select li.first a .dot{display:block;
+						transition:width 0.5s;
+						position:absolute;left:-50px;bottom:-13px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						.select li.first:hover a .dot{width:150px;height:3px;background-color:#000;}
+
+
+						.select li.evntIng a{position:relative;}
+						.select li.evntIng a .dot{display:block;
+						transition:width 0.5s;
+						position:absolute;left:-50px;bottom:-13px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						.select li.evntIng:hover a .dot{width:170px;height:3px;background-color:#000;}
+
+
+						.select li.eventDone a{position:relative;}
+						.select li.eventDone a .dot{display:block;
+						transition:width 0.5s;
+						position:absolute;left:-50px;bottom:-13px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						.select li.eventDone:hover a .dot{width:150px;height:3px;
+							background-color:#000;}
+
+						.select li.winner a{position:relative;}
+						.select li.winner a .dot{display:block;
+						transition:width 0.5s;
+						position:absolute;left:-50px;bottom:-13px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						.select li.winner:hover a .dot{width:200px;height:3px;
+							background-color:#000;}
+
+						/*border hover 미리보기 .first
+
+						.select li.first a{color:#000;}
+					.select li.first a .dot{display:block;
+						position:absolute;left:-60px;bottom:-13px;
+						width:170px;height:3px;background-color:#000;}
+
+					.select li.first a{position:relative;font-weight:bold;}*/
+
+	/*############ eventDesc ###############*/
+		.eventDesc{width:1245px;margin:50px auto 0;overflow:hidden;}
+
+			.eventFB{width:387px;height:200px;position:relative;float:left;
+					margin:5px 10px 30px 15px;cursor:pointer;}
+		.eventFB p{backface-visibility:hidden;width:100%;height:100%;
+			position:absolute;left:0;top:0;transition:all .7s;}
+		.eventFB p img{width:100%;}
+		.eventFB p.back{transform:rotatex(-180deg);}
+
+		.eventFB:hover .front{transform:rotatex(-180deg);}
+		.eventFB:hover .back{transform:rotatex(0deg);backface-visibility:visible;}
+
+
+		/*####### front #####################*/
+			.front{position:relative;}
+			.front .ing{width:65px; height:30px; background-color:#DC2E8C;
+						position:absolute;left:0;top:0;text-align:center;
+						line-height:30px;color:#fefefe;}
+
+			.front .end{width:65px; height:30px; background-color:#0E2F7A;
+						position:absolute;left:0;top:0;text-align:center;
+						line-height:30px;color:#fefefe;}
+
+			.front .win{width:65px; height:30px; background-color:#3F8920;
+						position:absolute;left:0;top:0;text-align:center;
+						line-height:30px;color:#fefefe;font-size:12px;}
+
+		/*####### back #####################*/
+
+			.back{width:100%;height:100%;background-color:rgba(14,47,122,0.7);
+				color:#fefefe;text-align:center;}
+			.back .textArea{display:block;width:300px;height:150px;margin:40px auto;}
+
+			.textArea strong{display:block;padding-bottom:8px;font-size:17px;}
+			.textArea span{display:block;color:#ccc;font-size:13px;margin-top:17px;}
+
+			/* ############진행 중 back color#################*/
+			.backIng{width:100%;height:100%;background-color:rgba(220,46,140,0.8);
+				color:#fefefe;text-align:center;}
+
+			.winback{width:100%;height:100%;background-color:rgba(63,137,32,0.8);
+				color:#fefefe;text-align:center;}
+		/*########### add ############*/
+		.add{width:250px;height:40px;border:1px solid #ccc;line-height:40px;
+		text-align:center;margin:30px auto 0;transition:background-color .3s ease-in;}
+		.add a{color:#333;}
+		.add:hover{background-color:#efefef;}
+
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:70px auto 0;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+
+  </style>
+  <script>
+	$(function(){
+
+		//select
+		$(".first a").css({"fontWeight":"bold"});
+		$(".first .dot").css({"width":"170px","height":"3px","backgroundColor":"#000"});
+
+
+		//eventDesc
+		$(".first").on("click focusin",function(){
+			$(".eventDesc div").show();
+
+			$(".evntIng a").css({"fontWeight":"normal"});
+			$(".evntIng .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".first a").css({"fontWeight":"bold"});
+			$(".first .dot").css({"width":"150px","height":"3px","backgroundColor":"#000"});
+			$(".eventDone a").css({"fontWeight":"normal"});
+			$(".eventDone .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".winner a").css({"fontWeight":"normal"});
+			$(".winner .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+
+		});
+
+
+		$(".evntIng").on("click focusin",function(){
+			$(".eventDesc div").filter(".showend,.showwin").hide();
+			$(".eventDesc div").filter(".showing").show();
+
+			$(".first a").css({"fontWeight":"normal"});
+			$(".first .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".evntIng a").css({"fontWeight":"bold"});
+			$(".evntIng .dot").css({"width":"170px","height":"3px","backgroundColor":"#000"});
+			$(".eventDone a").css({"fontWeight":"normal"});
+			$(".eventDone .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".winner a").css({"fontWeight":"normal"});
+			$(".winner .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+
+		});
+
+		$(".eventDone").on("click focusin",function(){
+			$(".eventDesc div").filter(".showend").show();
+			$(".eventDesc div").filter(".showing,.showwin").hide();
+
+			$(".first a").css({"fontWeight":"normal"});
+			$(".first .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".eventDone a").css({"fontWeight":"bold"});
+			$(".eventDone .dot").css({"width":"150px","height":"3px","backgroundColor":"#000"});
+			$(".evntIng a").css({"fontWeight":"normal"});
+			$(".evntIng .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".winner a").css({"fontWeight":"normal"});
+			$(".winner .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+		});
+
+		$(".winner").on("click focusin",function(){
+			$(".eventDesc div").filter(".showwin").show();
+			$(".eventDesc div").filter(".showing,.showend").hide();
+
+			$(".first a").css({"fontWeight":"normal"});
+			$(".first .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".winner a").css({"fontWeight":"bold"});
+			$(".winner .dot").css({"width":"200px","height":"3px","backgroundColor":"#000"});
+			$(".evntIng a").css({"fontWeight":"normal"});
+			$(".evntIng .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".eventDone a").css({"fontWeight":"normal"});
+			$(".eventDone .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+		});
+
+
+	});
+  </script>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo4.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div class="eventBigWrap">
+				<p class="eventBig">
+					<img src="img/eventBig1.jpg" alt="히든싱어5 이벤트 빅 배너"/>
+				</p>
+			</div>
+			<div class="eventWrap">
+				<div class="eventSelect">
+					<ul class="select">
+						<li class="first">
+							<a href="#none" title="전체">
+								전체
+								<span class="dot"></span>
+							</a>
+						</li>
+						<li class="evntIng">
+							<a href="#none" title="진행중">
+								진행중
+								<span class="dot"></span>
+							</a>
+						</li>
+						<li class="eventDone">
+							<a href="#none" title="종료">
+								종료
+								<span class="dot"></span>
+							</a>
+						</li>
+						<li class="winner">
+							<a href="#none" title="당첨자발표">
+								당첨자발표
+								<span class="dot"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="eventDesc">
+					<div class="eventFB showing">
+						<p class="front">
+							<img src="img/event5.jpg" alt="이벤트이미지"/>
+							<span class="ing">진행중</span>
+						</p>
+						<p class="back backIng">
+							<span class="textArea">
+								<strong>[차이나는 클라스]<br/>앙코르 강연'퀴즈'이벤트!</strong><br/>
+								 추첨을 통해 매 주 선물을 드려요~
+								<span>2018.04.05 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showing">
+						<p class="front">
+							<img src="img/event6.jpg" alt="이벤트이미지"/>
+							<span class="ing">진행중</span>
+						</p>
+						<p class="back backIng">
+							<span class="textArea">
+								<strong>[효리네 민박2]<br/>제주도 힐링여행 소문내기</strong><br/>
+								 제주도 무료여행 소문내기 SNS 이벤트!
+								<span>2018.03.11까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showing">
+						<p class="front">
+							<img src="img/event7.jpg" alt="이벤트이미지"/>
+							<span class="ing">진행중</span>
+						</p>
+						<p class="back backIng">
+							<span class="textArea">
+								<strong>[히든싱어5] 모창 능력자 모집</strong><br/>
+								 당신도 스타로 탄생할 수 있습니다!
+								<span>상시</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showend">
+						<p class="front">
+							<img src="img/event0.jpg" alt="이벤트이미지"/>
+							<span class="end">종료</span>
+						</p>
+						<p class="back">
+							<span class="textArea">
+								<strong>[믹스나인] FINAL 생방송 방청 신청</strong><br/>
+								01월 26일, 빛나는 소년소녀들의 FINAL 생방송 무대가 공개됩니다!
+								<span>2018.01.23 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showend">
+						<p class="front">
+							<img src="img/event0-1.jpg" alt="이벤트이미지"/>
+							<span class="end">종료</span>
+						</p>
+						<p class="back">
+							<span class="textArea">
+								<strong>[믹스나인] TOP9 그룹 명 공모하기</strong><br/>
+								빛나는 소년 or 소녀 TOP9의 그룹 명을 지어 주세요!
+								<span>2018.01.25 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showing">
+						<p class="front">
+							<img src="img/event1.jpg" alt="이벤트이미지"/>
+							<span class="ing">진행중</span>
+						</p>
+						<p class="back backIng">
+							<span class="textArea">
+								<strong>[JTBC NOW 앱 런칭] 정기 결제...</strong><br/>
+								 정기결제 이용권 파격할인!<br/> 첫 달 100원!
+								<span>상시</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showing">
+						<p class="front">
+							<img src="img/event2.jpg" alt="이벤트이미지"/>
+							<span class="ing">진행중</span>
+						</p>
+						<p class="back backIng">
+							<span class="textArea">
+								<strong>[JTBC NOW 앱 런칭] 리뷰 작성...</strong><br/>
+								APP 다운로드 후, 리뷰를 작성해주세요!
+								<span>2018.01.31 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showing">
+						<p class="front">
+							<img src="img/event3.jpg" alt="이벤트이미지"/>
+							<span class="ing">진행중</span>
+						</p>
+						<p class="back backIng">
+							<span class="textArea">
+								<strong>[슈가맨2] FINAL 추억 소환 이벤트(★)</strong><br/>
+								당신의 슈가맨 추억템을 소환해주세요!
+								<span>상시</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showend">
+						<p class="front">
+							<img src="img/event0-2.jpg" alt="이벤트이미지"/>
+							<span class="end">종료</span>
+						</p>
+						<p class="back">
+							<span class="textArea">
+								<strong>[아는형님] 아는형님 2주년 칭찬...</strong><br/>
+								아는형님 교실 칠판에 2주년 축하 메시지를 남겨주세요!
+								<span>2017.12.16 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showend">
+						<p class="front">
+							<img src="img/event0-3.jpg" alt="이벤트이미지"/>
+							<span class="end">종료</span>
+						</p>
+						<p class="back">
+							<span class="textArea">
+								<strong>[TV정보쇼 빅픽처] '알바 배달'사연...</strong><br/>
+								일손이 급하게 필요하신 분들은 사연을 올려주세요!
+								<span>상시</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showend">
+						<p class="front">
+							<img src="img/event0-4.jpg" alt="이벤트이미지"/>
+							<span class="end">종료</span>
+						</p>
+						<p class="back">
+							<span class="textArea">
+								<strong>월화드라마 런칭 이벤트</strong><br/>
+								 친구야 '그냥 사랑하는 사이' 첫 방송 같이 보자!
+								<span>2017.12.23 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showend">
+						<p class="front">
+							<img src="img/event0-5.jpg" alt="이벤트이미지"/>
+							<span class="end">종료</span>
+						</p>
+						<p class="back">
+							<span class="textArea">
+								<strong>[밤도깨비] 내 소원을 들어줘!</strong><br/>
+								01월 26일, 빛나는 소년소녀들의 FINAL 생방송 무대가 공개됩니다!
+								<span>2018.01.23 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showwin">
+						<p class="front">
+							<img src="img/eventwin0.jpg" alt="이벤트이미지"/>
+							<span class="win">당첨자발표</span>
+						</p>
+						<p class="back winback">
+							<span class="textArea">
+								<strong>[한끼줍쇼]<br/>저녁 한끼 같이 하고 싶은 친구 공유</strong><br/>
+								친구에게 영상 공유하고<br/>저녁 식사권 받아가세요!
+								<span>2016.10.30 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showwin">
+						<p class="front">
+							<img src="img/eventwin1.jpg" alt="이벤트이미지"/>
+							<span class="win">당첨자발표</span>
+						</p>
+						<p class="back winback">
+							<span class="textArea">
+								<strong>[아내바람] 티저 오픈 이벤트</strong><br/>
+								이번주, 아내가 바람을 핍니다.<br/>영상 공유 이벤트!
+								<span>2016.10.09 까지</span>
+							</span>
+						</p>
+					</div>
+					<div class="eventFB showwin">
+						<p class="front">
+							<img src="img/eventwin2.jpg" alt="이벤트이미지"/>
+							<span class="win">당첨자발표</span>
+						</p>
+						<p class="back winback">
+							<span class="textArea">
+								<strong>[반달친구] 출석체크 이벤트!</strong><br/>
+								반☆짝☆반☆짝 ♬ 매주 토요일 밤 9시부터 12시까지 누구나 출석 가능!
+								<span>2016.07.30 까지</span>
+							</span>
+						</p>
+					</div>
+				</div>
+				<p class="add">
+						<a href="#none" title="add">
+							더보기
+						</a>
+				</p>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="footer_map.html" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+ </body>
+</html>

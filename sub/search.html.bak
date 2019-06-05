@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> search </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+  /*############################################*/
+		#wrap{width:100%;max-width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/searchBack.png") no-repeat;}
+			
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+		
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{position:absolute;left:0;top:25px;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+					/*############ mobHeader ############*/
+					#mobHeader{display:none;}	
+					#mobBar{display:none;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+			/*############# navWrap : hover #############*/
+			#header #navWrap div#searchs:hover p.search1{display:none;}
+			#header #navWrap div#searchs:hover p.search2{display:block;}
+	
+	/* ############ container ############# */
+		#container{width:100%;overflow:hidden;}
+		input{-webkit-appearance:none;border-radius:0;}
+		fieldset{border:none;} legend{display:none;}
+
+		/* ######## searchArea ######## */
+		#searchArea{width:700px;height:70px;margin:30px auto 0;}
+			#searchArea form{width:100%;height:100%;}
+				.wrap_inp{display:block;width:100%;height:100%;}
+				.wrap_inp input[type="search"]{width:645px;height:55px;float:left;
+											   border:3px solid #DC2E8C;text-indent:15px;
+											   font-size:16px;}
+				.imgWrap{display:block;width:55px;height:55px;
+					     background-color:#DC2E8C;float:left;}
+				.wrap_inp input[type="image"]{width:40px;height:40px;float:left;
+											  background-color:#DC2E8C;
+											  margin-top:7px;margin-left:7px;}
+				#searchArea .searchWord a{color:#666;font-size:15px;}
+				#searchArea .searchWord a:hover{text-decoration:underline;}
+		/*############ vodArea ###############*/
+
+		#vodArea{width:100%;margin:90px auto 0;overflow:hidden;}
+			#vodArea ul{width:1459px;margin:15px auto;overflow:hidden;}
+			#vodArea ul li{width:350px;height:300px;float:left;margin:7px 7px;
+								text-align:center;background-color:#fff;
+								outline:1px solid #ccc;}
+
+	/*############ vodArea + nextImg ###############*/		
+	
+		#vodArea ul li a span.nextImg{display:block;width:320px;height:180px;
+						position:relative;margin:12px auto 0;
+						overflow:hidden;}
+
+			#vodArea ul li a span.nextImg img{width:100%;height:100%;
+												transition:transform .3s;}
+		
+		#vodArea ul li a span.nextImg span.playbtn{
+			display:block;width:35px;height:35px; position:absolute;left:25px;bottom:10px;
+			background-image:url("img/playbtn.png"); background-repeat:no-repeat;}
+			
+		#vodArea ul li a span.nextImg span.time{
+			display:block;width:60px;height:25px; background-color:rgba(0,0,0,0.5);
+			color:#fff;font-size:12px;line-height:25px; position:absolute;right:0;bottom:0;}
+		
+		#vodArea a{color:#333;}
+
+	/*############ vodArea + img + scale + hover ###############*/
+		#vodArea ul li a:hover span.nextImg img{transform:scale(1.1,1.1);}
+
+	/*############ vodArea + nextImg ###############*/
+		#vodArea ul li a b{display:block;width:300px;margin:10px auto;
+								text-align:left;font-size:15px;}
+		#vodArea ul li a span.textBox{display:block;width:300px;margin:0 auto;
+										font-size:14px;text-align:left;}
+
+		#vodArea ul li a:hover span.textBox{color:#E86D03;font-weight:bold;}
+
+		/*########### searchBanner ###########*/
+		.searchBanner{width:100%;margin:50px auto 0;}
+		.searchBanner img{width:100%;}
+
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:0 auto;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+
+		/* ############################# 반응형 ##################################### */
+
+	/* PC ver2 ################################################################### */
+	@media all and (min-width:1025px) and (max-width:1400px){
+			#headerWrap{width:100%;}
+			#header{width:98%;margin:20px auto 0;position:relative;}
+			h1{left:25px;width:90px;height:45px;}
+				h1 img{width:100%;}
+			
+			#header ul#infomenu{width:98%;margin:0 auto;}
+			#header #navWrap{width:100%;margin:0 auto;}
+			#header #navWrap #gnb{width:93%;}
+			#header #navWrap #gnb li a{font-size:16px;}
+
+
+			/*############ vodArea ###############*/
+			#vodArea{width:100%;margin:60px auto 0;}
+			#vodArea ul{width:750px;margin:15px auto 0;}
+			#vodArea ul li{width:350px;float:left;margin:7px 7px 7px 12px;
+						   text-align:center;background-color:#fff;}
+
+	}
+
+	/* 태블릿 PC ###################################################################### */
+	@media all and (min-width:768px) and (max-width:1024px){
+			#headerWrap{width:100%;}
+			#header{width:98%;margin:20px auto 0;position:relative;}
+			h1{left:25px;width:90px;height:45px;}
+				h1 img{width:100%;}
+			
+			#header ul#infomenu{width:98%;margin:0 auto;}
+			#header #navWrap{width:100%;margin:0 auto;}
+			#header #navWrap #gnb{width:93%;}
+				#header #navWrap #gnb li a{font-size:16px;}
+			
+			/*############ vodArea ###############*/
+			#vodArea{width:100%;margin:60px auto 0;}
+			#vodArea ul{width:750px;margin:15px auto 0;}
+			#vodArea ul li{width:350px;float:left;margin:7px 7px 7px 12px;
+						   text-align:center;background-color:#fff;}
+				
+			/*### footer ###*/
+
+			#footer{width:100%;margin:50px auto 0;height:170px;}
+			#footer a{font-size:12px;}
+			#link li .gray{font-size:11px;}
+			#footer #link{width:100%;height:30px;}
+			#footer #link li{height:30px;line-height:30px;}
+			#footer #link li a{padding:0;}
+			#footer div.logofooter{width:100%;height:70px;text-align:center;
+								margin:5px auto;font-size:11px;}
+			#footer p.logoImg{width:50px;height:30px;margin:20px auto 5px;}
+			#footer div.logofooter p.footerDesc{font-size:11px;line-height:18px;
+						padding:0 20px;}
+			#footer div.logofooter p.footerDesc a{font-size:11px;}
+			#footer .copyright2{display:none;}	
+	
+	}
+	
+	/* 스마트폰 가로버전 ###################################################################### */
+	@media all and (min-width:481px) and (max-width:767px){
+				#headerWrap{overflow:hidden;height:55px;}
+				#header{overflow:hidden;
+						width:100%;height:50px;margin:0 auto;position:relative;}
+				h1{position:static;margin:7px auto 0;width:60px;}
+					h1 img{width:100%;}
+
+				/*## mobMenu ##*/
+				#mobHeader{display:block;}
+				.mobMenu{width:30px;height:30px;
+						position:absolute;left:12px;top:9px;}
+				.mobMenu a{display:block;width:100%;height:100%;}
+				.mobMenu img{width:100%;}
+
+				.mobSearch{width:27px;height:27px;
+							position:absolute;right:12px;top:10px;}
+				.mobSearch a{display:block;width:100%;height:100%;}
+				.mobSearch img{width:100%;}
+			
+				/*## mobBar ##*/
+				#mobBar{display:none;
+						width:100%;position:absolute;left:0;top:55px;
+						z-index:1;background-color:rgba(0,0,0,0.7);}
+					.mobTop{width:300px;height:150px;margin:0 auto;}
+					.mobTop em{font-style:normal;}
+						.moblog{width:100%;height:50px;color:#fff;margin-top:15px;}
+						.moblog strong{display:inline-block;width:180px;height:30px;text-indent:15px;}
+						.moblog span{border:1px solid #fff;margin-left:57px;}
+						.moblog span a{color:#fff;padding:6px;font-size:14px;}
+						.mobOn,.mobPro,.mobMy{width:80px;height:70px;float:left;
+										text-align:center;}
+							.mobOn,.mobPro{margin-right:30px;}
+						.mobOn a,.mobPro a,.mobMy a{width:100%;height:70px;color:#fff;}
+					
+					.mobTop img{width:50px;height:50px;}
+					
+					.mobAll{width:100%;text-indent:45px;line-height:35px;padding:10px 0 10px;
+							border-top:1px solid #999;color:#fff;font-size:17px;
+							cursor:pointer;}
+					.mobAll a{color:#fff;font-size:17px;}
+					.mobAll span img{width:25px;height:30px;vertical-align:top;}
+					.mobAll .mobC{background-color:rgba(250,250,250,.5);
+								line-height:33px;display:none;}
+							.mobC a{font-size:14px;}
+			/* ############ container ############# */
+			#container{margin-top:20px;}
+			/* ######## searchArea ######## */
+			#searchArea{width:100%;height:70px;margin:30px auto 0;}
+				.wrap_inp{width:90%;margin:0 auto;}
+				.wrap_inp input[type="search"]{width:87%;height:50px;
+											   font-size:15px;}
+				.imgWrap{width:45px;height:50px;}
+				.wrap_inp input[type="image"]{width:37px;height:37px;
+											  margin-top:5px;margin-left:4px;}
+				#searchArea .searchWord{display:none;}
+			/*############ vodArea ###############*/
+			#vodArea{width:100%;margin:20px auto 0;}
+			#vodArea ul{width:95%;margin:15px auto 0;}
+			#vodArea ul li{width:100%;float:none;margin:0 auto;
+						   text-align:center;background-color:#fff;outline:none;}
+			.mobnone{display:none;}
+			
+			/*########### searchBanner ###########*/
+			.searchBanner{width:100%;margin:20px auto 0;}
+			.searchBanner img{width:100%;}
+
+			/*### footer ###*/
+
+			#footer{width:100%;margin:50px auto 0;height:170px;}
+			#footer a{font-size:12px;}
+			#link li .gray{font-size:11px;}
+			#footer #link{width:100%;height:30px;}
+			#footer #link li{height:30px;line-height:30px;}
+			#footer #link li a{padding:0;}
+			#footer div.logofooter{width:100%;height:70px;text-align:center;
+								margin:5px auto;font-size:11px;}
+			#footer p.logoImg{width:50px;height:30px;margin:20px auto 5px;}
+			#footer div.logofooter p.footerDesc{font-size:11px;line-height:18px;
+						padding:0 20px;}
+			#footer div.logofooter p.footerDesc a{font-size:11px;}
+			#footer .copyright2{display:none;}
+	}
+	
+	/*스마트폰 세로###################################################################*/
+	@media all and (min-width:320px) and (max-width:480px){
+				#headerWrap{overflow:hidden;height:55px;}
+				#header{overflow:hidden;
+						width:100%;height:50px;margin:0 auto;position:relative;}
+				h1{position:static;margin:7px auto 0;width:60px;}
+					h1 img{width:100%;}
+			
+			/*## mobMenu ##*/
+				#mobHeader{display:block;}
+				.mobMenu{width:30px;height:30px;
+						position:absolute;left:12px;top:9px;}
+				.mobMenu a{display:block;width:100%;height:100%;}
+				.mobMenu img{width:100%;}
+
+				.mobSearch{width:27px;height:27px;
+							position:absolute;right:12px;top:10px;}
+				.mobSearch a{display:block;width:100%;height:100%;}
+				.mobSearch img{width:100%;}
+			
+			/*## mobBar ##*/
+				#mobBar{display:none;
+						width:100%;position:absolute;left:0;top:55px;
+						z-index:1;background-color:rgba(0,0,0,0.7);}
+					.mobTop{width:300px;height:150px;margin:0 auto;}
+					.mobTop em{font-style:normal;}
+						.moblog{width:100%;height:50px;color:#fff;margin-top:15px;}
+						.moblog strong{display:inline-block;width:180px;height:30px;text-indent:15px;}
+						.moblog span{border:1px solid #fff;margin-left:57px;}
+						.moblog span a{color:#fff;padding:6px;font-size:14px;}
+						.mobOn,.mobPro,.mobMy{width:80px;height:70px;float:left;
+										text-align:center;}
+							.mobOn,.mobPro{margin-right:30px;}
+						.mobOn a,.mobPro a,.mobMy a{width:100%;height:70px;color:#fff;}
+					
+					.mobTop img{width:50px;height:50px;}
+					
+					.mobAll{width:100%;text-indent:45px;line-height:35px;padding:10px 0 10px;
+							border-top:1px solid #999;color:#fff;font-size:17px;
+							cursor:pointer;}
+					.mobAll a{color:#fff;font-size:17px;}
+					.mobAll span img{width:25px;height:30px;vertical-align:top;}
+					.mobAll .mobC{background-color:rgba(250,250,250,.5);
+								line-height:33px;display:none;}
+							.mobC a{font-size:14px;}
+
+		/* ############ container ############# */
+		#container{margin-top:20px;}
+		/* ######## searchArea ######## */
+		#searchArea{width:100%;height:70px;margin:30px auto 0;}
+				.wrap_inp{width:90%;margin:0 auto;}
+				.wrap_inp input[type="search"]{width:87%;height:45px;
+											   font-size:15px;}
+				.imgWrap{width:35px;height:45px;}
+				.wrap_inp input[type="image"]{width:30px;height:30px;
+											  margin-top:6px;margin-left:2px;}
+				#searchArea .searchWord{display:none;}
+		/*############ vodArea ###############*/
+		#vodArea{width:100%;margin:20px auto 0;}
+			#vodArea ul{width:95%;margin:15px auto 0;}
+			#vodArea ul li{width:100%;float:none;margin:0 auto;
+						   text-align:center;background-color:#fff;outline:none;}
+			.mobnone{display:none;}
+			
+			/*########### searchBanner ###########*/
+			.searchBanner{width:100%;margin:20px auto 0;}
+			.searchBanner img{width:100%;}
+
+		/*### footer ###*/
+
+		#footer{width:100%;margin:50px auto 0;height:170px;}
+			#footer a{font-size:9px;}
+			#link li .gray{font-size:10px;}
+			#footer #link{width:100%;height:30px;}
+			#footer #link li{height:30px;line-height:30px;}
+			#footer #link li a{padding:0;}
+			#footer div.logofooter{width:100%;height:70px;text-align:center;
+								margin:5px auto;font-size:11px;}
+			#footer p.logoImg{width:50px;height:30px;margin:20px auto 5px;}
+			#footer div.logofooter p.footerDesc{font-size:11px;line-height:18px;
+						padding:0 20px;}
+			#footer div.logofooter p.footerDesc a{font-size:10px;}
+			#footer .copyright2{display:none;}
+	}
+
+  </style>
+  <script>
+	jQuery(document).ready(function(){
+		
+		//모바일 메뉴
+		$(".mobP").click(function(){
+			//$(".mobC").hide();
+			$(this).children(".mobC").slideToggle(200,"linear");
+		});
+		//모바일 메뉴 - 아이콘 변경
+		var trans=0;
+		$(".mobMenu").click(function(){
+			$("#mobBar").slideToggle(150,"linear");
+			
+			if(trans==0){
+				document.getElementById("change").src="img/close.png";
+				trans=1;
+			}
+			else{
+				document.getElementById("change").src="img/mobMenu5.png";
+				trans=0;
+			}
+		});
+
+	});
+  </script>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo3.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+			<div id="mobHeader">
+					<p class="mobMenu">
+						<a href="#" title="menu"><img id="change" src="img/mobMenu5.png" alt="모바일 메뉴"/></a>
+					</p>
+					<p class="mobSearch">
+						<a href="search.html" title="검색"><img src="img/search4.png" alt="검색 이미지"/></a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="mobBar">
+			<div class="mobTop">
+				<p class="moblog">
+					<strong>로그인 해주세요.</strong>
+					<span><a href="jtbcLogin.html" title="로그인">로그인</a></span>
+				</p>
+				<p class="mobOn">
+					<a href="onAir.html" title="온에어">
+						<span><img src="img/mobplay.png" alt="온에어 아이콘"/></span><br/>
+						<em>온에어</em>
+					</a>
+				</p>
+				<p class="mobPro">
+					<a href="pyo.html" title="편성표">
+						<span><img src="img/mobcal.png" alt="편성표 아이콘"/></span><br/>
+						<em>편성표</em>
+					</a>	
+				</p>
+				<p class="mobMy">
+					<a href="jtbcLogin.html" title="마이페이지">
+						<span><img src="img/mobper.png" alt="마이페이지 아이콘"/></span><br/>
+						<em>마이페이지</em>
+					</a>
+				</p>
+			</div>
+			<div id="mobMe">
+				<ul class="mobAll">
+					<li class="mobP">
+							프로그램
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="program.html" title="방영 프로그램">방영 프로그램</a></li>
+							<li><a href="program.html" title="종영 프로그램">종영 프로그램</a></li>
+							<li><a href="program.html" title="전체 프로그램">전체 프로그램</a></li>
+						</ul>
+					</li>
+					<li class="mobP">
+							VOD
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="vod.html" title="추천">추천</a></li>
+							<li><a href="vod.html" title="최신">최신</a></li>
+							<li><a href="vod.html" title="인기">인기</a></li>
+							<li><a href="vod.html" title="프로그램별">프로그램별</a></li>
+							<li><a href="vod.html" title="테마별">테마별</a></li>
+						</ul>
+					</li>
+					<li class="mobP">
+							JTBC 뉴스
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="news.html" title="뉴스">뉴스</a></li>
+							<li><a href="news.html" title="날씨">날씨</a></li>
+							<li><a href="news.html" title="뉴스룸">뉴스룸</a></li>
+							<li><a href="news.html" title="제보">제보</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="sub/event.html" title="이벤트">이벤트</a>
+					</li>
+					<li>
+						<a href="sub/vodTickets.html" title="이용권">이용권</a>
+					</li>
+					<li>
+						<a href="footer_customer.html" title="고객센터">고객센터</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="container">
+			<div id="searchArea">
+				<form class="searchForm" action="http://jtbc.joins.com/search" method="get">
+					<fieldset>
+					<legend>통합검색</legend>
+					<span class="wrap_inp">
+						<input type="search" title="통합검색" name="term">
+						<span class="imgWrap"><input type="image" name="term" src="img/search3.png" alt="검색이미지" title="통합검색"/></span>
+					</span>
+					</fieldset>
+				</form>	
+				<p class="searchWord">
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#none" title="아는형님">아는형님</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#none" title="슈가맨2">슈가맨2</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#none" title="냉장고를 부탁해">냉장고를 부탁해</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#none" title="효리네민박2">효리네민박2</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#none" title="미스티">미스티</a>&nbsp;&nbsp;&nbsp;&nbsp;
+					<a href="#none" title="JTBC 뉴스룸">JTBC 뉴스룸</a>&nbsp;&nbsp;&nbsp;&nbsp;
+				</p>
+			</div>
+			<div id="vodArea">
+				<ul>
+					<li>
+						<a href="#" title="아는형님 예고">
+							<span class="nextImg">
+								<img src="../img/next0.jpg" alt="아는형님 예고편 이미지"/>
+								<span class="playbtn"></span>
+								<span class="time">01:24</span>
+							</span>
+							<b>
+								아는 형님 109회 예고편
+							</b>
+							<span class="textBox">2018.01.06(토) 20:50 방송</span>
+						</a>
+					</li>
+					<li>
+						<a href="#" title="한끼줍쇼 예고">
+							<span class="nextImg">
+								<img src="../img/next1.jpg" alt="한끼줍쇼 예고편 이미지"/>
+								<span class="playbtn"></span>
+								<span class="time">02:01</span>
+							</span>
+							<b>
+								한끼줍쇼 64회 예고편
+							</b>
+							<span class="textBox">2018.01.10(수)23:00 방송</span>
+						</a>
+					</li>
+					<li class="mobnone">
+						<a href="#" title="그냥 사랑하는 사이 예고">
+							<span class="nextImg">
+								<img src="../img/next2.jpg" alt="그냥 사랑하는 사이 예고편 이미지"/>
+								<span class="playbtn"></span>
+								<span class="time">01:00</span>
+							</span>
+							<b>
+								[9회 예고]<br/>
+								멀리한다는 건 그만큼 아낀다는 거야
+							</b>
+							<span class="textBox">2018.01.08(월)23:00 방송</span>
+						</a>
+					</li>
+					<li class="mobnone">
+						<a href="#" title="착하게 살자 예고">
+							<span class="nextImg">
+								<img src="../img/next3.jpg" alt="착하게 살자 예고편 이미지"/>
+								<span class="playbtn"></span>
+								<span class="time">02:33</span>
+							</span>
+							<b>
+								[미공개](얼굴족구)교도소 '덤 앤 더머'<br/>
+								김종민&amp;유병재
+							</b>
+							<span class="textBox">2018.03.09(금) 21:00 방송</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<p class="searchBanner"><img src="img/footerProgram.jpg" alt="jtbc배너"/></p>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="#" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

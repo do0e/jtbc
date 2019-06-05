@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> jtbc </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="img/back1.png"/>
+  <link rel="icon" href="img/back1.png"/>
+  <link rel="apple-touch-icon" href="img/back1.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+  <link rel="stylesheet" type="text/css" href="css/reset.css"/>
+  <link rel="stylesheet" type="text/css" href="css/jtbc.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/lteie9.css"/>
+	<![endif]-->
+  <script>
+	jQuery(document).ready(function(){
+		
+		//모바일 메뉴
+		$(".mobP").click(function(){
+			//$(".mobC").hide();
+			$(this).children(".mobC").slideToggle(200,"linear");
+		});
+		//모바일 메뉴 - 아이콘 변경
+		var trans=0;
+		$(".mobMenu").click(function(){
+			$("#mobBar").slideToggle(150,"linear");
+			
+			if(trans==0){
+				document.getElementById("change").src="img/close.png";
+				trans=1;
+			}
+			else{
+				document.getElementById("change").src="img/mobMenu3.png";
+				trans=0;
+			}
+		});
+
+
+		//메인페이지 daily영역
+		$("#daily div:not(:first)").hide();
+		$("#daily ul li a").on("click focusin",function(){
+			$("#daily div").hide();
+			$($(this).attr("href")).show();
+			$("#daily ul li a").removeClass();
+			$(this).addClass("dailySelected");
+			return false;
+		});
+		
+		//메인페이지 실시간VOD영역
+		$("#vodContent ul:not(:first)").hide();
+		$("#vodHeader ul li a").on("click focusin",function(){
+			$("#vodContent ul").hide();
+			$($(this).attr("href")).show();
+			$("#vodHeader ul li a").removeClass();
+			$(this).addClass("vodSelected");
+			return false;
+		});
+		
+		//JTBC 프로그램 영역
+		$("#programImg1,#programImg2,#programImg3,#programImg4,#programImg5").hide();
+			$("#programList li a").on("click focusin",function(){
+			$(".proHide").hide();
+			$($(this).attr("href")).show();
+			$("#programList li a").removeClass();
+			$(this).addClass("proSelected");
+			return false;
+		});
+		// 슬라이딩 윈도우 버튼4개
+		$("#btn a:eq(0)").addClass("btnSel");
+
+		$("#btn a").click(function(){
+				var btnIndex = $(this).index();
+				$("#btn a").removeClass();
+				$("#btn a:eq("+btnIndex+")").addClass("btnSel");
+				width = $("#screen").width();
+				for(var i=0; i<width; i++){
+					if(btnIndex == i){
+						$("#film").animate({"marginLeft":"-"+width*btnIndex+"px"},1000);
+					}
+				}
+		});
+
+		//$(window).resize(function(){
+			//새로고침 필수... 
+			
+			body = $("body").width();
+			//else에 pc값
+			if (body>=1025 && body<=1400)
+			{
+				$(".btn1").on("click focusin",function(){
+				$("#visual .imgPosition,#visual .textPosition").css({"opacity":"0"});
+				$("#visual .imgPosition").css({"left":"455px"});
+				$("#visual .textPosition").css({"left":"70px"});
+				$("#visual .imgPosition").animate({"opacity":"1","left":"425px"},2500);
+				$("#visual .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+				$(".btn2").on("click focusin",function(){
+				$("#visual1 .textPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition,#visual1 .textPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition").css({"left":"340px"});
+				$("#visual1 .textPosition").css({"left":"70px"});
+				$("#visual1 .imgPosition").animate({"opacity":"1","left":"310px"},2500);
+				$("#visual1 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+		});
+				$(".btn3").on("click focusin",function(){
+				$("#visual2 .textPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition,#visual2 .textPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition").css({"left":"375px"});
+				$("#visual2 .textPosition").css({"left":"70px"});
+				$("#visual2 .imgPosition").animate({"opacity":"1","left":"345px"},2500);
+				$("#visual2 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+		});
+				$(".btn4").on("click focusin",function(){
+				$("#visual3 .textPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition,#visual3 .textPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition").css({"left":"380px"});
+				$("#visual3 .textPosition").css({"left":"70px"});
+				$("#visual3 .imgPosition").animate({"opacity":"1","left":"350px"},2500);
+				$("#visual3 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+		});
+				$(".btn5").on("click focusin",function(){
+				$("#visual4 .textPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition,#visual4 .textPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition").css({"left":"420px"});
+				$("#visual4 .textPosition").css({"left":"70px"});
+				$("#visual4 .imgPosition").animate({"opacity":"1","left":"390px"},2500);
+				$("#visual4 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+		});		
+				$(".btn6").on("click focusin",function(){
+				$("#visual5 .textPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition,#visual5 .textPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition").css({"left":"330px"});
+				$("#visual5 .textPosition").css({"left":"70px"});
+				$("#visual5 .imgPosition").animate({"opacity":"1","left":"300px"},2500);
+				$("#visual5 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+		});
+				$(".btn7").on("click focusin",function(){
+				$("#visual6 .textPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition,#visual6 .textPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition").css({"left":"80px"});
+				$("#visual6 .textPosition").css({"left":"70px"});
+				$("#visual6 .imgPosition").animate({"opacity":"1","left":"50px"},2500);
+				$("#visual6 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+		});
+
+				$(".btn8").on("click focusin",function(){
+				$("#visual7 .textPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition,#visual7 .textPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition").css({"left":"20px"});
+				$("#visual7 .textPosition").css({"left":"70px"});
+				$("#visual7 .imgPosition").animate({"opacity":"1","left":"-10px"},2500);
+				$("#visual7 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+		});
+
+
+			}
+			else if(body>=768 && body<=1024){
+
+				$(".btn1").on("click focusin",function(){
+				$("#visual .imgPosition,#visual .textPosition").css({"opacity":"0"});
+				$("#visual .imgPosition").css({"left":"270px"});
+				$("#visual .textPosition").css({"left":"70px"});
+				$("#visual .imgPosition").animate({"opacity":"1","left":"240px"},2500);
+				$("#visual .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+				$(".btn2").on("click focusin",function(){
+				$("#visual1 .textPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition,#visual1 .textPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition").css({"left":"200px"});
+				$("#visual1 .textPosition").css({"left":"70px"});
+				$("#visual1 .imgPosition").animate({"opacity":"1","left":"170px"},2500);
+				$("#visual1 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+				$(".btn3").on("click focusin",function(){
+				$("#visual2 .textPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition,#visual2 .textPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition").css({"left":"265px"});
+				$("#visual2 .textPosition").css({"left":"70px"});
+				$("#visual2 .imgPosition").animate({"opacity":"1","left":"235px"},2500);
+				$("#visual2 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+				$(".btn4").on("click focusin",function(){
+				$("#visual3 .textPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition,#visual3 .textPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition").css({"left":"230px"});
+				$("#visual3 .textPosition").css({"left":"70px"});
+				$("#visual3 .imgPosition").animate({"opacity":"1","left":"200px"},2500);
+				$("#visual3 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+				$(".btn5").on("click focusin",function(){
+				$("#visual4 .textPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition,#visual4 .textPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition").css({"left":"250px"});
+				$("#visual4 .textPosition").css({"left":"70px"});
+				$("#visual4 .imgPosition").animate({"opacity":"1","left":"220px"},2500);
+				$("#visual4 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});		
+				$(".btn6").on("click focusin",function(){
+				$("#visual5 .textPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition,#visual5 .textPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition").css({"left":"180px"});
+				$("#visual5 .textPosition").css({"left":"70px"});
+				$("#visual5 .imgPosition").animate({"opacity":"1","left":"150px"},2500);
+				$("#visual5 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+				$(".btn7").on("click focusin",function(){
+				$("#visual6 .textPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition,#visual6 .textPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition").css({"left":"-130px"});
+				$("#visual6 .textPosition").css({"left":"70px"});
+				$("#visual6 .imgPosition").animate({"opacity":"1","left":"-160px"},2500);
+				$("#visual6 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+
+				$(".btn8").on("click focusin",function(){
+				$("#visual7 .textPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition,#visual7 .textPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition").css({"left":"-30px"});
+				$("#visual7 .textPosition").css({"left":"70px"});
+				$("#visual7 .imgPosition").animate({"opacity":"1","left":"-60px"},2500);
+				$("#visual7 .textPosition").animate({"opacity":"1","left":"40px"},2500);
+			});
+				
+			}
+			else if(body>=481 && body<=767){
+
+				$(".btn1").on("click focusin",function(){
+				$("#visual .imgPosition").css({"opacity":"0"});
+				$("#visual .imgPosition").css({"left":"30px"});
+				$("#visual .imgPosition").animate({"opacity":"1","left":"0px"},2500);
+			});
+				$(".btn2").on("click focusin",function(){
+				$("#visual1 .imgPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition").css({"left":"30px"});
+				$("#visual1 .imgPosition").animate({"opacity":"1","left":"0px"},2500);
+			});
+				$(".btn3").on("click focusin",function(){
+				$("#visual2 .imgPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition").css({"left":"10px"});
+				$("#visual2 .imgPosition").animate({"opacity":"1","left":"-20px"},2500);
+			});
+				$(".btn4").on("click focusin",function(){
+				$("#visual3 .imgPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition").css({"left":"-5px"});
+				$("#visual3 .imgPosition").animate({"opacity":"1","left":"-35px"},2500);
+			});
+				$(".btn5").on("click focusin",function(){
+				$("#visual4 .imgPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition").css({"left":"15px"});
+				$("#visual4 .imgPosition").animate({"opacity":"1","left":"-15px"},2500);
+			});		
+				$(".btn6").on("click focusin",function(){
+				$("#visual5 .imgPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition").css({"left":"-40px"});
+				$("#visual5 .imgPosition").animate({"opacity":"1","left":"-70px"},2500);
+			});
+				$(".btn7").on("click focusin",function(){
+				$("#visual6 .imgPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition").css({"left":"-270px"});
+				$("#visual6 .imgPosition").animate({"opacity":"1","left":"-300px"},2500);
+			});
+
+				$(".btn8").on("click focusin",function(){
+				$("#visual7 .imgPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition").css({"left":"-205px"});
+				$("#visual7 .imgPosition").animate({"opacity":"1","left":"-235px"},2500);
+			});
+				
+			}
+			else if(body>=320 && body<=480){
+
+				$(".btn1").on("click focusin",function(){
+				$("#visual .imgPosition").css({"opacity":"0"});
+				$("#visual .imgPosition").css({"left":"30px"});
+				$("#visual .imgPosition").animate({"opacity":"1","left":"0px"},2500);
+			});
+				$(".btn2").on("click focusin",function(){
+				$("#visual1 .imgPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition").css({"left":"10px"});
+				$("#visual1 .imgPosition").animate({"opacity":"1","left":"-20px"},2500);
+			});
+				$(".btn3").on("click focusin",function(){
+				$("#visual2 .imgPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition").css({"left":"-20px"});
+				$("#visual2 .imgPosition").animate({"opacity":"1","left":"-50px"},2500);
+			});
+				$(".btn4").on("click focusin",function(){
+				$("#visual3 .imgPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition").css({"left":"5px"});
+				$("#visual3 .imgPosition").animate({"opacity":"1","left":"-25px"},2500);
+			});
+				$(".btn5").on("click focusin",function(){
+				$("#visual4 .imgPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition").css({"left":"20px"});
+				$("#visual4 .imgPosition").animate({"opacity":"1","left":"-10px"},2500);
+			});		
+				$(".btn6").on("click focusin",function(){
+				$("#visual5 .imgPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition").css({"left":"-35px"});
+				$("#visual5 .imgPosition").animate({"opacity":"1","left":"-65px"},2500);
+			});
+				$(".btn7").on("click focusin",function(){
+				$("#visual6 .imgPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition").css({"left":"-270px"});
+				$("#visual6 .imgPosition").animate({"opacity":"1","left":"-300px"},2500);
+			});
+
+				$(".btn8").on("click focusin",function(){
+				$("#visual7 .imgPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition").css({"left":"-215px"});
+				$("#visual7 .imgPosition").animate({"opacity":"1","left":"-245px"},2500);
+			});
+				
+			}
+			else{
+				$(".btn1").on("click focusin",function(){
+				$("#visual .imgPosition,#visual .textPosition").css({"opacity":"0"});
+				$("#visual .imgPosition").css({"left":"760px"});
+				$("#visual .textPosition").css({"left":"350px"});
+				$("#visual .imgPosition").animate({"opacity":"1","left":"730px"},2500);
+				$("#visual .textPosition").animate({"opacity":"1","left":"320px"},2500);
+			});
+				$(".btn2").on("click focusin",function(){
+				$("#visual1 .textPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition,#visual1 .textPosition").css({"opacity":"0"});
+				$("#visual1 .imgPosition").css({"left":"730px"});
+				$("#visual1 .textPosition").css({"left":"350px"});
+				$("#visual1 .imgPosition").animate({"opacity":"1","left":"700px"},2500);
+				$("#visual1 .textPosition").animate({"opacity":"1","left":"320px"},2500);
+		});
+
+				$(".btn3").on("click focusin",function(){
+				$("#visual2 .textPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition,#visual2 .textPosition").css({"opacity":"0"});
+				$("#visual2 .imgPosition").css({"left":"730px"});
+				$("#visual2 .textPosition").css({"left":"350px"});
+				$("#visual2 .imgPosition").animate({"opacity":"1","left":"700px"},2500);
+				$("#visual2 .textPosition").animate({"opacity":"1","left":"320px"},2500);
+		});
+				$(".btn4").on("click focusin",function(){
+				$("#visual3 .textPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition,#visual3 .textPosition").css({"opacity":"0"});
+				$("#visual3 .imgPosition").css({"left":"730px"});
+				$("#visual3 .textPosition").css({"left":"350px"});
+				$("#visual3 .imgPosition").animate({"opacity":"1","left":"700px"},2500);
+				$("#visual3 .textPosition").animate({"opacity":"1","left":"320px"},2500);
+		});
+
+				$(".btn5").on("click focusin",function(){
+				$("#visual4 .textPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition,#visual4 .textPosition").css({"opacity":"0"});
+				$("#visual4 .imgPosition").css({"left":"730px"});
+				$("#visual4 .textPosition").css({"left":"350px"});
+				$("#visual4 .imgPosition").animate({"opacity":"1","left":"700px"},2500);
+				$("#visual4 .textPosition").animate({"opacity":"1","left":"320px"},2500);
+		});		
+				$(".btn6").on("click focusin",function(){
+				$("#visual5 .textPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition,#visual5 .textPosition").css({"opacity":"0"});
+				$("#visual5 .imgPosition").css({"left":"630px"});
+				$("#visual5 .textPosition").css({"left":"350px"});
+				$("#visual5 .imgPosition").animate({"opacity":"1","left":"600px"},2500);
+				$("#visual5 .textPosition").animate({"opacity":"1","left":"320px"},2500);
+		});
+
+				$(".btn7").on("click focusin",function(){
+				$("#visual6 .textPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition,#visual6 .textPosition").css({"opacity":"0"});
+				$("#visual6 .imgPosition").css({"left":"360px"});
+				$("#visual6 .textPosition").css({"left":"350px"});
+				$("#visual6 .imgPosition").animate({"opacity":"1","left":"330px"},2500);
+				$("#visual6 .textPosition").animate({"opacity":"1","left":"320px"},2500);
+		});
+
+				$(".btn8").on("click focusin",function(){
+				$("#visual7 .textPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition,#visual7 .textPosition").css({"opacity":"0"});
+				$("#visual7 .imgPosition").css({"left":"530px"});
+				$("#visual7 .textPosition").css({"left":"350px"});
+				$("#visual7 .imgPosition").animate({"opacity":"1","left":"500px"},2500);
+				$("#visual7 .textPosition").animate({"opacity":"1","left":"320px"},2500);
+		});
+			
+			}
+		
+		///});
+		
+		/* 
+		
+			//초기화 마지막 장면 대기시켜놓기
+			$("#film").prepend($(".scene:last"));
+			$("#film").css({"marginLeft":"-100%"});
+
+		
+			다음버튼 
+			$("#nextbtn").click(function(){
+			$("#film:not(:animated)").stop().animate({"marginLeft":"-=100%"},1000,"swing",function(){
+				$("#film").append($(".scene:first"));
+				$("#film").css({"marginLeft":"0"});
+			});
+		});
+
+		 이전버튼 
+			$("#prevbtn").click(function(){
+			$("#film:not(:animated)").stop().animate({"marginLeft":"+=100%"},1000,"swing",function(){
+				$("#film").append($(".scene:last"));
+				$("#film").css({"marginLeft":"0"});
+			});
+		});
+
+		*/
+		/*		
+				//addClass index로 설정 안됨 XXXXXXXXXXXXXXXXXXXXXXXXXXXX
+				//var btnNum = $("#btn a").index();
+				//$("#btn a").removeClass();
+				//$("#btn a:eq("+btnNum+")").addClass("btnSel");
+			});
+		});
+		*/
+		//다음버튼 
+			/*$("#nextbtn").click(function(){
+			$("#film:not(:animated)").stop().animate({"marginLeft":"-=100%"},1000,"swing",function(){
+				$("#film").append($(".scene:first"));
+				$("#film").css({"marginLeft":"0"});
+			});
+		});
+		*/
+		/*
+		// 자동클릭!
+		var autoSel = setInterval(function(){ $(".nextBtnimg").click(); },3000);
+		// 자동클릭 멈추기 : pause
+		$("#pausebtn a.pause").click(function(){
+			clearInterval( autoSel );
+			$(this).children("img").attr("src","img/slideplay.png");
+
+		});
+
+		*/
+		
+		//실시간 vod영역 모달팝업
+		$("#full,#view").hide();
+		
+			$("#vodContent ul li a").click(function(){
+				$("#view,#full").show();
+				$("#view").html("<video controls muted><source src=' "+$(this).attr("href")+" ' type='video/mp4'/></video>");
+				
+				return false;
+			});
+			$("#view,#full").click(function(){$("#full,#view").hide();});
+
+
+
+		//예고편 영역 모달팝업
+		$("#full1,#view1").hide();
+		
+			$("#nextContent ul li a").click(function(){
+				$("#view1,#full1").show();
+				$("#view1").html("<video controls muted><source src=' "+$(this).attr("href")+" ' type='video/mp4'/></video>");
+				
+				return false;});
+			$("#view1,#full1").click(function(){$("#full1,#view1").hide();});
+
+		//뉴스룸 영역 모달팝업
+		$("#full2,#view2").hide();
+		
+			$(".newsPlay a,.newsText a").click(function(){
+				$("#view2,#full2").show();
+				$("#view2").html("<video controls muted><source src=' "+$(this).attr("href")+" ' type='video/mp4'/></video>");
+				
+				return false;});
+			$("#view2,#full2").click(function(){$("#full2,#view2").hide();});
+	
+	
+	});
+		
+		//뒤로가기
+		histroy.go(-1);
+		
+		
+		//구형브라우저 알림창
+		if(window.addEventListener){}
+		else if(window.attachEvent){alert('구형브라우저이기 때문에 업데이트가 필요합니다.');}
+  </script>
+ </head>
+ <body>
+	<div id="skipNav">
+	  <h2>스킵 네비게이션</h2>
+	  <a href="#wrap" title="JTBC 본문 바로가기">JTBC 본문 바로가기</a>
+	  <a href="#daily" title="JTBC 요일별 방송 소개 바로가기">요일별 방송 소개 바로가기</a>
+	  <a href="#vodContent" title="실시간 VOD 바로가기">실시간 VOD 바로가기</a>
+	  <a href="#newsArea" title="뉴스 바로가기">뉴스 바로가기</a>
+	  <a href="#program" title="프로그램 바로가기">프로그램 바로가기</a>
+	  <a href="#nextArea" title="예고편 바로가기">예고편 바로가기</a>
+	  <a href="#footer" title="꼬릿말 영역 바로가기">꼬릿말 영역 바로가기</a>
+	</div>
+	<div id="wrap">
+		<div id="headerWrap">
+			<div id="header">
+				<h1>
+					<a href="http://jtbc.joins.com/" title="jtbc">
+						<img src="img/logo0.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="sub/joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="sub/jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="sub/vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="sub/program.html" title="프로그램">프로그램</a></li>
+						<li><a href="sub/news.html" title="뉴스">뉴스</a></li>
+						<li><a href="sub/vod.html" title="VOD">VOD</a></li>
+						<li><a href="sub/pyo.html" title="편성표">편성표</a></li>
+						<li><a href="sub/event.html" title="이벤트">이벤트</a></li>
+						<li><a href="sub/onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="search">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="sub/search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="sub/search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+				<div id="mobHeader">
+					<p class="mobMenu">
+						<a href="#" title="menu"><img id="change" src="img/mobMenu3.png" alt="모바일 메뉴"/></a>
+					</p>
+					<p class="mobSearch">
+						<a href="sub/search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="mobBar">
+			<div class="mobTop">
+				<p class="moblog">
+					<strong>로그인 해주세요.</strong>
+					<span><a href="sub/jtbcLogin.html" title="로그인">로그인</a></span>
+				</p>
+				<p class="mobOn">
+					<a href="sub/onAir.html" title="온에어">
+						<span><img src="img/mobplay.png" alt="온에어 아이콘"/></span><br/>
+						<em>온에어</em>
+					</a>
+				</p>
+				<p class="mobPro">
+					<a href="sub/pyo.html" title="편성표">
+						<span><img src="img/mobcal.png" alt="편성표 아이콘"/></span><br/>
+						<em>편성표</em>
+					</a>	
+				</p>
+				<p class="mobMy">
+					<a href="sub/jtbcLogin.html" title="마이페이지">
+						<span><img src="img/mobper.png" alt="마이페이지 아이콘"/></span><br/>
+						<em>마이페이지</em>
+					</a>
+				</p>
+			</div>
+			<div id="mobMe">
+				<ul class="mobAll">
+					<li class="mobP">
+							프로그램
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="sub/program.html" title="방영 프로그램">방영 프로그램</a></li>
+							<li><a href="sub/program.html" title="종영 프로그램">종영 프로그램</a></li>
+							<li><a href="sub/program.html" title="전체 프로그램">전체 프로그램</a></li>
+						</ul>
+					</li>
+					<li class="mobP">
+							VOD
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="sub/vod.html" title="추천">추천</a></li>
+							<li><a href="sub/vod.html" title="최신">최신</a></li>
+							<li><a href="sub/vod.html" title="인기">인기</a></li>
+							<li><a href="sub/vod.html" title="프로그램별">프로그램별</a></li>
+							<li><a href="sub/vod.html" title="테마별">테마별</a></li>
+						</ul>
+					</li>
+					<li class="mobP">
+							JTBC 뉴스
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="sub/news.html" title="뉴스">뉴스</a></li>
+							<li><a href="sub/news.html" title="날씨">날씨</a></li>
+							<li><a href="sub/news.html" title="뉴스룸">뉴스룸</a></li>
+							<li><a href="sub/news.html" title="제보">제보</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="sub/event.html" title="이벤트">이벤트</a>
+					</li>
+					<li>
+						<a href="sub/vodTickets.html" title="이용권">이용권</a>
+					</li>
+					<li>
+						<a href="sub/footer_customer.html" title="고객센터">고객센터</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="container">
+			<div id="screen">
+				<div id="film">
+					<div id="visual" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain">
+							<li>
+								<img src="img/main_img_back.png" alt="예능 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main9text.png" alt="슈가맨2 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main9_1.png" alt="슈가맨2이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								투유프로젝트
+								슈가맨2
+							</strong><br/>
+							<span>매주 일요일 밤 10시 40분</span>
+						</p>
+					</div>
+					<div id="visual1" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain1">
+							<li>
+								<img src="img/main4_back.png" alt="교양 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main4_text.png" alt="썰전 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main4.png" alt="썰전 이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								썰전
+							</strong><br/>
+							<span>매주 목요일 밤 11시</span>
+						</p>
+					</div>
+					<div id="visual2" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain2">
+							<li>
+								<img src="img/main_img_back.png" alt="예능 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main14_text.png" alt="뭉쳐야뜬다 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main14.png" alt="뭉쳐야뜬다 이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								뭉쳐야 뜬다
+							</strong><br/>
+							<span>매주 화요일 밤 9시 30분</span>
+						</p>
+					</div>
+					<div id="visual3" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain3">
+							<li>
+								<img src="img/main4_back.png" alt="교양 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main5_text.png" alt="TV정보쇼 알짜왕 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main5.png" alt="TV정보쇼 알짜왕 이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								TV정보쇼 알짜왕
+							</strong><br/>
+							<span>매주 목요일 오전 9시</span>
+						</p>
+					</div>
+					<div id="visual4" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain4">
+							<li>
+								<img src="img/main_img_back.png" alt="예능 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main_text.png" alt="한끼줍쇼 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main_img.png" alt="한끼줍쇼 이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								한끼줍쇼
+							</strong><br/>
+							<span>매주 수요일 밤 11시</span>
+						</p>
+					</div>
+					<div id="visual5" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain5">
+							<li>
+								<img src="img/main_img_back.png" alt="예능 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main12Text.png" alt="아는형님 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main12.png" alt="아는형님 이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								아는형님
+							</strong><br/>
+							<span>매주 토요일 밤 9시</span>
+						</p>
+					</div>
+					<div id="visual6" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain6">
+							<li>
+								<img src="img/main9back.png" alt="드라마 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main19Text.png" alt="와이키키 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main9.png" alt="와이키키 이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								으라차차 와이키키
+							</strong><br/>
+							<span>매주 월/화요일 밤 11시</span>
+						</p>
+					</div>
+					<div id="visual7" class="scene">
+						<h2>방송 비주얼 영역</h2>
+						<ul id="visualMain7">
+							<li>
+								<img src="img/main_img_back.png" alt="예능 back 이미지"/>
+							</li>
+						</ul>
+						<p class="textPosition">
+							<img src="img/main3_text.png" alt="나도 CEO2 text 이미지"/>
+						</p>
+						<p class="imgPosition">
+							<img src="img/main3.png" alt="나도 CEO2이미지"/>
+						</p>
+						<p class="gradPosition">
+						</p>
+						<p class="mobText">
+							<strong>
+								나도 CEO2 창업백서
+							</strong><br/>
+							<span>매주 수요일 오후 6시 30분</span>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="btn">
+				<a class="btn1 btnSel" href="#none" title="버튼1"></a>
+				<a class="btn2" href="#none" title="버튼2"></a>
+				<a class="btn3" href="#none" title="버튼3"></a>
+				<a class="btn4" href="#none" title="버튼4"></a>
+				<a class="btn5" href="#none" title="버튼5"></a>
+				<a class="btn6" href="#none" title="버튼6"></a>
+				<a class="btn7" href="#none" title="버튼7"></a>
+				<a class="btn8" href="#none" title="버튼8"></a>
+			</div>
+			<div id="pausebtn">
+				<a class="pause"><img src="img/pause.png" alt="멈춤버튼"/></a>
+			</div>
+			<div id="prevbtn">
+				<p class="prevBtnimg"><img src="img/pyo_arrow1.png" alt="이전버튼" class="prev"/></p>
+			</div>
+			<div id="nextbtn">
+				<p class="nextBtnimg"><img src="img/pyo_arrow2.png" alt="다음버튼" class="next"/></p>
+			</div>
+			<div id="daily">
+				<h2>요일별 방송 정보 영역</h2>
+				<ul>
+					<li class="mon"><a class="monSel" href="#dailyMon" title="월">월</a></li>
+					<li class="tue"><a href="#dailyTue" title="화">화</a></li>
+					<li class="wen"><a href="#dailyWen" title="수">수</a></li>
+					<li class="thu"><a href="#dailyThu" title="목">목</a></li>
+					<li class="fri"><a href="#dailyFri" title="금">금</a></li>
+					<li class="sat"><a href="#dailySat" title="토">토</a></li>
+					<li class="sun"><a href="#dailySun" title="일">일</a></li>
+				</ul>
+				<div id="dailyMon">
+					<h2>요일별 방송 정보</h2>
+					<h4>월요일 주요 방송</h4>
+					<p class="monBack1">
+						<a href="#none" title="정치부 회의">
+							<em class="gray">월~금 17:10</em><br/>
+							<strong>정치부 회의</strong>
+						</a>
+					</p>
+					<p class="monBack2">
+						<a href="#none" title="냉장고를 부탁해">
+							<em class="white">월 21:30</em><br/>
+							<strong class="white">냉장고를 부탁해</strong>
+						</a>
+					</p>
+					<p class="monBack3">
+						<a href="#none" title="으라차차 와이키키">
+							<em class="gray">월~화 23:00</em><br/>
+							<strong>으라차차 와이키키</strong>
+						</a>
+					</p>
+				</div>
+				<div id="dailyTue">
+					<h4>화요일 주요 방송</h4>
+					<p class="tueBack1">
+						<a href="#none" title="뉴스 현장">
+							<em class="gray">월~금 14:30</em><br/>
+							<strong>뉴스 현장</strong>
+						</a>
+					</p>
+					<p class="tueBack2">
+						<a href="#none" title="뭉쳐야 뜬다">
+							<em class="white">화 21:30</em><br/>
+							<strong class="white">뭉쳐야 뜬다</strong>
+						</a>
+					</p>
+					<p class="tueBack3">
+						<a href="#none" title="으라차차 와이키키">
+							<em class="gray">월~화 23:00</em><br/>
+							<strong>으라차차 와이키키</strong>
+						</a>
+					</p>
+				</div>
+				<div id="dailyWen">
+					<h4>수요일 주요 방송</h4>
+					<p class="wenBack1">
+						<a href="#none" title="JTBC 뉴스룸">
+							<em class="gray">월~일 19:55</em><br/>
+							<strong>JTBC 뉴스룸</strong>
+						</a>
+					</p>
+					<p class="wenBack2">
+						<a href="#none" title="차이나는 클라스">
+							<em class="white">수 21:30</em><br/>
+							<strong class="white">차이나는 클라스</strong>
+						</a>
+					</p>
+					<p class="wenBack3">
+						<a href="#none" title="한끼줍쇼">
+							<em class="gray">수 23:00</em><br/>
+							<strong>한끼줍쇼</strong>
+						</a>
+					</p>
+				</div>
+				<div id="dailyThu">
+					<h4>목요일 주요 방송</h4>
+					<p class="thuBack1">
+						<a href="#none" title="TV정보쇼 알짜왕">
+							<em class="gray">목 09:00</em><br/>
+							<strong>TV정보쇼 알짜왕</strong>
+						</a>
+					</p>
+					<p class="thuBack2">
+						<a href="#none" title="이규연의 스포트라이트">
+							<em class="white">목 21:30</em><br/>
+							<strong class="white">이규연의 스포트라이트</strong>
+						</a>
+					</p>
+					<p class="thuBack3">
+						<a href="#none" title="썰전">
+							<em class="gray">목 23:00</em><br/>
+							<strong>썰전</strong>
+						</a>
+					</p>
+				</div>
+				<div id="dailyFri">
+					<h4>금요일 주요 방송</h4>
+					<p class="friBack1">
+						<a href="#none" title="착하게 살자">
+							<em class="gray">금 21:00</em><br/>
+							<strong>착하게 살자</strong>
+						</a>
+					</p>
+					<p class="friBack2">
+						<a href="#none" title="미스티">
+							<em class="white">금~토 23:00</em><br/>
+							<strong class="white">미스티</strong>
+						</a>
+					</p>
+					<p class="friBack3">
+						<a href="#none" title="밤샘토론">
+							<em class="gray">매월 둘째주 마지막주 금 24:20</em><br/>
+							<strong>밤샘토론</strong>
+						</a>
+					</p>
+				</div>
+				<div id="dailySat">
+					<h4>토요일 주요 방송</h4>
+					<p class="satBack1">
+						<a href="#none" title="이방인">
+							<em class="gray">토 16:40</em><br/>
+							<strong>이방인</strong>
+						</a>
+					</p>
+					<p class="satBack2">
+						<a href="#none" title="아는형님">
+							<em class="white">토 20:50</em><br/>
+							<strong class="white">아는형님</strong>
+						</a>
+					</p>
+					<p class="satBack3">
+						<a href="#none" title="미스티">
+							<em class="gray">금~토 23:00</em><br/>
+							<strong>미스티</strong>
+						</a>
+					</p>
+				</div>
+				<div id="dailySun">
+					<h4>일요일 주요 방송</h4>
+					<p class="sunBack1">
+						<a href="#none" title="밤도깨비">
+							<em class="gray">일 18:30</em><br/>
+							<strong>밤도깨비</strong>
+						</a>
+					</p>
+					<p class="sunBack2">
+						<a href="#none" title="효리네 민박2">
+							<em class="white">일 21:00</em><br/>
+							<strong class="white">효리네 민박2</strong>
+						</a>
+					</p>
+					<p class="sunBack3">
+						<a href="#none" title="슈가맨2">
+							<em class="gray">일 22:30</em><br/>
+							<strong>슈가맨2</strong>
+						</a>
+					</p>
+				</div>
+			</div>
+			<div id="vodContentWrap">
+				<div id="vodHeader">
+					<h2>실시간VOD영역</h2>
+					<h3><a href="#" title="실시간VOD">
+						<img src="img/vodArea.png" alt="실시간VOD이미지"/></a>
+					</h3>
+					<ul id="vodSS">
+						<li><a class="vodSel" href="#recVod" title="추천순">추천순</a></li>
+						<li><a href="#hotVod" title="인기순">인기순</a></li>
+						<li><a href="#newVod" title="최신순">최신순</a></li>
+					</ul>
+				</div>
+				<div id="vodContent">
+					<h4>추천순VOD영역</h4>
+					<ul id="recVod">
+						<li class="v1">
+							<a href="vod/v1.mp4" title="아는형님 VOD">
+								<span class="vodImg">
+									<img src="img/vod0.jpg" alt="아는형님 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">01:32</span>
+								</span>
+								<b>
+									소울 가득 명품 보컬! '휘성'♪<br/>
+									청순 러블리! 배우 '강한나'
+								</b>
+								<span class="textBox">아는형님</span>
+							</a>
+						</li>
+						<li class="v2">
+							<a href="vod/v2.mp4" title="이방인 VOD">
+								<span class="vodImg">
+									<img src="img/vod1.jpg" alt="이방인 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">01:00</span>
+								</span>
+								<b>
+									여섯 번째 이방인 '독일 다니엘'<br/>
+									운동과 음악에 능통한 완벽한 남자!
+								</b>
+								<span class="textBox">이방인</span>
+							</a>
+						</li>
+						<li class="v3">
+							<a href="vod/v3.mp4" title="착하게 살자 VOD">
+								<span class="vodImg">
+									<img src="img/vod2.jpg" alt="착하게 살자 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">00:46</span>
+								</span>
+								<b>
+									역대 최고로 분노한 박사장<br/>
+									4번 방을 휩쓴 마지막 폭풍
+								</b>
+								<span class="textBox">착하게 살자</span>
+							</a>
+						</li>
+						<li class="v4">
+							<a href="vod/v4.mp4" title="히든싱어5 VOD">
+								<span class="vodImg">
+									<img src="img/vod3.jpg" alt="히든싱어5 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">00:45</span>
+								</span>
+								<b>
+									드디어 돌아왔다! 숨은 가수 찾기<br/> 
+									히든싱어5를 빛낼 모창능력자 모집 중♬
+								</b>
+								<span class="textBox">히든싱어5</span>
+							</a>
+						</li>
+						<li class="v5">
+							<a href="vod/v5.mp4" title="효리네 민박2 VOD">
+								<span class="vodImg">
+									<img src="img/vod4.jpg" alt="효리네 민박2 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">01:18</span>
+								</span>
+								<b>
+									'단기 알바생'박보검!<br/>
+									다음 주에 진짜 옵니다♥
+								</b>
+								<span class="textBox">효리네 민박2</span>
+							</a>
+						</li>
+						<li class="v6">
+							<a href="vod/v6.mp4" title="밤도깨비 VOD">
+								<span class="vodImg">
+									<img src="img/vod5.jpg" alt="밤도깨비 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">00:51</span>
+								</span>
+								<b>
+									홍기 Pick 대구!<br/>
+									‘병만족’과의 분량대결!!
+								</b>
+								<span class="textBox">밤도깨비</span>
+							</a>
+						</li>
+					</ul>
+					<ul id="hotVod">
+						<li class="v1">
+							<a href="#none" title="효리네 민박2 VOD">
+								<span class="vodImg">
+									<img src="img/vod6.jpg" alt="효리네 민박2 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">03:02</span>
+								</span>
+								<b>
+									[풀버전]상순 작곡·효리 작사,<br/>
+									겨울바다를 떠올리며 '다시'♬
+								</b>
+								<span class="textBox">효리네 민박2</span>
+							</a>
+						</li>
+						<li class="v2">
+							<a href="#none" title="슈가맨2 VOD">
+								<span class="vodImg">
+									<img src="img/vod7.jpg" alt="슈가맨2 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:48</span>
+								</span>
+								<b>
+									슈가맨 사상 가장 충격적인 오답(!)<br/>
+									7공주☞칠성파
+								</b>
+								<span class="textBox">투유 프로젝트 - 슈가맨2</span>
+							</a>
+						</li>
+						<li class="v3">
+							<a href="#none" title="냉장고를 부탁해 VOD">
+								<span class="vodImg">
+									<img src="img/vod8.jpg" alt="냉장고를 부탁해 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">01:56</span>
+								</span>
+								<b>
+									밤낮없이 술 마시는 박철민<br/>
+									"일할 때는 감독님 몰래~^ㅡ^"
+								</b>
+								<span class="textBox">냉장고를 부탁해</span>
+							</a>
+						</li>
+						<li class="v4">
+							<a href="#none" title="으라차차 와이키키 VOD">
+								<span class="vodImg">
+									<img src="img/vod9.jpg" alt="으라차차 와이키키 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">00:56</span>
+								</span>
+								<b>
+									[10회 예고]<br/> 
+									이제는 고백해야 할 때...
+								</b>
+								<span class="textBox">으라차차 와이키키</span>
+							</a>
+						</li>
+						<li class="v5">
+							<a href="#none" title="밥 잘 사주는 예쁜 누나 VOD">
+								<span class="vodImg">
+									<img src="img/vod10.jpg" alt="밥 잘 사주는 예쁜 누나 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">00:36</span>
+								</span>
+								<b>
+									윤진아...원래 이렇게 예뻤었나?<br/>
+									[밥 잘 사주는 예쁜 누나 티저2]
+								</b>
+								<span class="textBox">밥 잘 사주는 예쁜 누나</span>
+							</a>
+						</li>
+						<li class="v6">
+							<a href="#none" title="아는형님 VOD">
+								<span class="vodImg">
+									<img src="img/vod11.jpg" alt="아는형님 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:37</span>
+								</span>
+								<b>
+									상상만 해도 행복♥<br/> 
+									김희철 이상형 '안소희' -///-
+								</b>
+								<span class="textBox">아는형님</span>
+							</a>
+						</li>
+					</ul>
+					<ul id="newVod">
+						<li class="v1">
+							<a href="#none" title="아는형님 VOD">
+								<span class="vodImg">
+									<img src="img/vod12.jpg" alt="아는형님 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:42</span>
+								</span>
+								<b>
+									[박진영 목표]1위 한 곡으로 콘서트 개최!<br/>
+									"3곡 남았어//ㅅ//"
+								</b>
+								<span class="textBox">아는형님</span>
+							</a>
+						</li>
+						<li class="v2">
+							<a href="#none" title="다큐 플러스 VOD">
+								<span class="vodImg">
+									<img src="img/vod13.jpg" alt="다큐 플러스 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:41</span>
+								</span>
+								<b>
+									다니엘&알베르토,<br/>
+									고향의 맛을 느끼게 해준 양배추 요리♡
+								</b>
+								<span class="textBox">다큐 플러스</span>
+							</a>
+						</li>
+						<li class="v3">
+							<a href="#none" title="미스티 VOD">
+								<span class="vodImg">
+									<img src="img/vod14.jpg" alt="미스티 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:03:27</span>
+								</span>
+								<b>
+									12회 다시보기
+								</b>
+								<span class="textBox">미스티</span>
+							</a>
+						</li>
+						<li class="v4">
+							<a href="#none" title="효리네 민박2 VOD">
+								<span class="vodImg">
+									<img src="img/vod15.jpg" alt="효리네 민박2 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:38</span>
+								</span>
+								<b>
+									(찡긋) 효리x윤아, 요정들의 합동 디너쇼<br/>
+									'내 남자 친구에게'♪
+								</b>
+								<span class="textBox">효리네 민박2</span>
+							</a>
+						</li>
+						<li class="v5">
+							<a href="#none" title="슈가맨2 VOD">
+								<span class="vodImg">
+									<img src="img/vod16.jpg" alt="슈가맨2 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">04:07</span>
+								</span>
+								<b>
+									(믿고 듣는) 마마무의 애절한<br/>
+									'2018 우울한 우연'♪
+								</b>
+								<span class="textBox">투유 프로젝트 - 슈가맨2</span>
+							</a>
+						</li>
+						<li class="v6">
+							<a href="#none" title="밤도깨비 VOD">
+								<span class="vodImg">
+									<img src="img/vod17.jpg" alt="밤도깨비 vod이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:51</span>
+								</span>
+								<b>
+									95년생 종현이는 모르게쒀여ㅠ_ㅠ<br/>
+									#투깝스 #영화퀴즈
+								</b>
+								<span class="textBox">밤도깨비</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="view"></div>
+				<div id="full"></div>
+			</div>
+			<div id="newsArea">
+				<h2>jtbc 뉴스 영역</h2>
+				<h3>
+					<a href="sub/news.html" title="뉴스"><img src="img/newsArea.png" alt="jtbc뉴스이미지"/></a>
+				</h3>
+				<div id="mainNews">
+					<h4>메인뉴스 영역</h4>
+					<p class="newsText">
+						<strong>JTBC 뉴스룸</strong><br/><br/>
+						<a href="vod/news.mp4" title="앵커브리핑">[앵커브리핑]<br/>
+						'그날 밤 서울의 야경은 휘황찬란했습니다'</a>
+					</p>
+					<p class="newsPlay">
+						<a href="vod/news.mp4" title="앵커브리핑">
+							<span class="img"><img src="img/mainNews.jpg" alt="앵커브리핑 이미지"/>
+								<span class="playbtn"></span>
+							</span>
+						</a>
+					</p>
+				</div>
+				<div id="mobNewsWrap">
+					<div id="newsTitle">
+						<h4>뉴스 타이틀 영역</h4>
+						<p>
+							<a href="sub/news.html" title="경제뉴스">
+								<em>
+									직장인 70%  "괴롭힘 당한 적 있다"
+									...방지책 마련 시급
+								</em>
+								<span class="gray">경제</span>
+							</a>
+						</p>
+						<p>
+							<a href="sub/news.html" title="사회뉴스">
+								<em>
+									'이면 합의'없었다더니... 위안부 피해자들,
+									위증죄 고소 검토
+								</em>
+								<span class="gray">사회</span>
+							</a>
+						</p>
+						<p class="last">
+							<a href="sub/news.html" title="국제뉴스">
+								<em>
+									트럼프'핵버튼'트윗에 비난 쇄도...
+									"유치하고 비정상"
+								</em>
+								<span class="gray">국제</span>
+							</a>
+						</p>
+					</div>
+					<div id="smallNews">
+						<h4>뉴스 이미지,제목 제공 영역</h4>
+						<ul>
+							<li>
+								<a href="sub/news.html" title="23개월 만에 연락채널 복원...">
+									<span class="img">
+										<img src="img/smallnews0.jpg" alt="뉴스이미지0"/>
+									</span>
+									<em class="text">
+										23개월 만에 연락채널 복원...								
+									</em>
+								</a>
+							</li>
+							<li>
+								<a href="sub/news.html" title="'뇌물 혐의' 최경환·이우현 나란히 구속...">
+									<span class="img">
+										<img src="img/smallnews1.jpg" alt="뉴스이미지1"/>
+									</span>
+									<em class="text">
+										'뇌물 혐의' 최경환·이우현 나란히 구속...
+									</em>
+								</a>
+							</li>
+							<li>
+								<a href="sub/news.html" title="[단독]"MB친형 이상은씨는 다스 '바지 회장'"">
+									<span class="img">
+										<img src="img/smallnews2.jpg" alt="뉴스이미지2"/>
+									</span>
+									<em class="text">
+										[단독]"MB친형 이상은씨는 다스 '바지 회장'"
+									</em>
+								</a>
+							</li>
+							<li>
+								<a href="sub/news.html" title="'최대 닭산지' 포천서 AI검출...	">
+									<span class="img">
+										<img src="img/smallnews3.jpg" alt="뉴스이미지3"/>
+									</span>
+									<em class="text">
+										'최대 닭산지' 포천서 AI검출...								
+									</em>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="view2"></div>
+				<div id="full2"></div>
+			</div>
+			<div id="program">
+				<h2>JTBC프로그램 소개</h2>
+				<div id="programHeader">
+					<h3>
+						<a href="sub/program.html" title="JTBC프로그램">
+							<img src="img/program.png" alt="JTBC프로그램"/> 
+						</a>
+					</h3>
+					<ul id="programList">
+						<li>
+							<a class="proSelected" href="#programImg" title="예능">예능</a>
+						</li>
+						<li>
+							<a href="#programImg2" title="드라마">드라마</a>
+						</li>
+						<li>
+							<a href="#programImg3" title="교양">교양</a>
+						</li>
+						<li>
+							<a href="#programImg4" title="시사">시사</a>
+						</li>
+						<li>
+							<a href="#programImg5" title="보도">보도</a>
+						</li>
+					</ul>
+				</div>
+				<div id="programImg" class="proHide">
+					<div class="programImgs0">
+						<p class="programDesc">
+							<a href="#none" title="효리네 민박2">
+								<strong>효리네 민박2</strong><br/>
+								<span class="gray">예능 | 일 21:00</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs1">
+						<p class="programDesc">
+							<a href="#none" title="투유프로젝트 슈가맨2">
+								<strong>투유프로젝트 슈가맨2</strong><br/>
+								<span class="gray">예능 | 일 22:30</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs2">
+						<p class="programDesc">
+							<a href="#none" title="한끼줍쇼">
+								<strong>한끼줍쇼</strong><br/>
+								<span class="gray">예능 | 수 23:00</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs3">
+						<p class="programDesc">
+							<a href="#none" title="아는형님">
+								<strong>아는형님</strong><br/>
+								<span class="gray">예능 | 토 21:00</span>
+							</a>
+						</p>
+					</div>
+				</div>
+				<div id="programImg2" class="proHide">
+					<div class="programImgs4">
+						<p class="programDesc">
+							<a href="#none" title="미스티">
+								<strong>미스티</strong><br/>
+								<span class="gray">드라마 | 금~토 23:00</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs5">
+						<p class="programDesc">
+							<a href="#none" title="으라차차 와이키키">
+								<strong>으라차차 와이키키</strong><br/>
+								<span class="gray">드라마 | 월~화 23:00</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs6">
+						<p class="programDesc">
+							<a href="#none" title="밥 잘 사주는 예쁜 누나">
+								<strong>밥 잘 사주는 예쁜 누나</strong><br/>
+								<span class="gray">드라마 | 03/30(금) 첫방송</span>
+							</a>
+						</p>
+					</div>
+				</div>
+				<div id="programImg3" class="proHide">
+					<div class="programImgs7">
+						<p class="programDesc">
+							<a href="#none" title="시청자의회">
+								<strong>시청자의회</strong><br/>
+								<span class="gray">교양 | 금 06:00</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs8">
+						<p class="programDesc">
+							<a href="#none" title="썰전">
+								<strong>썰전</strong><br/>
+								<span class="gray">교양 | 목 23:00</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs9">
+						<p class="programDesc">
+							<a href="#none" title="다큐 플러스">
+								<strong>다큐 플러스</strong><br/>
+								<span class="gray">교양 | 일 08:50</span>
+							</a>
+						</p>
+					</div>
+				</div>
+				<div id="programImg4" class="proHide">
+					<div class="programImgs10">
+						<p class="programDesc">
+							<a href="#none" title="사건반장">
+								<strong>사건반장</strong><br/>
+								<span class="gray">시사 | 월~금 15:50</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs11">
+						<p class="programDesc">
+							<a href="#none" title="이규연의 스포트라이트">
+								<strong>이규연의 스포트라이트</strong><br/>
+								<span class="gray">시사 | 목 21:30</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs12">
+						<p class="programDesc">
+							<a href="#none" title="밤샘토론">
+								<strong>밤샘토론</strong><br/>
+								<span class="gray">시사 | 둘째주,마지막주 금 24:20</span>
+							</a>
+						</p>
+					</div>
+				</div>
+				<div id="programImg5" class="proHide">
+					<div class="programImgs13">
+						<p class="programDesc">
+							<a href="#none" title="JTBC 뉴스룸">
+								<strong>JTBC 뉴스룸</strong><br/>
+								<span class="gray">보도 | 월~일 20:00</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs14">
+						<p class="programDesc">
+							<a href="#none" title="정치부 회의">
+								<strong>정치부 회의</strong><br/>
+								<span class="gray">보도 | 월~금 17:10</span>
+							</a>
+						</p>
+					</div>
+					<div class="programImgs15">
+						<p class="programDesc">
+							<a href="#none" title="아침&#38;">
+								<strong>아침&#38;</strong><br/>
+								<span class="gray">보도 | 월~금 07:00</span>
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div id="nextArea">
+				<h2>예고편 영역</h2>
+				<div id="nextHeader">
+					<h2>예고편</h2>
+					<h3><a href="#" title="예고편"><img src="img/nextArea.png" alt="예고편 이미지"/></a></h3>
+				</div>
+				<div id="nextContent">
+					<ul>
+						<li>
+							<a href="vod/next0.mp4" title="아는형님 예고">
+								<span class="nextImg">
+									<img src="img/next0.jpg" alt="아는형님 예고편 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">01:36</span>
+								</span>
+								<b>
+									아는 형님 118회 예고편
+								</b>
+								<span class="textBox">2018.03.10(토) 21:00 방송</span>
+							</a>
+						</li>
+						<li>
+							<a href="vod/next1.mp4" title="워너비 예고">
+								<span class="nextImg">
+									<img src="img/next1.jpg" alt="워너비 예고편 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">00:38</span>
+								</span>
+								<b>
+									WANNA B 14회 예고편
+								</b>
+								<span class="textBox">2018.03.08(목)24:30 방송</span>
+							</a>
+						</li>
+						<li>
+							<a href="vod/next2.mp4" title="나도 CEO2 창업백서 예고">
+								<span class="nextImg">
+									<img src="img/next2.jpg" alt="나도 CEO2 창업백서 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">00:37</span>
+								</span>
+								<b>
+									나도 CEO2 창업백서 1회 예고편
+								</b>
+								<span class="textBox">2018.02.28(수)18:30 방송</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div id="view1"></div>
+				<div id="full1"></div>
+			</div>
+			<div id="banner">
+				<h2>방송 배너 광고 영역</h2>
+				<p>
+					<a href="#" title="슈가맨 배너"><img src="img/banner0.jpg" alt="슈가맨 배너 이미지"/></a>
+				</p>
+			</div>
+		</div>
+		<div id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="#" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="sub/footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="sub/footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="sub/footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="sub/footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="sub/footer_customer.html" title="고객센터">고객센터</a>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="sub/footer_map.html" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright copyright2">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="#" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</div>
+	</div>  
+ </body>
+</html>

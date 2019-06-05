@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> program </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/programBack.png") no-repeat;}
+			
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+		
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{position:absolute;left:0;top:25px;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+	/*############# navWrap : hover #############*/
+		#header #navWrap div#searchs:hover p.search1{display:none;}
+		#header #navWrap div#searchs:hover p.search2{display:block;}
+			
+	/*############ container ####################*/
+	#container{width:100%;}
+		#adWrap{width:100%;height:361px;}
+			#adArea{width:1245px;height:361px;margin:0 auto;}
+	
+	/*############ adArea ####################*/
+		#adArea ul{width:100%;height:361px;}
+			#adArea li{width:487px;height:361px;float:left;}
+				#adArea li a{display:block;width:100%;height:100%;}
+				#adArea li a span{display:block;width:100%;height:100%;}
+				#adArea li a span img{width:100%;height:100%;}
+			
+			#adArea li.ad1{margin-right:10px;}
+			#adArea li.smallAd1{width:250px;height:230px;
+							margin-left:11px;margin-bottom:20px;}
+			#adArea li.smallAd2{width:250px;height:111px;margin-left:11px;}
+	
+	/*############ programWrap ####################*/
+		#programWrap{width:100%;margin-top:100px;}
+			#programWrap .select1{width:1245px;margin:0 auto;
+				height:50px;text-align:center;line-height:50px;border-bottom:1px solid #eaeaea;}
+				#programWrap .select1 li{width:400px;height:50px;
+				float:left;margin-left:12px;}
+				#programWrap .select1 li a{color:#333;font-size:20px;}
+				#programWrap .select1 li a:hover{font-weight:bold;}
+
+		/*######################### border hover #####################*/
+						#programWrap .select1 li.first a{position:relative;}
+						#programWrap .select1 li.first a .dot{display:block; 
+						transition:width 0.5s;
+						position:absolute;left:-50px;bottom:-13px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						/*#programWrap .select1 li.first:hover a .dot{width:250px;height:3px;background-color:#000;}*/
+
+						
+						#programWrap .select1 li.done a{position:relative;}
+						#programWrap .select1 li.done a .dot{display:block; 
+						transition:width 0.5s;
+						position:absolute;left:-50px;bottom:-13px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						/*#programWrap .select1 li.done:hover a .dot{width:250px;height:3px;background-color:#000;}*/
+
+					
+						#programWrap .select1 li.allpro a{position:relative;}
+						#programWrap .select1 li.allpro a .dot{display:block; 
+						transition:width 0.5s;
+						position:absolute;left:-50px;bottom:-13px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						/*#programWrap .select1 li.allpro:hover a .dot{width:250px;height:3px;
+							background-color:#000;}*/
+
+	/*#################### programArea ########################*/
+		#programArea{width:1245px;margin:25px auto 0;overflow:hidden;}
+	/*#################### searchArea ########################*/
+		.searchArea{width:230px;height:32px;float:right;}
+			.searchArea form fieldset{border:none;}
+			.searchArea form legend{display:none;}
+			.searchArea input{height:30px;width:200px;border:1px solid #aaa;float:left;
+				text-indent:10px;}
+			.searchArea a{display:block;width:25px;height:25px;float:left;margin-top:4px;}
+			.searchArea a span{display:block;width:25px;height:25px;}
+			.searchArea a span img{width:100%;height:100%;}
+	
+	/*#################### proList + img ########################*/
+		.proList{width:1245px;margin:0 auto;}
+			.proList ul{width:1245px;overflow:hidden;margin-top:50px;}
+			.proList li{width:210px;height:350px;float:left;
+						margin:25px 47px 0 1px;}
+			.proList .last{margin-right:0;}
+
+			.proList li a{display:block;width:100%;height:100%;
+						text-align:center;position:relative;}
+			.proList li a .proImg{display:block;width:100%;height:82%;}
+				.proImg .hotColor{display:block;position:absolute;left:0;top:0;
+									background-color:#DC2E8C;color:#eee;width:55px;
+									font-weight:bold;height:35px;line-height:35px;
+									text-align:center;}
+				.proImg .newColor{display:block;position:absolute;left:0;top:0;
+									background-color:#0E2F7A;color:#eee;width:55px;
+									font-weight:bold;height:35px;line-height:35px;
+									text-align:center;}
+
+			.proImg img{width:100%;height:100%;}
+
+			/* ## proList_done ## */
+			.proList_done{width:1245px;margin:0 auto;}
+			.proList_done ul{width:1245px;overflow:hidden;margin-top:50px;}
+			.proList_done li{width:210px;height:350px;float:left;
+						margin:25px 47px 0 1px;}
+			.proList_done .last{margin-right:0;}
+
+			.proList_done li a{display:block;width:100%;height:100%;
+						text-align:center;position:relative;}
+			.proList_done li a .proImg{display:block;width:100%;height:82%;}
+				.proImg .hotColor{display:block;position:absolute;left:0;top:0;
+									background-color:#DC2E8C;color:#eee;width:55px;
+									font-weight:bold;height:35px;line-height:35px;
+									text-align:center;}
+				.proImg .newColor{display:block;position:absolute;left:0;top:0;
+									background-color:#0E2F7A;color:#eee;width:55px;
+									font-weight:bold;height:35px;line-height:35px;
+									text-align:center;}
+
+			.proImg img{width:100%;height:100%;}
+
+	/*#################### proList + text ########################*/
+		.proList strong{width:100%;height:15%;display:block;padding-top:9px;color:#333;}
+		.proList a:hover strong{color:#DC2E8C;}
+			.proList strong em{font-style:normal;font-size:14px;color:#999;
+								font-weight:normal;}
+
+				.proList_done strong{width:100%;height:15%;display:block;padding-top:9px;color:#333;}
+		.proList_done a:hover strong{color:#DC2E8C;}
+			.proList_done strong em{font-style:normal;font-size:14px;color:#999;
+								font-weight:normal;}
+
+		/*################# hover 기능 #################################*/
+
+		
+		.proList a .left{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;top:0;left:0;transition:all .3s ease-in-out;}
+		.proList a .right{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;right:0;bottom:0;transition:all .3s ease-in-out;}
+		.proList a .left2{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;top:0;left:0;transition:all .3s ease-in-out;}
+		.proList a .right2{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;right:0;bottom:0;transition:all .3s ease-in-out;}
+
+
+		.proList_done a .left{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;top:0;left:0;transition:all .3s ease-in-out;}
+		.proList_done a .right{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;right:0;bottom:0;transition:all .3s ease-in-out;}
+		.proList_done a .left2{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;top:0;left:0;transition:all .3s ease-in-out;}
+		.proList_done a .right2{display:block;width:1px;height:1px;background-color:#eee;
+					position:absolute;right:0;bottom:0;transition:all .3s ease-in-out;}
+
+		a:hover span.left{width:2px;height:350px;background-color:#DC2E8C;}
+		a:hover span.left2{width:210px;height:2px;background-color:#DC2E8C;}
+		a:hover span.right{width:2px;height:350px;background-color:#DC2E8C;}
+		a:hover span.right2{width:210px;height:2px;background-color:#DC2E8C;}
+
+	/*############ new border color ####################*/
+		.newpro a:hover span.left{width:2px;height:350px;background-color:#0E2F7A;}
+		.newpro a:hover span.left2{width:210px;height:2px;background-color:#0E2F7A;}
+		.newpro a:hover span.right{width:2px;height:350px;background-color:#0E2F7A;}
+		.newpro a:hover span.right2{width:210px;height:2px;background-color:#0E2F7A;}
+		
+		.newpro a:hover strong{color:#0E2F7A;}
+
+
+	/*################### top #####################*/
+		.top{width:250px;height:40px;border:1px solid #ccc;line-height:40px;
+		text-align:center;margin:50px auto 0;transition:background-color .3s ease-in;}
+		.top a{color:#333;}
+		.top:hover{background-color:#efefef;}
+	
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:70px auto 0;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+
+  </style>
+  <script>
+	$(function(){
+		//방영 프로, 종영 프로, 전체 프로 클릭하면 콘텐츠 바뀌게
+		$(".proList_done").hide();
+		$(".first a").css({"fontWeight":"bold"});
+		$(".first .dot").css({"width":"250px","height":"3px","backgroundColor":"#000"});
+		
+		$(".first").on("click focusin",function(){
+			$(".proList_done").hide();
+			$(".proList").show();
+			$(".proList .top").show();
+			$(".done a").css({"fontWeight":"normal"});
+			$(".done .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".first a").css({"fontWeight":"bold"});
+			$(".first .dot").css({"width":"250px","height":"3px","backgroundColor":"#000"});
+			$(".allpro a").css({"fontWeight":"normal"});
+			$(".allpro .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+
+		});
+
+		$(".done").on("click focusin",function(){
+			$(".proList").hide();
+			$(".proList_done").show();
+			$(".first a").css({"fontWeight":"normal"});
+			$(".first .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".done a").css({"fontWeight":"bold"});
+			$(".done .dot").css({"width":"250px","height":"3px","backgroundColor":"#000"});
+			$(".allpro a").css({"fontWeight":"normal"});
+			$(".allpro .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+		});
+		$(".allpro").on("click focusin",function(){
+			$(".proList").show();
+			$(".proList_done").show();
+			$(".proList .top").hide();
+			$(".first a").css({"fontWeight":"normal"});
+			$(".first .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".done a").css({"fontWeight":"normal"});
+			$(".done .dot").css({"width":"1px","height":"1px","backgroundColor":"#fff"});
+			$(".allpro a").css({"fontWeight":"bold"});
+			$(".allpro .dot").css({"width":"250px","height":"3px","backgroundColor":"#000"});
+
+		});
+	
+	
+	
+	
+	});
+  </script>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo2.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<h2>JTBC 프로그램</h2>
+			<div id="adWrap">
+				<h4>이벤트,프로그램 광고</h4>
+				<div id="adArea">
+					<ul>
+						<li class="ad1">
+							<a href="#none" title="냉부해광고">
+								<span><img src="img/proAd3.jpg" alt="냉부해광고"/></span>
+							</a>
+						</li>
+						<li>
+							<a href="#none" title="아는형님 광고">
+								<span><img src="img/proAd4.jpg" alt="아는형님 광고"/></span>
+							</a>
+						</li>
+						<li class="smallAd1">
+							<a href="vodTickets.html" title="다시보기광고">
+								<span><img src="img/proAdsmall2.jpg" alt="다시보기"/></span>
+							</a>
+						</li>
+						<li class="smallAd2">
+							<a href="#none" title="JTBC NOW앱">
+								<span>
+									<img src="img/proAdSmall1.jpg" alt="JTBC NOW앱"/>
+								</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="programWrap">
+				<h2>JTBC 프로그램 안내</h2>
+				<ul class="select1">
+					<li class="first">
+						<a href="#none" title="방영프로그램">
+							방영 프로그램
+							<span class="dot"></span>
+						</a>
+					</li>
+					<li class="done">
+						<a href="#none" title="종영프로그램">
+							종영 프로그램
+							<span class="dot"></span>
+						</a>
+					</li>
+					<li class="allpro">
+						<a href="#none" title="전체프로그램">
+							전체 프로그램
+							<span class="dot"></span>
+						</a>
+					</li>
+				</ul>
+				<div id="programArea">
+					<div class="searchArea">
+						<form class="searchForm" action="http://jtbc.joins.com/search" method="get">
+							<fieldset>
+								<legend>프로그램 검색</legend>
+								<input type="search" id="search" name="term" title="search"/>
+								<a href="search.html" title="검색">
+									<span>
+										<img src="img/search1.png" alt="검색이미지"/>
+									</span>
+								</a>
+							</fieldset>
+						</form>
+					</div>
+					<div class="proList">
+						<ul>
+							<li>
+								<a href="#none" title="효리네 민박2">
+									<span class="proImg">
+										<span class="hotColor">HOT</span>
+										<img src="img/p1.jpg" alt="효리네 민박2"/>
+									</span>
+									<strong>
+										<span>효리네 민박2</span><br/>
+										<em>예능 | 일 21:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="newpro">
+								<a href="#none" title="슈가맨2">
+									<span class="proImg">
+										<span class="newColor">NEW</span>
+										<img src="img/p2.jpg" alt="슈가맨2"/>
+									</span>
+									<strong>
+										<span>투유 프로젝트 - 슈가맨2</span><br/>
+										<em>예능 | 일 22:30</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="미스티">
+									<span class="proImg">
+										<span class="hotColor">HOT</span>
+										<img src="img/p37.jpg" alt="미스티"/>
+									</span>
+									<strong>
+										<span>미스티</span><br/>
+										<em>드라마 | 금~토 23:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="아는형님">
+									<span class="proImg">
+										<span class="hotColor">HOT</span>
+										<img src="img/p4.jpg" alt="아는형님"/>
+									</span>
+									<strong>
+										<span>아는형님</span><br/>
+										<em>예능 | 토 20:50</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="last newpro">
+								<a href="#none" title="착하게살자">
+									<span class="proImg">
+										<span class="newColor">NEW</span>
+										<img src="img/p0.jpg" alt="착하게살자"/>
+									</span>
+									<strong>
+										<span>착하게 살자</span><br/>
+										<em>예능 | 금 21:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="newpro">
+								<a href="#none" title="으라차차 와이키키">
+									<span class="proImg">
+										<span class="newColor">NEW</span>
+										<img src="img/p6.jpg" alt="으라차차 와이키키"/>
+									</span>
+									<strong>
+										<span>으라차차 와이키키</span><br/>
+										<em>드라마 | 월~화 22:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="newpro">
+								<a href="#none" title="별다방">
+									<span class="proImg">
+										<span class="newColor">NEW</span>
+										<img src="img/p22.jpg" alt="별다방"/>
+									</span>
+									<strong>
+										<span>별다방</span><br/>
+										<em>예능 | 토 09:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="밤도깨비">
+									<span class="proImg">
+										<span class="hotColor">HOT</span>
+										<img src="img/p8.jpg" alt="밤도깨비"/>
+									</span>
+									<strong>
+										<span>밤도깨비</span><br/>
+										<em>예능 | 일 18:30</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="한끼줍쇼">
+									<span class="proImg">
+										<img src="img/p9.jpg" alt="한끼줍쇼"/>
+									</span>
+									<strong>
+										<span>한끼줍쇼</span><br/>
+										<em>예능 | 수 23:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="last">
+								<a href="#none" title="썰전">
+									<span class="proImg">
+										<img src="img/p10.jpg" alt="썰전"/>
+									</span>
+									<strong>
+										<span>썰전</span><br/>
+										<em>교양 | 목 23:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="냉장고를 부탁해">
+									<span class="proImg">
+										<img src="img/p11.jpg" alt="냉장고를 부탁해"/>
+									</span>
+									<strong>
+										<span>냉장고를 부탁해</span><br/>
+										<em>예능 | 월 21:30</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="뭉쳐야 뜬다">
+									<span class="proImg">
+										<img src="img/p12.jpg" alt="뭉쳐야 뜬다"/>
+									</span>
+									<strong>
+										<span>뭉쳐야 뜬다</span><br/>
+										<em>예능 | 화 21:30</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="이규연의 스포트라이트">
+									<span class="proImg">
+										<img src="img/p14.jpg" alt="이규연의 스포트라이트"/>
+									</span>
+									<strong>
+										<span>이규연의 스포트라이트</span><br/>
+										<em>시사 | 목 21:30</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="오늘, 굿데이">
+									<span class="proImg">
+										<img src="img/p15.jpg" alt="오늘, 굿데이"/>
+									</span>
+									<strong>
+										<span>오늘, 굿데이</span><br/>
+										<em>교양 | 금 09:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="last">
+								<a href="#none" title="WANNA B">
+									<span class="proImg">
+										<img src="img/p16.jpg" alt="WANNA B"/>
+									</span>
+									<strong>
+										<span>WANNA B</span><br/>
+										<em>예능 | 목 24:30</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="TV정보쇼 오!아시스">
+									<span class="proImg">
+										<img src="img/p17.jpg" alt="TV정보쇼 오!아시스"/>
+									</span>
+									<strong>
+										<span>TV정보쇼 오!아시스</span><br/>
+										<em>교양 | 수 09:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="TV정보쇼 알짜왕">
+									<span class="proImg">
+										<img src="img/p18.jpg" alt="TV정보쇼 알짜왕"/>
+									</span>
+									<strong>
+										<span>TV정보쇼 알짜왕</span><br/>
+										<em>교양 | 목 09:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="차이나는 클라스">
+									<span class="proImg">
+										<img src="img/p19.jpg" alt="차이나는 클라스"/>
+									</span>
+									<strong>
+										<span>차이나는 클라스</span><br/>
+										<em>교양 | 수 21:30</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="밥 잘 사주는 예쁜 누나">
+									<span class="proImg">
+										<img src="img/p21.jpg" alt="밥 잘 사주는 예쁜 누나"/>
+									</span>
+									<strong>
+										<span>밥 잘 사주는 예쁜 누나</span><br/>
+										<em>드라마 | 금,토 23:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="last">
+								<a href="#none" title="진짜 의사가 돌아왔다">
+									<span class="proImg">
+										<img src="img/p23.jpg" alt="진짜 의사가 돌아왔다"/>
+									</span>
+									<strong>
+										<span>진짜 의사가 돌아왔다</span><br/>
+										<em>교양 | 토 08:00</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+						</ul>
+						<p class="top">
+							<a href="#" title="TOP">
+								TOP ▲
+							</a>
+						</p>
+					</div>
+					<div class="proList_done">
+						<ul>
+							<li>
+								<a href="#none" title="그냥 사랑하는 사이">
+									<span class="proImg">
+										<img src="img/p24.jpg" alt="그냥 사랑하는 사이"/>
+									</span>
+									<strong>
+										<span>그냥 사랑하는 사이</span><br/>
+										<em>드라마 | 18/01/30 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="믹스나인">
+									<span class="proImg">
+										<img src="img/p7.jpg" alt="믹스나인"/>
+									</span>
+									<strong>
+										<span>믹스나인</span><br/>
+										<em>예능 | 18/01/26 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="라이징클럽">
+									<span class="proImg">
+										<img src="img/p32.jpg" alt="라이징클럽"/>
+									</span>
+									<strong>
+										<span>라이징클럽</span><br/>
+										<em>교양 | 17/12/23 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="언터처블">
+									<span class="proImg">
+										<img src="img/p3.jpg" alt="언터처블"/>
+									</span>
+									<strong>
+										<span>언터처블</span><br/>
+										<em>드라마 | 18/01/20 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="last">
+								<a href="#none" title="이론상 완벽한 남자">
+									<span class="proImg">
+										<img src="img/p26.jpg" alt="이론상 완벽한 남자"/>
+									</span>
+									<strong>
+										<span>이론상 완벽한 남자</span><br/>
+										<em>예능 | 18/01/12 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="바람이 불어오는 곳">
+									<span class="proImg">
+										<img src="img/p27.jpg" alt="바람이 불어오는 곳"/>
+									</span>
+									<strong>
+										<span>바람이 불어오는 곳</span><br/>
+										<em>교양 | 18/01/05 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="고전적 하루">
+									<span class="proImg">
+										<img src="img/p25.jpg" alt="고전적 하루"/>
+									</span>
+									<strong>
+										<span>고전적 하루</span><br/>
+										<em>디지털 오리지널 | 17/12/31 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="한여름의 추억">
+									<span class="proImg">
+										<img src="img/p28.jpg" alt="한여름의 추억"/>
+									</span>
+									<strong>
+										<span>한여름의 추억</span><br/>
+										<em>드라마 | 17/12/31 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="TV정보쇼 빅픽처">
+									<span class="proImg">
+										<img src="img/p30.jpg" alt="TV정보쇼 빅픽처"/>
+									</span>
+									<strong>
+										<span>TV정보쇼 빅픽처</span><br/>
+										<em>교양 | 17/12/26 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="last">
+								<a href="#none" title="전체관람가">
+									<span class="proImg">
+										<img src="img/p29.jpg" alt="전체관람가"/>
+									</span>
+									<strong>
+										<span>전체관람가</span><br/>
+										<em>예능 | 17/12/24 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="나의 외사친">
+									<span class="proImg">
+										<img src="img/p31.jpg" alt="나의 외사친"/>
+									</span>
+									<strong>
+										<span>나의 외사친</span><br/>
+										<em>예능 | 17/12/24 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="교칙위반 수학여행">
+									<span class="proImg">
+										<img src="img/p33.jpg" alt="교칙위반 수학여행"/>
+									</span>
+									<strong>
+										<span>교칙위반 수학여행</span><br/>
+										<em>예능 | 17/12/10 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="내 이름을 볼러줘 - 한名회">
+									<span class="proImg">
+										<img src="img/p34.jpg" alt="내 이름을 볼러줘 - 한名회"/>
+									</span>
+									<strong>
+										<span>내 이름을 볼러줘 - 한名회</span><br/>
+										<em>교양 | 17/12/05 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li>
+								<a href="#none" title="비정상회담">
+									<span class="proImg">
+										<img src="img/p35.jpg" alt="비정상회담"/>
+									</span>
+									<strong>
+										<span>비정상회담</span><br/>
+										<em>예능 | 17/12/04 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+							<li class="last">
+								<a href="#none" title="더 패키지">
+									<span class="proImg">
+										<img src="img/p36.jpg" alt="더 패키지"/>
+									</span>
+									<strong>
+										<span>더 패키지</span><br/>
+										<em>드라마 | 17/11/18 종영</em>
+									</strong>
+									<span class="left"></span>
+									<span class="left2"></span>
+									<span class="right2"></span>
+									<span class="right"></span>
+								</a>
+							</li>
+						</ul>
+						<p class="top">
+							<a href="#" title="TOP">
+								TOP ▲
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="footer_map.html" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>  
+ </body>
+</html>

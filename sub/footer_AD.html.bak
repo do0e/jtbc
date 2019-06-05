@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> footer_AD </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;}
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+	#header{width:1280px;margin:20px auto 0;position:relative;z-index:1;}
+		h1{width:115px;height:58px;position:absolute;left:0;top:25px;}
+		h1 img{width:100%;height:100%;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+			/*############# navWrap : hover #############*/
+			#header #navWrap div#searchs:hover p.search1{display:none;}
+			#header #navWrap div#searchs:hover p.search2{display:block;}
+
+	/* ######### container ########### */
+		#container{width:100%;height:950px;margin:0 auto;overflow:hidden;}
+		/* ####### slide ######## */
+		#ADSlide{width:100%;height:1000px;position:absolute;left:0;top:0;}
+		#screen{width:1920px;height:1000px;margin:0 auto;position:relative;}
+			#film{width:9600px;height:1000px;}
+			.scene{width:1920px;float:left;position:relative;}
+			.scene p{position:absolute;left:300px;top:200px;}
+			
+			#btn p{position:absolute;width:23px;height:40px;top:560px;margin-top:-50px;
+				   cursor:pointer;}
+				#btn p img{width:100%;height:100%;}
+				#btn .prevBtn{left:50px;}
+				#btn .nextBtn{right:50px;}
+
+			#film:after{content:"";display:block;clear:both;}
+			#ADSlide:after{content:"";display:block;clear:both;}
+
+		/* ####### mediacomDesc ######## */
+		#content{width:100%;}
+		.mediacom{width:988px;margin:0 auto;}
+		.mediacom p{font-size:20px;}	.mediacom span{color:#DC2E8C;font-size:20px;}
+		.mediacom ul{width:100%;height:305px;margin-top:15px;}
+		.mediacom li{width:450px;height:280px;float:left;
+					padding-top:25px;border-top:1px solid #333;font-size:15px;}
+		.mediacom li:first-child{margin-right:70px;}
+
+		/* ### adDesc ### */
+		.adDescWrap{width:100%;background-color:#f4f4f4;margin:30px auto;overflow:hidden;}
+		.adDesc{width:988px;height:387px;margin:50px auto;}
+		.imgLeft{width:652px;height:367px;margin:10px 19px 0 0;float:left;overflow:hidden;}
+		.imgLeft a{display:block;width:100%;height:100%;position:relative;transition:all .3s;}
+		.imgLeft a:hover{transform:scale(1.2);}
+		.imgLeft span{display:block;width:100%;height:100px;
+					  position:absolute;left:0;top:130px;text-align:center;}
+			.imgLeft span strong{font-size:30px;color:#fff;}
+			.imgLeft span em{font-style:normal;font-size:15px;color:#fff;}
+		.textRight{width:316px;height:385px;float:left;margin:10px 0;}
+		.textRight p{width:100%;height:175px;border:1px solid #333;text-align:center;
+			         font-size:18px;font-weight:bold;background-color:#eee;}
+		.textRight p:hover{background-color:#000;}
+			.textRight p a{color:#000;}
+			.textRight p a:hover{color:#DC2E8C;}
+		.textRight p:first-child{margin-bottom:13px;
+								 background-color:#000;}
+			.textRight p:first-child a{color:#fff;}
+			.textRight p:first-child a:hover{color:#DC2E8C;}
+		.textRight a{display:block;width:100%;height:100%;padding-top:60px;}
+		.textRight a span{display:block;padding-top:10px;font-size:15px;color:#999;
+						 font-weight:normal;}
+
+		/* ##### jello ##### */
+		.jello{width:100%;}
+		.jello ul{width:988px;height:648px;margin:0 auto;}
+		.jello li{width:314px;height:302px;float:left;border:1px solid #333;
+				  margin:15px 13px 0 0;}
+		.jello li a{display:block;width:100%;height:100%;}
+		.jello li a:hover{background-color:#333;}
+		.jello li span{display:block;width:254px;height:176px;margin:20px auto 0;}
+		.jello li span img{width:100%;height:100%;}
+
+		.jello li a em{display:block;color:#DC2E8C;font-size:15px;font-style:normal;
+			           padding-left:25px;padding-top:20px;}
+		.jello li a strong{display:block;color:#333;font-size:30px;padding-left:25px;}
+		.jello li a:hover strong{color:#DC2E8C;}
+		
+		.jello li.jelloAd{border:none;}
+		.jello li.jelloAd a{width:100%;height:142px;border:1px solid #333;margin-bottom:15px;
+							text-align:center;}
+		.jello li.jelloAd span{width:50px;height:50px;font-size:45px;margin:20px auto 0;
+							   color:#666;}
+				.jello li.jelloAd a:hover span{color:#DC2E8C;}
+		.jello li.jelloAd em{padding-top:10px;padding-left:0;}
+		
+		/* ## mapInfo ## */
+			.mapWrap{width:100%;margin-top:50px;background-color:#333;overflow:hidden;}
+			.mapInfo{width:988px;margin:50px auto;overflow:hidden;}
+			.mapImg{width:988px;height:320px;margin:90px auto 70px;}
+			.mapImg img{width:100%;height:100%;}
+			.mapInfo strong{color:#eee;font-size:18px;}
+
+			.mapInfo .text strong{font-size:16px;}
+			.mapInfo .text span{padding-left:50px;color:#eee;}
+
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:0 auto;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+  </style>
+  <script>
+	$(function(){
+
+		//초기화
+		//마지막 장면 미리 대기시켜 놓기
+		$("#film").prepend($(".scene:last"));
+		$("#film").css({"marginLeft":"-1920px"});
+		
+		/* 다음버튼 */
+		$(".nextBtn").click(function(){
+			$("#film:not(:animated)").stop().animate({"marginLeft":"-=1920px"},800,"linear",function(){
+				$("#film").append($(".scene:first"));
+				$("#film").css({"marginLeft":"-1920px"});
+			});
+		});
+		
+		
+		/* 이전버튼 */
+
+		$(".prevBtn").click(function(){
+			$("#film:not(:animated)").stop().animate({"marginLeft":"+=1920px"},800,"linear",function(){
+				
+			$("#film").prepend($(".scene:last"));
+			$("#film").css({"marginLeft":"-1920px"});
+			
+			});
+		});
+	
+	});
+  </script>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo5.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div id="ADSlide">
+				<div id="screen">
+					<ul id="film">
+						<li class="scene">
+							<img src="img/proPage_broMain.jpg" alt="img0"/>
+							<p><img src="img/proPage_broText.png" alt="text0"/></p>
+						</li>
+						<li class="scene">
+							<img src="img/proPage_refMain.jpg" alt="img1"/>
+							<p><img src="img/proPage_refText.png" alt="text1"/></p>
+						</li>
+						<li class="scene">
+							<img src="img/proPage_ssulMain.jpg" alt="img2"/>
+							<p><img src="img/proPage_ssulText.png" alt="text2"/></p>
+						</li>
+						<li class="scene">
+							<img src="img/proPage_wiMain.jpg" alt="img3"/>
+							<p><img src="img/proPage_wiText.png" alt="text3"/></p>
+						</li>
+						<li class="scene">
+							<img src="img/proPage_misMain.jpg" alt="img4"/>
+							<p><img src="img/proPage_misText.png" alt="text4"/></p>
+						</li>
+					</ul>
+				</div>
+				<div id="btn">
+					<p class="nextBtn">
+						<img src="img/pyo_arrow2.png" alt="화살표" class="next"/>
+					</p>
+					<p class="prevBtn">
+						<img src="img/pyo_arrow1.png" alt="화살표" class="prev"/>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div id="content">
+			<div class="mediacom">
+				<p>
+					안녕하십니까?</br/>
+					<span>제이티비씨미디어컴입니다.</span>
+				</p>
+				<ul>
+					<li>
+						제이티비씨미디어컴은 2014년 3월 방송통신위원회의<br/>
+						미디어렙 허가를 위한 종합 심사에서 1위의 성적으로 탄생했습니다.<br/>
+						저희는 창조, 신뢰, 상생을 3대 핵심가치로 하여 방송광고산업의<br/>
+						미래를 이끌어갈 창의적 미디어렙을 목표로 하고 있습니다.<br/>
+						더 나아가 국내뿐 아니라 세계에서도 인정받는<br/>
+						종합 마케팅 솔루션 회사로 성장해 가겠습니다.<br/><br/>
+
+						제이티비씨미디어컴은 JTBC, JTBC GOLF, JTBC2,<br/>
+						JTBC3 Fox Sports, 바둑TV의 우수한 방송 콘텐트를 활용하여<br/>
+						창의적인 광고상품을 제공하고, 선진 광고판매제도를 도입하여<br/>
+						광고주가 가장 선호하는 미디어렙으로 자리매김 하겠습니다.<br/>
+					</li>
+					<li>
+						특히, 제이티비씨미디어컴은 창조적인 아이디어로 방송광고시장을<br/>
+						활성화 하고 견인해 나갈 것이며 신뢰를 바탕으로 한 공정한<br/>
+						방송거래 질서를 확립해 나갈 것입니다. 또한, 방송광고산업의<br/>
+						동반자들과 상생하여 대한민국 전체의 동반성장과<br/>
+						균형발전을 이루어 나갈 것입니다.<br/><br/>
+
+						광고주와 광고대행사 여러분 그리고 JTBC와<br/>
+						JTBC GOLF, JTBC2, JTBC3 Fox Sports , 바둑TV를 사랑하는 여러분,<br/>
+						대한민국 방송광고산업의 모든 구성원 여러분들의<br/>
+						관심과 성원 부탁 드립니다.<br/>
+						감사합니다.
+					</li>
+				</ul>
+			</div>
+			<div class="adDescWrap">
+				<div class="adDesc">
+					<div class="imgLeft">
+						<a href="https://drive.google.com/folderview?id=0BwH0xt0nzID-MTZLMERkWVBUeWs&usp=sharing" title="공익광고">
+							<img src="img/footerAdDesc.jpg" alt="공익광고 이미지"/>
+							<span><strong>공익광고</strong><br/><br/>
+							<em>[JTBC 채널 캠페인 2017] 출산장려</em></span>
+						</a>
+					</div>
+					<div class="textRight">
+						<p>
+							<a href="https://drive.google.com/folderview?id=0BwH0xt0nzID-N2lvVk03SkRlRm8&usp=sharing" title="혁신 중소기업 지원">
+								혁신형 중소기업 지원
+								<span>이동하기</span>
+							</a>
+						</p>
+						<p>
+							<a href="https://drive.google.com/folderview?id=0BwH0xt0nzID-ZmFCdURBRG83RzA&usp=sharing" title="기업정보 및 이용약관">
+								기업정보 및 이용약관
+								<span>이동하기</span>
+							</a>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="jello">
+				<ul>
+					<li>
+						<a href="https://drive.google.com/file/d/1HYrogy0zuZvApcOAJKDZ86nfspgi1RxO/view" title="jello1">
+							<em>판매가이드</em>
+							<strong>2018/03</strong>
+							<span><img src="img/JELLO1.JPG" alt="jello이미지"/></span>
+						</a>
+					</li>
+					<li>
+						<a href="https://drive.google.com/file/d/1uXgGVfoE2TqcGHxxrOZwVfeUar-8oMfg/view" title="jello2">
+							<em>판매가이드</em>
+							<strong>2018/02</strong>
+							<span><img src="img/JELLO2.jpg" alt="jello이미지"/></span>
+						</a>
+					</li>
+					<li>
+						<a href="https://drive.google.com/file/d/1MBrWVbfs3UTfGtLPG0z81knoOtQXNeSI/view?usp=drive_web" title="jello3">
+							<em>판매가이드</em>
+							<strong>2018/01</strong>
+							<span><img src="img/JELLO3.jpg" alt="jello이미지"/></span>
+						</a>
+					</li>
+					<li>
+						<a href="https://drive.google.com/file/d/1Sr5hfv8z-lJ8zIZqZG8a_2SrJ4l3zNt4/view" title="jello4">
+							<em>판매가이드</em>
+							<strong>2017/12</strong>
+							<span><img src="img/JELLO4.jpg" alt="jello이미지"/></span>
+						</a>
+					</li>
+					<li>
+						<a href="https://drive.google.com/open?id=0BwH0xt0nzID-WkdSVk5lV0ZOMUU" title="jello5">
+							<em>판매가이드</em>
+							<strong>2017/10</strong>
+							<span><img src="img/JELLO5.jpg" alt="jello이미지"/></span>
+						</a>
+					</li>
+					<li class="jelloAd">
+						<a href="https://drive.google.com/drive/folders/0BwH0xt0nzID-ZzhjcEtpMGtfODQ" title="판매가이드 더보기">
+							<span>+</span>
+							<em>판매가이드 더보기</em>
+						</a>
+						<a href="https://drive.google.com/drive/folders/0BwH0xt0nzID-RGNDb1lLOF9Gc1k" title="광고 단가표 더보기">
+							<span>+</span>
+							<em>광고단가표 더보기</em>
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="mapWrap">
+				<div class="mapInfo">
+					<strong>오시는길</strong>
+					<p class="mapImg"><img src="img/footerMap.png" alt="미디어컴 지도"/></p>
+					<p class="text">
+						<strong>주소</strong><span>서울특별시 용산구 한남대로 98 일신빌딩 3층 (우편번호: 04418)</span>
+					</p>
+					<p class="text">
+						<strong>전화</strong><span>02-751-6745</span>
+					</p>
+					<p class="text">
+						<strong>팩스</strong><span>02-751-6075</span>
+					</p>
+					<p class="text">
+						<strong>광고문의</strong><span>02-751-6738~9</span>
+					</p>
+					<p class="text">
+						<strong>대표메일</strong><span>jtbcads@jtbc.co.kr</span>
+					</p>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="#" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

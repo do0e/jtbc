@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <title> jtbc_vodTickets </title>
+  <style>
+	*{margin:0;padding:0;}
+	li{list-style-type:none;}
+	a:link,a:visited{text-decoration:none;color:#333;}
+	body{font-family:맑은고딕,"Malgun Gothic",돋움,Dotum,Tahoma,Geneva,sans-serif;}
+
+	h3,h4{position:absolute; width:1px; height:1px; font-size:1px;
+			line-height:0; overflow:hidden; left:-9999px;}
+	/*##############################################*/
+		#wrap{width:1920px;margin:0 auto;}
+		#header{width:100%;background-color:#FAFAFA;height:50px;}
+	/*############ gnb ############################*/
+		#gnb{width:1025px;margin:0 auto;overflow:hidden;height:50px;}
+			#gnb p{width:60px;height:30px;margin-top:10px;float:left;}
+			#gnb ul{width:965px;height:30px;
+					margin-top:10px;text-align:right;float:left;line-height:30px;}
+			#gnb ul li{display:inline;}
+			#gnb ul li a{padding:0 7px;color:#999;font-weight:500;}
+			#gnb ul li a:hover{color:#DC2E8C;}
+	/*############ gnb + logo + hover ############################*/
+			#gnb .logos{width:60px;height:60px;float:left;}
+			#gnb .logos:hover .firstlogo{display:none;}
+			#gnb .logos:hover .hoverlogo{display:block;}
+			#gnb .logos p.hoverlogo{width:60px;height:30px;display:none;}
+			#gnb .logos p.hoverlogo img{width:100%;height:100%;}
+
+	/*############ ticketContainer + select ############################*/
+		#containerWrap{width:100%;margin:50px 0;}
+			#ticketContainer{width:1025px;margin:0 auto;}
+
+			#ticketSelect{width:100%;height:50px;
+						border-bottom:1px solid #eaeaea;}
+				#ticketSelect ul{width:440px;height:50px;
+								margin:0 auto;}
+					#ticketSelect ul li{width:125px;height:50px;float:left;
+										margin:0 10px;line-height:55px;text-align:center;}
+
+					#ticketSelect ul li a{display:block;width:125px;height:49px;
+									font-size:17px;font-weight:600;color:#333;}
+					#ticketSelect ul li a:hover{color:#000;}
+					/*######### hover 미리보기 ####################*/
+
+					#ticketSelect ul li.first a{color:#000;}
+					#ticketSelect ul li.first a .dot{display:block;
+						position:absolute;left:0;bottom:-2px;
+						width:125px;height:3px;background-color:#000;}
+
+					#ticketSelect ul li.first a{position:relative;}
+
+						#ticketSelect ul li.first:hover a .dot{width:125px;height:3px;
+															background-color:#000;}
+
+
+					/*###### border hover ########################*/
+
+						#ticketSelect ul li.test a{position:relative;}
+						#ticketSelect ul li.test a .dot{display:block;
+						transition:width 0.5s;
+						position:absolute;left:0;bottom:-2px;
+						width:1px;height:1px;background-color:#eaeaea;}
+
+						#ticketSelect ul li.test:hover a .dot{width:125px;height:3px;
+															background-color:#000;}
+
+	/*############ ticketHead ############################*/
+		#ticketHead{width:100%;margin:40px auto;text-align:center;}
+				#ticketHead h2{margin-bottom:10px;font-size:26px;}
+				#ticketHead p{font-size:18px;color:#333;}
+
+	/*############ ticketArea ############################*/
+		#ticketArea{width:100%;height:500px;}
+
+		#ticket1, #ticket2, #ticket3{width:298px;height:490px;margin:0 20px;
+								float:left;background-color:#fff;}
+
+			#ticket1{background-image:url("img/vodBack1.png");
+					background-repeat:no-repeat;border:1px solid #2877BD;}
+
+
+			#ticket1:hover{box-shadow:3px 3px 10px rgba(0,0,0,.5);}
+			#ticket2:hover{box-shadow:3px 3px 10px rgba(0,0,0,.5);}
+			#ticket3:hover{box-shadow:3px 3px 10px rgba(0,0,0,.5);}
+
+			#ticket2, #ticket3{background-image:url("img/vodBack0.png");
+								background-repeat:no-repeat;border:1px solid #D22C7E;}
+
+	/*############ ticket1 ############################*/
+		#ticket1 .ticketName{width:100%;height:50px;
+							text-indent:25px;padding:60px 0 65px;}
+
+		#ticket1 .ticketName span{display:block;color:#fff;}
+		#ticket1 .ticketName strong{display:block;color:#fff;
+									font-size:25px;line-height:50px;}
+
+		#ticket1 .ticketDesc{width:100%;padding:30px 0;}
+		#ticket1 .ticketDesc span{display:block;color:#fff;width:100%;
+								font-size:16px;padding:0 25px;}
+
+		#ticket1 .ticketBuy{width:100%;height:100px;margin:100px 0 30px;}
+			#ticket1 .ticketBuy span{display:block;width:100%;
+									text-indent:25px;color:#666;}
+			#ticket1 .ticketBuy strong{display:block;width:100%;
+										color:#0E2F7A;font-size:18px;font-weight:bold;
+										text-indent:25px;}
+			#ticket1 .ticketBuy a{display:block;width:125px;height:37px;margin-top:10px;
+								color:#666;margin-left:20px;border:1px solid #666;
+								transition:all .3s ease-in-out;}
+
+			#ticket1 .ticketBuy a em{display:block;width:113px;height:35px;
+								line-height:30px;
+								font-style:normal;padding-left:13px;padding-top:2px;}
+
+
+			/*############## hover ##############*/
+			#ticket1 .ticketBuy a:hover{background-color:#2877BD;color:#fff;
+										border:1px solid #fff;}
+
+	/*############ ticket2 ############################*/
+
+		#ticket2 .ticketName{width:100%;height:50px;
+							text-indent:25px;padding:60px 0 65px;}
+
+		#ticket2 .ticketName span{display:block;color:#fff;}
+		#ticket2 .ticketName strong{display:block;color:#fff;
+									font-size:25px;line-height:50px;}
+
+		#ticket2 .ticketDesc{width:100%;padding:30px 0;}
+		#ticket2 .ticketDesc span{display:block;color:#fff;width:100%;
+								font-size:16px;padding:0 25px;}
+
+		#ticket2 .ticketBuy{width:100%;height:100px;margin:120px 0 30px;}
+			#ticket2 .ticketBuy span{display:block;width:100%;
+									text-indent:25px;color:#666;}
+			#ticket2 .ticketBuy strong{display:block;width:100%;
+										color:#DC2E8C;font-size:18px;font-weight:bold;
+										text-indent:25px;}
+			#ticket2 .ticketBuy a{display:block;width:125px;height:37px;margin-top:10px;
+								color:#666;margin-left:20px;border:1px solid #666;
+								transition:all .3s ease-in-out;}
+
+			#ticket2 .ticketBuy a em{display:block;width:113px;height:35px;
+								line-height:30px;
+								font-style:normal;padding-left:13px;padding-top:2px;}
+
+			/*############## hover ##############*/
+			#ticket2 .ticketBuy a:hover{background-color:#D52D7F;color:#fff;
+										border:1px solid #fff;}
+
+	/*############ ticket3 ############################*/
+
+		#ticket3 .ticketName{width:100%;height:50px;
+							text-indent:25px;padding:60px 0 65px;}
+
+		#ticket3 .ticketName span{display:block;color:#fff;}
+		#ticket3 .ticketName strong{display:block;color:#fff;
+									font-size:25px;line-height:50px;}
+
+		#ticket3 .ticketDesc{width:100%;padding:30px 0;}
+		#ticket3 .ticketDesc span{display:block;color:#fff;width:100%;
+								font-size:16px;padding:0 25px;}
+
+		#ticket3 .ticketBuy{width:100%;margin-top:120px;overflow:hidden;}
+			#ticket3 .ticketBuy .buy1{width:50%;float:left;}
+
+				#ticket3 .ticketBuy .buy1 span{display:block;width:100%;
+									text-indent:25px;color:#666;}
+			#ticket3 .ticketBuy .buy1 strong{display:block;width:100%;
+										color:#DC2E8C;font-size:18px;font-weight:bold;
+										text-indent:25px;}
+			#ticket3 .ticketBuy .buy1 a{display:block;width:95px;height:37px;
+								margin-top:10px;transition:all .3s ease-in-out;
+								color:#666;margin-left:20px;border:1px solid #666;}
+
+			#ticket3 .ticketBuy .buy1 a em{display:block;width:83px;height:35px;
+								line-height:30px;
+								font-style:normal;padding-left:18px;padding-top:2px;}
+
+					/*############## hover ##############*/
+					#ticket3 .ticketBuy .buy1 a:hover{background-color:#D52D7F;color:#fff;
+										border:1px solid #fff;}
+
+		/*############## ticket3 buy2 ########################*/
+
+			#ticket3 .ticketBuy .buy2{width:50%;float:left;}
+
+				#ticket3 .ticketBuy .buy2 span{display:block;width:100%;
+									text-indent:15px;color:#666;}
+			#ticket3 .ticketBuy .buy2 strong{display:block;width:100%;
+										color:#DC2E8C;font-size:18px;font-weight:bold;
+										text-indent:15px;}
+			#ticket3 .ticketBuy .buy2 a{display:block;width:95px;height:37px;
+								margin-top:10px;transition:all .3s ease-in-out;
+								color:#666;margin-left:5px;border:1px solid #666;}
+
+			#ticket3 .ticketBuy .buy2 a em{display:block;width:83px;height:35px;
+								line-height:30px;
+								font-style:normal;padding-left:18px;padding-top:2px;}
+					/*############## hover ##############*/
+					#ticket3 .ticketBuy .buy2 a:hover{background-color:#D52D7F;color:#fff;
+										border:1px solid #fff;}
+
+		/*############ back ############################*/
+		/*#backWrap{width:100%;background-color:#20252B;margin-top:100px;}
+			#back{width:1380px;height:300px;margin:50px auto;
+				background-image:url("img/ticketBack5.jpg");
+				background-position:center bottom;
+				background-repeat:no-repeat;background-attachment:fixed;}*/
+
+
+
+	/*############ footer ############################*/
+		#footerWrap{width:100%;}
+			#footer{width:1025px;margin:0 auto;
+					border-top:2px solid #333;}
+			#footer ul{width:100%;padding:15px 0;text-align:center;
+						 border-bottom:1px solid #666;}
+				#footer ul li{display:inline-block;}
+				#footer ul li.bold a{font-weight:600;}
+
+					#footer ul li a{padding:0 5px;font-size:13px;}
+					#footer ul li a:hover{text-decoration:underline;}
+
+						#footer ul li .gray{color:#666;font-size:13px;padding-left:3px;}
+
+		#footer p{margin:10px 0;font-size:12px;text-align:center;
+					color:#666;}
+
+		#footer p span{color:#DC2E8C;}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<h3>VOD이용권</h3>
+		<header id="header">
+			<div id="gnb">
+				<h4>VOD이용권 네비게이션</h4>
+				<div class="logos">
+					<p class="firstlogo"><a href="../index.html" title="jtbc"><img src="img/loginHeaderLogo.png" alt="작은로고"/></a></p>
+					<p class="hoverlogo"><a href="../index.html" title="jtbc"><img src="img/loginLogo.png" alt="작은로고"/></a></p>
+				</div>
+				<ul>
+					<li>
+						<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					</li>
+					<li>
+						<a href="footer_AD.html" title="JTBC 미디어컴">JTBC 미디어컴</a>
+					</li>
+					<li>
+						<a href="news.html" title="뉴스">뉴스</a>
+					</li>
+					<li>
+						<a href="pyo.html" title="편성표">편성표</a>
+					</li>
+					<li>
+						<a href="onAir.html" title="온에어">온에어</a>
+					</li>
+					<li>
+						<a href="search.html" title="검색">검색</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div id="containerWrap">
+			<div id="ticketContainer">
+				<div id="ticketSelect">
+					<ul>
+						<li class="first">
+							<a href="#" title="추천이용권">
+								추천이용권
+								<span class="dot"></span>
+							</a>
+
+						</li>
+						<li class="test">
+							<a href="#" title="전체이용권">
+								전체이용권
+								<span class="dot"></span>
+							</a>
+						</li>
+						<li class="test">
+							<a href="#" title="쿠폰등록">
+								쿠폰등록
+								<span class="dot"></span>
+							</a>
+
+						</li>
+					</ul>
+				</div>
+				<div id="ticketHead">
+					<h2>추천이용권</h2>
+					<p>JTBC의 다양한 VOD를 간편하고 저렴하게 이용할 수 있습니다.</p>
+				</div>
+				<div id="ticketArea">
+					<div id="ticket1">
+						<p class="ticketName">
+							<span>횟수제 이용권</span>
+							<strong>다시보기 10회</strong>
+						</p>
+						<p class="ticketDesc">
+							<span>JTBC의 다시보기를 30일 동안 <br/>10회 이용</span>
+						</p>
+						<p class="ticketBuy">
+							<span>일반상품</span>
+							<strong>8,800원</strong>
+							<a href="jtbcLogin.html" title="구매하기">
+								<em>→ 구매하기</em>
+							</a>
+						</p>
+					</div>
+					<div id="ticket2">
+						<p class="ticketName">
+							<span>기간제 이용권</span>
+							<strong>1일 이용권</strong>
+						</p>
+						<p class="ticketDesc">
+							<span>JTBC의 다시보기를 1일동안 이용</span>
+						</p>
+						<p class="ticketBuy">
+							<span>일반상품</span>
+							<strong>3,300원</strong>
+							<a href="jtbcLogin.html" title="구매하기">
+								<em>→ 구매하기</em>
+							</a>
+						</p>
+					</div>
+					<div id="ticket3">
+						<p class="ticketName">
+							<span>기간제 이용권</span>
+							<strong>30일 이용권</strong>
+						</p>
+						<p class="ticketDesc">
+							<span>JTBC의 다시보기를 30일 동안 이용</span>
+						</p>
+						<div class="ticketBuy">
+							<p class="buy1">
+								<span>정기결제</span>
+								<strong>5,500원</strong>
+								<a href="jtbcLogin.html" title="구매하기">
+									<em>→ 구매</em>
+								</a>
+							</p>
+							<p class="buy2">
+								<span>일반상품</span>
+								<strong>9,900원</strong>
+								<a href="jtbcLogin.html" title="구매하기">
+									<em>→ 구매</em>
+								</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--
+			<div id="backWrap">
+			<div id="back"></div>
+		-->
+		<div id="footerWrap">
+			<div id="footer">
+				<ul>
+					<li><a href="footer_customer.html" title="고객센터">고객센터</a><span class="gray">|</span></li>
+					<li><a href="footer_customer.html" title="온라인 고객센터">온라인 고객센터</a><span class="gray">|</span></li>
+					<li><a href="footer_AD.html" title="광고 안내">광고 안내</a><span class="gray">|</span></li>
+					<li><a href="footer_AD.html" title="지면 광고">지면 광고</a><span class="gray">|</span></li>
+					<li><a href="footer_AD.html" title="제휴문의">제휴문의</a><span class="gray">|</span></li>
+					<li><a href="footer_agreement.html" title="회원약관">회원약관</a><span class="gray">|</span></li>
+					<li class="bold">
+						<a href="footer_Privacy.html" title="개인정보 처리방침">개인정보 처리방침</a><span class="gray">|</span>
+					</li>
+					<li><a href="footer_agreement.html" title="청소년 보호정책">청소년 보호정책</a><span class="gray">|</span></li>
+					<li><a href="footer_customer.html" title="고충처리">고충처리</a></li>
+				</ul>
+				<p>
+					주소 : 서울시 중구 서소문로 100 | 인터넷신문등록번호 : 서울 아01013 | 등록일자 : 2009.11.2 |  발행인 : 김교준 | 편집인 : 오병상<br/>
+					Joongang ilbo의 모든 콘텐트(기사)는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.<br/><br/>
+					<span>Copyright by Joongang ilbo Co.,Ltd. All Rights Reserved.</span>
+				</p>
+			</div>
+		</div>
+	</div>
+ </body>
+</html>

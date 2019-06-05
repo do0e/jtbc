@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> VOD </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/vodmainBack.png") no-repeat;}
+
+		/* ###### skipNav ###### */
+		#skipNav{width:100%; max-width:1920px; position:absolute; z-index:10; left:0;}
+         #skipNav a{color:#fff; font-size:15px; display:block; width:100%; max-width:1920px; height:33px; line-height:33px; outline:1px solid #DC2E8C; background-color:#DC2E8C; text-indent:10px; position:absolute; top:-50px; transition:all .3s ease-in-out; text-align:center; padding:5px 0;}
+
+         #skipNav a:focus{top:0;}
+			
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+		
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{position:absolute;left:0;top:25px;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+	/*############# navWrap : hover #############*/
+		#header #navWrap div#searchs:hover p.search1{display:none;}
+		#header #navWrap div#searchs:hover p.search2{display:block;}
+		
+		#headerWrap:after{content:"";display:block;clear:both;}
+	/*############# container #############*/
+		#container{width:100%;}
+	/*################### VodRec #######################*/	
+		#vodRec{width:1280px;height:500px;margin:0 auto;}
+			#vodRec h3{text-align:center;}
+			#videoArea{width:880px;height:500px;float:left;margin-top:30px;}
+				#videoArea video{width:100%;height:100%;}
+			#vodList{width:400px;height:495px;float:left;background-color:#f4f4f4;margin-top:30px;}
+				#vodList a{color:#333;}
+				#vodList a:hover{color:#DC2E8C;}
+				#vodList h3{width:100px;color:#0E2F7A;text-indent:10px;float:left;
+							height:25px;margin-top:5px;}
+				#vodList .more{display:block;width:270px;float:left;text-align:right;margin-right:10px;
+								height:25px;margin-top:5px;}
+				#vodList ul{width:400px;margin-top:30px;overflow:auto;height:465px;}
+				#vodList li{width:100%;height:75px;margin-top:2px;}
+					#vodList li a{display:block;width:100%;height:100%;}
+						#vodList li a .nb{display:block;width:30px;line-height:75px;
+										float:left;text-align:center;font-size:13px;font-weight:bold;}
+						#vodList li a .imgs{width:108px;height:61px;float:left;margin-top:8px;}
+							#vodList li a .imgs img{width:100%;}
+						
+						#vodList li a .text{display:block;width:238px;font-size:14px;float:left;
+											margin:18px 0 0 4px;}
+
+				#vodList li a.selected{background-color:rgba(0,0,0,0.2);color:#DC2E8C;}
+
+	/*################### VodNew #######################*/	
+		#vodNew{width:100%;margin:150px auto 0;}
+		#vodNewHead{width:100%;text-align:center;}
+		#vodNewContent{width:100%;margin:30px auto;overflow:hidden;background-color:#f4f4f4;}
+		#vodNewContent ul{width:1094px;margin:15px auto;overflow:hidden;}
+		#vodNewContent ul li{width:350px;height:300px;float:left;margin:7px 7px;
+								text-align:center;background-color:#fff;}
+			
+			#vodNewContent ul li a span.vodNextImg{display:block;width:320px;height:180px;
+						position:relative;margin:12px auto 0;
+						overflow:hidden;}
+
+			#vodNewContent ul li a span.vodNextImg img{width:100%;height:100%;
+												transition:transform .3s;}
+		
+			#vodNewContent ul li a span.vodNextImg span.playbtn{
+			display:block;width:35px;height:35px; position:absolute;left:25px;bottom:10px;
+			background-image:url("img/playbtn.png"); background-repeat:no-repeat;}
+			
+			#vodNewContent ul li a span.vodNextImg span.time{
+			display:block;width:60px;height:25px; background-color:rgba(0,0,0,0.5);
+			color:#fff;font-size:12px;line-height:25px; position:absolute;right:0;bottom:0;}
+		
+			#vodNewContent a{color:#333;}
+
+	/*############ vodNewContent + img + scale + hover ###############*/
+		#vodNewContent ul li a:hover span.vodNextImg img{transform:scale(1.1,1.1);}
+	/*############ vodNewContent + vodNextImg ###############*/
+		#vodNewContent ul li a b{display:block;width:300px;margin:10px auto;
+								text-align:left;font-size:15px;}
+		#vodNewContent ul li a span.textBox{display:block;width:300px;margin:0 auto;
+										font-size:14px;text-align:left;}
+		#vodNewContent ul li a:hover span.textBox{color:#0E2F7A;font-weight:bold;}
+	
+	/*############### banner ################*/
+		#banner{width:100%;}
+		#banner p{width:1245px; margin:0 auto;}
+		#banner p img{width:100%;}
+	
+	/*################### VodHot #######################*/	
+		#vodHot{width:100%;margin:100px auto 0;}
+		#vodHotHead{width:100%;text-align:center;}
+		#vodHotContent{width:100%;margin:30px auto;overflow:hidden;}
+		#vodHotContent ul{width:1458px;margin:15px auto;overflow:hidden;}
+		#vodHotContent ul li{width:350px;height:300px;float:left;margin:7px 7px;
+								text-align:center;background-color:#fff;
+								outline:1px solid #ccc;transition:background .3s;}
+			#vodHotContent ul li a span.vodHotImg{display:block;width:320px;height:180px;
+						position:relative;margin:12px auto 0;
+						overflow:hidden;}
+
+			#vodHotContent ul li a span.vodHotImg img{width:100%;height:100%;
+												transition:transform .3s;}
+		
+			#vodNewContent ul li a span.vodHotImg span.playbtn{
+			display:block;width:35px;height:35px; position:absolute;left:25px;bottom:10px;
+			background-image:url("img/playbtn.png"); background-repeat:no-repeat;}
+			
+			#vodHotContent ul li a span.vodHotImg span.time{
+			display:block;width:60px;height:25px; background-color:rgba(0,0,0,0.5);
+			color:#fff;font-size:12px;line-height:25px; position:absolute;right:0;bottom:0;}
+		
+			#vodHotContent a{color:#333;}
+
+	/*############ vodHotContent + img + scale + hover ###############*/
+		#vodHotContent ul li a:hover span.vodHotImg img{transform:scale(1.1,1.1);}
+		#vodHotContent ul li:hover{background-color:rgba(220,46,140,0.1);}
+	/*############ vodHotContent + vodHotImg ###############*/
+		#vodHotContent ul li a b{display:block;width:300px;margin:10px auto;
+								text-align:left;font-size:15px;}
+		#vodHotContent ul li a span.textBox{display:block;width:300px;margin:0 auto;
+										font-size:14px;text-align:left;}
+		#vodHotContent ul li a:hover span.textBox{color:#DC2E8C;font-weight:bold;}
+
+	/*################### vodTickets #####################*/
+		.vodTickets{width:250px;height:40px;border:1px solid #ccc;line-height:40px;
+		text-align:center;margin:50px auto 0;transition:background-color .3s ease-in;}
+		.vodTickets a{color:#333;}
+		.vodTickets:hover{background-color:#efefef;}
+
+	/*################### VodPro #######################*/	
+			#vodPro{width:100%;margin:50px auto 0;overflow:hidden;background-color:#f4f4f4;}
+		#vodPro h3{width:100%;text-align:center;margin:30px 0;}
+		#vodPro ul{width:1458px;margin:15px auto;overflow:hidden;}
+		#vodPro ul li{width:350px;height:300px;float:left;margin:7px 7px;
+								text-align:center;background-color:#fff;}
+			#vodPro ul li a span.vodProImg{display:block;width:320px;height:180px;
+						position:relative;margin:12px auto 0;
+						overflow:hidden;}
+
+			#vodPro ul li a span.vodProImg img{width:100%;height:100%;
+												transition:transform .3s;}
+		
+			#vodPro ul li a span.vodProImg span.playbtn{
+			display:block;width:35px;height:35px; position:absolute;left:25px;bottom:10px;
+			background-image:url("img/playbtn.png"); background-repeat:no-repeat;}
+			
+			#vodPro ul li a span.vodProImg span.time{
+			display:block;width:60px;height:25px; background-color:rgba(0,0,0,0.5);
+			color:#fff;font-size:12px;line-height:25px; position:absolute;right:0;bottom:0;}
+		
+			#vodPro a{color:#333;}
+
+	/*############ vodPro+ img + scale + hover ###############*/
+		#vodPro ul li a:hover span.vodProImg img{transform:scale(1.1,1.1);}
+	/*############ vodPro + vodProImg ###############*/
+		#vodPro ul li a b{display:block;width:300px;margin:10px auto;
+								text-align:left;font-size:15px;}
+		#vodPro ul li a:hover b{color:#E86D03;}
+	/*##### vodPro + proTitle ######*/
+			.proTitle a span{display:block;width:100%;text-align:center;margin-top:30px;}
+			.proTitle a strong{display:block;width:100%;text-align:center;margin-top:20px;
+								font-size:22px;}
+			.proTitle a em{display:block;width:100%;text-align:center;font-style:normal;
+							margin-top:10px;}
+	/*################### top #####################*/
+		.top{width:250px;height:40px;border:1px solid #ccc;line-height:40px;
+		text-align:center;margin:50px auto 50px;transition:background-color .3s ease-in;}
+		.top a{color:#333;}
+		.top:hover{background-color:#efefef;}
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;padding-top:50px;
+			margin:0 auto;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+  </style>
+  <script>
+	jQuery(document).ready(function(){
+			
+			$("#videoArea div:not(:first)").hide();
+			$("#vodList li a").on("click focusin",function(){
+				$("#videoArea div").hide();
+				$($(this).attr("href")).show();
+				$("#vodList li a").removeClass();
+				$(this).addClass("selected");
+				return false;
+			
+			});
+
+	});
+  </script>
+ </head>
+ <body>
+	<div id="skipNav">
+	  <h2>스킵 네비게이션</h2>
+	  <a href="#wrap" title="VOD 본문 바로가기">VOD 본문 바로가기</a>
+	  <a href="#vodNew" title="최신 VOD 바로가기">최신 VOD 바로가기</a>
+	  <a href="#vodHot" title="인기 VOD 바로가기">인기 VOD 바로가기</a>
+	  <a href="#vodPro" title="추천 프로그램 VOD 바로가기">추천 프로그램 VOD 바로가기</a>
+	  <a href="#footer" title="꼬릿말 영역 바로가기">꼬릿말 영역 바로가기</a>
+	</div>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo3.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div id="vodRec">
+				<h3><img src="img/vodTopHead.png" alt="추천VOD"/> <img src="img/Head.png" alt="추천VOD"/></h3>
+				<div id="videoArea">
+					<div id="v1">
+						<video controls muted>
+							<source src="vod/v1.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v2">
+						<video controls autoplay muted>
+							<source src="vod/v2.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v3">
+						<video controls autoplay muted>
+							<source src="vod/v3.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v4">
+						<video controls autoplay muted>
+							<source src="vod/v4.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v5">
+						<video controls autoplay muted>
+							<source src="vod/v5.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v6">
+						<video controls autoplay muted>
+							<source src="vod/v6.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v7">
+						<video controls autoplay muted>
+							<source src="vod/v7.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v8">
+						<video controls autoplay muted>
+							<source src="vod/v8.mp4" type="video/mp4"/>
+						</video>
+					</div>
+					<div id="v9">
+						<video controls autoplay muted>
+							<source src="vod/v9.mp4" type="video/mp4"/>
+						</video>
+					</div>
+				</div>
+				<div id="vodList">
+					<h3>추천 VOD</h3><span class="more"><a href="#none" title="더보기">더보기 ▶</a></span>
+					<ul>
+						<li>
+							<a class="selected" href="#v1" title="효리네 민박2 비하인드">
+								<span class="nb">1</span>
+								<span class="imgs"><img src="img/vod1.jpg" alt="효리네 민박2 비하인드"/></span>
+								<span class="text">[비하인드] 멍멍! 효리네 신스틸러 다 모여랏♡ #덕통사고_주의</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v2" title="효리네 민박2 3회 예고">
+								<span class="nb">2</span>
+								<span class="imgs"><img src="img/vod2.jpg" alt="효리네 민박2 3회 예고"/></span>
+								<span class="text">[3회 예고] '효리네 민박' 이대로 영업 중단 (헐ㅇ_ㅇ)</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v3" title="한끼줍쇼 70회 예고편">
+								<span class="nb">3</span>
+								<span class="imgs"><img src="img/vod3.jpg" alt="한끼줍쇼 70회 예고편"/></span>
+								<span class="text">한끼줍쇼 70회 예고편</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v4" title="한끼줍쇼 68회 선공개">
+								<span class="nb">4</span>
+								<span class="imgs"><img src="img/vod4.jpg" alt="한끼줍쇼 68회 선공개"/></span>
+								<span class="text">[선공개] 복! 복! 복을 발로 차버렸어_♪ 호동x진영의 흥 폭발♨ 한끼줍쇼 68회</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v5" title="아는형님 뮤비 대전 홍보영상">
+								<span class="nb">5</span>
+								<span class="imgs"><img src="img/vod5.jpg" alt="아는형님 뮤비 대전 홍보영상"/></span>
+								<span class="text">[아형 뮤비 대전] '후유증♪ - 우주겁쟁이(민경훈x김희철)' (홍보영상ver.)</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v6" title="아는형님 뮤비 대전 온라인 투표 방법">
+								<span class="nb">6</span>
+								<span class="imgs"><img src="img/vod6.jpg" alt="아는형님 뮤비 대전 온라인 투표 방법"/></span>
+								<span class="text">[뮤비 대전] 아는 형님들의 강력한 뮤비(!) 온라인 투표 방법</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v7" title="밤도깨비 28회 예고편">
+								<span class="nb">7</span>
+								<span class="imgs"><img src="img/vod7.jpg" alt="밤도깨비 28회 예고편"/></span>
+								<span class="text">밤도깨비 28회 예고편</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v8" title="[슈가캠] 구구단의 '2018 정'♪ (리허설ver.)">
+								<span class="nb">8</span>
+								<span class="imgs"><img src="img/vod8.jpg" alt="[슈가캠] 구구단의 '2018 정'♪ (리허설ver.)"/></span>
+								<span class="text">[슈가캠] 구구단의 '2018 정'♪ (리허설ver.)</span>
+							</a>
+						</li>
+						<li>
+							<a href="#v9" title="[슈가워치] 쇼맨 뉴이스트W의 알람이 도착했습니다 (띠링♪)">
+								<span class="nb">9</span>
+								<span class="imgs"><img src="img/vod9.jpg" alt="[슈가워치] 쇼맨 뉴이스트W의 알람이 도착했습니다 (띠링♪)"/></span>
+								<span class="text">[슈가워치] 쇼맨 뉴이스트W의 알람이 도착했습니다 (띠링♪)</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="vodNew">
+				<div id="vodNewHead">
+					<h3><img src="img/vodNewHead.png" alt="최신 다시보기"/></h3>
+				</div>
+				<div id="vodNewContent">
+					<ul>
+						<li>
+							<a href="#" title="한끼줍쇼 69회">
+								<span class="vodNextImg">
+									<img src="img/vodNew1.jpg" alt="한끼줍쇼 69회 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:32:31</span>
+								</span>
+								<b>
+									한끼줍쇼 69회
+								</b>
+								<span class="textBox">2018.02.14(수) 23:00 방송</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="차이나는 클라스 49회">
+								<span class="vodNextImg">
+									<img src="img/vodNew2.jpg" alt="차이나는 클라스 49회 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:01:52</span>
+								</span>
+								<b>
+									차이나는 클라스 49회
+								</b>
+								<span class="textBox">2018.02.14(수) 21:30 방송</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="TV정보쇼 오!아시스 스페셜">
+								<span class="vodNextImg">
+									<img src="img/vodNew3.jpg" alt="TV정보쇼 오!아시스 스페셜 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:00:27</span>
+								</span>
+								<b>
+									TV정보쇼 오!아시스 스페셜
+								</b>
+								<span class="textBox">2018.02.14(수) 09:00 방송</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="으라차차 와이키키 4회">
+								<span class="vodNextImg">
+									<img src="img/vodNew4.jpg" alt="으라차차 와이키키 4회 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:05:31</span>
+								</span>
+								<b>
+									으라차차 와이키키 4회
+								</b>
+								<span class="textBox">2018.02.13(화) 23:00 방송</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="뭉쳐야 뜬다 60회">
+								<span class="vodNextImg">
+									<img src="img/vodNew5.jpg" alt="뭉쳐야 뜬다 60회 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:03:12</span>
+								</span>
+								<b>
+									뭉쳐야 뜬다 60회
+								</b>
+								<span class="textBox">2018.02.13(화) 21:30 방송</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="마술학교 3회">
+								<span class="vodNextImg">
+									<img src="img/vodNew6.jpg" alt="마술학교 3회 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:02:13</span>
+								</span>
+								<b>
+									마술학교 3회
+								</b>
+								<span class="textBox">2018.02.13(화) 07:00 방송</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="banner">
+				<h2>방송 배너 광고 영역</h2>
+				<p>
+					<img src="img/VodBanner.jpg" alt="스토리퀸 배너 이미지"/>
+				</p>
+			</div>
+			<div id="vodHot">
+				<div id="vodHotHead">
+					<h3><img src="img/vodHotHead.png" alt="인기 다시보기"/> <img src="img/Head.png" alt="인기 다시보기"/></h3>
+				</div>
+				<div id="vodHotContent">
+					<ul>
+						<li>
+							<a href="#" title="효리네 민박2">
+								<span class="vodHotImg">
+									<img src="img/vodHot1.jpg" alt="효리네 민박2 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:36</span>
+								</span>
+								<b>	
+									※현웃주의※ 효리와 상순의 얼굴을 바꾸면? (미래딸ㅋㅋ)
+								</b>
+								<span class="textBox">효리네 민박2</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="미스티 4회 다시보기">
+								<span class="vodHotImg">
+									<img src="img/vodHot2.jpg" alt="미스티 4회 다시보기 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:13:03</span>
+								</span>
+								<b>
+									4회 다시보기
+								</b>
+								<span class="textBox">미스티</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="효리네 민박2">
+								<span class="vodHotImg">
+									<img src="img/vodHot3.jpg" alt="효리네 민박2 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:33:35</span>
+								</span>
+								<b>
+									1회 다시보기
+								</b>
+								<span class="textBox">효리네 민박2</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="효리네 민박2">
+								<span class="vodHotImg">
+									<img src="img/vodHot4.jpg" alt="효리네 민박2 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:42</span>
+								</span>
+								<b>
+									효리x윤아x상순의 치명적인 'LIKEY'♪ 댄스! 두근두근두근~
+								</b>
+								<span class="textBox">효리네 민박2</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="효리네 민박2">
+								<span class="vodHotImg">
+									<img src="img/vodHot5.jpg" alt="효리네 민박2 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:44</span>
+								</span>
+								<b>
+									(다다다다) 윤아의 '잇템' 다지기 도구에 반한 상순 "신세계다...!"
+								</b>
+								<span class="textBox">효리네 민박2</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="아는형님 114회">
+								<span class="vodHotImg">
+									<img src="img/vodHot6.jpg" alt="아는형님 114회 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">1:30:21</span>
+								</span>
+								<b>
+									114회 다시보기
+								</b>
+								<span class="textBox">아는형님</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="비긴어게인">
+								<span class="vodHotImg">
+									<img src="img/vodHot7.jpg" alt="비긴어게인 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">02:34</span>
+								</span>
+								<b>
+									솔로 버스킹 도전한 윤도현, 뜻밖의 러브송♡ 'With or Without you'♪
+								</b>
+								<span class="textBox">비긴어게인</span>
+							</a>
+						</li>
+						<li>
+							<a href="#" title="투유 프로젝트 슈가맨2">
+								<span class="vodHotImg">
+									<img src="img/vodHot8.jpg" alt="슈가맨2 이미지"/>
+									<span class="playbtn"></span>
+									<span class="time">04:12</span>
+								</span>
+								<b>
+									[슈가송] 첫사랑 같은 오빠들♡ 파란 '첫사랑'♪
+								</b>
+								<span class="textBox">투유 프로젝트 - 슈가맨2</span>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<p class="vodTickets">
+					<a href="vodTickets.html" title="이용권 구매하기">
+						이용권 구매하기 ▶
+					</a>
+				</p>
+			</div>
+			<div id="vodPro">
+				<h3><img src="img/vodTopHead.png" alt="프로그램"/> <img src="img/VodProHead.png" alt="프로그램"/></h3>
+				<ul>
+					<li class="proTitle">
+						<a href="#none" title="차이나는 클라스">
+							<span>
+								<img src="img/vodpro0.png" alt="차이나는 클라스"/>
+							</span>
+							<strong>차이나는 클라스</strong>
+							<em>매주 수요일 밤 9시 30분</em>
+						</a>
+					</li>
+					<li>
+						<a href="#none" title="차이나는 클라스">
+							<span class="vodProImg">
+								<img src="img/vodpro1.jpg" alt="차이나는 클라스"/>
+								<span class="playbtn"></span>
+								<span class="time">1:01:52</span>
+							</span>
+							<b>
+								49회 다시보기
+							</b>
+						</a>
+					</li>
+					<li>
+						<a href="#none" title="차이나는 클라스">
+							<span class="vodProImg">
+								<img src="img/vodpro2.jpg" alt="차이나는 클라스"/>
+								<span class="playbtn"></span>
+								<span class="time">02:55</span>
+							</span>
+							<b>
+                                "전 세계가 영향권" 지구 전체, 환경 오염 '위험 수준'
+                            </b>
+						</a>
+					</li>
+					<li>
+						<a href="#none" title="차이나는 클라스">
+							<span class="vodProImg">
+								<img src="img/vodpro3.jpg" alt="차이나는 클라스"/>
+								<span class="playbtn"></span>
+								<span class="time">02:45</span>
+							</span>
+							<b>
+								공기 중의 중금속, 우리나라 최초의 공해병 '온산병'                 
+							</b>
+						</a>
+					</li>
+					<li class="proTitle">
+						<a href="#none" title="으라차차 와이키키">
+							<span>
+								<img src="img/vodPro4.png" alt="으라차차 와이키키"/>
+							</span>
+							<strong>으라차차 와이키키</strong>
+							<em>매주 월·화요일 밤 11시</em>
+						</a>
+					</li>
+					<li>
+						<a href="#none" title="으라차차 와이키키">
+							<span class="vodProImg">
+								<img src="img/vodPro5.jpg" alt="으라차차 와이키키"/>
+								<span class="playbtn"></span>
+								<span class="time">1:05:31</span>
+							</span>
+							<b>
+								4회 다시보기
+							</b>
+						</a>
+					</li>
+					<li>
+						<a href="#none" title="으라차차 와이키키">
+							<span class="vodProImg">
+								<img src="img/vodPro6.jpg" alt="으라차차 와이키키"/>
+								<span class="playbtn"></span>
+								<span class="time">01:46</span>
+							</span>
+							<b>
+								(풉) '팬티 짤'로 스타 된 이이경! 핑크 보이가 나타났... 
+							</b>
+						</a>
+					</li>
+					<li>
+						<a href="#none" title="으라차차 와이키키">
+							<span class="vodProImg">
+								<img src="img/vodPro7.jpg" alt="으라차차 와이키키"/>
+								<span class="playbtn"></span>
+								<span class="time">02:55</span>
+							</span>
+							<b>
+								김서형, 폭주하는 연기력! 진짜로 때리면 어떡해애앸!!
+							</b>
+						</a>
+					</li>
+				</ul>
+				<p class="top">
+					<a href="#" title="TOP">
+						TOP ▲
+					</a>
+				</p>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="#" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>

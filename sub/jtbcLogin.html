@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> jtbc_login </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"/>
+  <style>
+	*{margin:0;padding:0;}
+	li{list-style-type:none;}
+	input{-webkit-appearance:none;border-radius:0;}
+	a:link,a:visited{text-decoration:none;color:#333;}
+	body{font-family:맑은고딕,"Malgun Gothic",돋움,Dotum,Tahoma,Geneva,sans-serif;
+		 margin:0;padding:0;}
+	header,footer,div{margin:0;padding:0;}
+	h4{position:absolute; width:1px; height:1px; font-size:1px; 
+			line-height:0; overflow:hidden; left:-9999px;}
+	/*##############################################*/
+		#wrap{width:100%;max-width:1920px;margin:0 auto;}
+		#header{width:100%;background-color:#FAFAFA;height:50px;}
+		#mobHeader{display:none;}
+		#mobBar{display:none;}
+	/*############ gnb ############################*/
+		#gnb{width:1025px;margin:0 auto;overflow:hidden;height:50px;}
+			#gnb p{width:60px;height:30px;margin-top:10px;float:left;}
+			#gnb ul{width:965px;height:30px;
+					margin-top:10px;text-align:right;float:left;line-height:30px;}
+			#gnb ul li{display:inline;}
+			
+			#gnb ul li a{padding:0 7px;color:#999;font-weight:500;}
+			#gnb ul li a:hover{color:#DC2E8C;}
+
+	/*############ gnb + logo + hover############################*/
+			#gnb .logos{width:60px;height:60px;float:left;}
+			#gnb .logos:hover .firstlogo{display:none;}
+			#gnb .logos:hover .hoverlogo{display:block;}
+			#gnb .logos p.hoverlogo{width:60px;height:30px;display:none;}
+			#gnb .logos p.hoverlogo img{width:100%;height:100%;}
+
+	/*############ loginWrap + head ############################*/
+		#loginWrap{width:500px;margin:200px auto 0;}
+		#loginHead{text-align:center;}
+			#loginHead h3{color:#666;font-weight:normal;font-size:20px;padding:7px 0;}
+
+	/*############ loginContainer ############################*/
+		#loginContainer{margin-top:25px;}
+			#loginContainer fieldset{border:none;}
+			#loginContainer legend{display:none;}
+		
+			#loginContainer form p{width:100%;height:60px;padding-bottom:15px;}
+			#loginContainer form p input{border:1px solid #999;width:498px;height:58px;
+										font-size:17px;color:#999;font-weight:normal;
+										text-indent:10px;line-height:58px;padding-top:2px;}
+			#loginContainer form p.float{float:left;width:250px;height:30px;}
+
+			#loginContainer form p.float a.idText{display:block;width:100px;float:left;
+												height:23px;padding:2px 2px 2px 10px;
+												font-size:15px;line-height:25px;
+												color:#999;}
+
+			#loginContainer form p.float a img.check{float:left;}
+
+			#loginContainer form p.right{text-align:right;padding-top:3px;height:27px;}
+				#loginContainer form p.right a{color:#0E2F7A;}
+				#loginContainer form p.right a:hover{text-decoration:underline;}
+
+			#loginContainer form p.float a.phone{font-size:13px;}
+			#loginContainer form p.right img{vertical-align:bottom;margin-left:3px;}
+			
+
+			#loginContainer form p.btn{width:100%;height:65px;
+									margin-top:50px;}
+			#loginContainer form p #btn{width:100%;height:65px;border:none;
+										background-color:#DC2E8C;cursor:pointer;
+										color:#eee;font-size:22px;font-weight:500;}
+
+	/*############ linkArea ############################*/
+		.linkArea{width:100%;height:30px;line-height:30px;
+				text-align:center;}
+			.linkArea li{display:inline;}
+				.linkArea li a{font-size:15px;padding:3px 15px;color:#666;}
+				.linkArea li .gray{color:#999;}
+
+	/*############ loginFooter ############################*/
+		#loginFooter{width:100%;margin-top:30px;
+					border-top:1px solid #ccc;text-align:center;}
+
+		#loginFooter .copy{font-size:12px;color:#999;margin-top:20px;}
+
+	/* ################################ 반응형########################## */
+	
+	/* ######## 모바일 세로 ######## */
+	@media all and (min-width:320px) and (max-width:480px){
+		#wrap{width:100%;}
+		#header{width:100%;}
+		#gnb{width:100%;}
+		#gnb ul{display:none;}
+		#gnb .logos{float:none;margin:0 auto;}
+		#mobHeader{display:block;}
+			.mobMenu{width:30px;height:30px;position:absolute;left:12px;top:9px;}
+				.mobMenu a{display:block;width:100%;height:100%;}
+				.mobMenu img{width:100%;}
+
+				.mobSearch{width:27px;height:27px;
+							position:absolute;right:12px;top:10px;}
+				.mobSearch a{display:block;width:100%;height:100%;}
+				.mobSearch img{width:100%;}
+		/*## mobBar ##*/
+			#mobBar{display:none;
+					width:100%;position:absolute;left:0;top:50px;
+					z-index:1;background-color:rgba(0,0,0,0.7);}
+				.mobTop{width:300px;height:150px;margin:0 auto;}
+				.mobTop em{font-style:normal;}
+					.moblog{width:100%;height:50px;color:#fff;margin-top:15px;}
+					.moblog strong{display:inline-block;width:180px;height:30px;text-indent:15px;}
+					.moblog span{border:1px solid #fff;margin-left:57px;}
+					.moblog span a{color:#fff;padding:6px;font-size:14px;}
+					.mobOn,.mobPro,.mobMy{width:80px;height:70px;float:left;
+									text-align:center;}
+						.mobOn,.mobPro{margin-right:30px;}
+					.mobOn a,.mobPro a,.mobMy a{width:100%;height:70px;color:#fff;}
+				
+				.mobTop img{width:50px;height:50px;}
+				
+				.mobAll{width:100%;text-indent:45px;line-height:35px;padding:10px 0 10px;
+						border-top:1px solid #999;color:#fff;font-size:17px;
+						cursor:pointer;}
+				.mobAll a{color:#fff;font-size:17px;}
+				.mobAll span img{width:25px;height:30px;vertical-align:top;}
+				.mobAll .mobC{background-color:rgba(250,250,250,.5);
+							line-height:33px;display:none;}
+						.mobC a{font-size:14px;}
+
+	/* ########### loginWrap + head ############# */
+		#loginWrap{width:90%;margin:30px auto 0;}
+		#loginHead{text-align:center;}
+			#loginHead h3{color:#DC2E8C;font-weight:600;font-size:15px;padding:7px 0;}
+			h2{display:none;}
+
+	/* ########### input ########## */
+		#loginContainer{margin-top:25px;}
+			#loginContainer fieldset{border:none;}
+			#loginContainer legend{display:none;}
+			#loginContainer form p{width:100%;height:47px;}
+			#loginContainer form p input{width:100%;height:47px;
+										font-size:15px;line-height:47px;}
+			#loginContainer form p.float{width:50%;}
+			#loginContainer form p.float a.idText{width:95px;height:23px;
+												font-size:14px;line-height:23px;}
+			#loginContainer form p.right{width:50%;}
+			#loginContainer form p.btn{width:100%;height:48px;margin-top:50px;}
+			#loginContainer form p #btn{width:100%;height:48px;font-size:18px;}
+
+	/*############ linkArea #############*/
+		.linkArea li a{font-size:12px;padding:3px 10px;}
+
+	}
+	/* ######## 모바일 가로 ######## */
+	@media all and (min-width:481px) and (max-width:767px){
+		#wrap{width:100%;}
+		#header{width:100%;}
+		#gnb{width:100%;}
+		#gnb ul{display:none;}
+		#gnb .logos{float:none;margin:0 auto;}
+		#mobHeader{display:block;}
+			.mobMenu{width:30px;height:30px;position:absolute;left:12px;top:9px;}
+				.mobMenu a{display:block;width:100%;height:100%;}
+				.mobMenu img{width:100%;}
+
+				.mobSearch{width:27px;height:27px;
+							position:absolute;right:12px;top:10px;}
+				.mobSearch a{display:block;width:100%;height:100%;}
+				.mobSearch img{width:100%;}
+		/*## mobBar ##*/
+			#mobBar{display:none;
+					width:100%;position:absolute;left:0;top:50px;
+					z-index:1;background-color:rgba(0,0,0,0.7);}
+				.mobTop{width:300px;height:150px;margin:0 auto;}
+				.mobTop em{font-style:normal;}
+					.moblog{width:100%;height:50px;color:#fff;margin-top:15px;}
+					.moblog strong{display:inline-block;width:180px;height:30px;text-indent:15px;}
+					.moblog span{border:1px solid #fff;margin-left:57px;}
+					.moblog span a{color:#fff;padding:6px;font-size:14px;}
+					.mobOn,.mobPro,.mobMy{width:80px;height:70px;float:left;
+									text-align:center;}
+						.mobOn,.mobPro{margin-right:30px;}
+					.mobOn a,.mobPro a,.mobMy a{width:100%;height:70px;color:#fff;}
+				
+				.mobTop img{width:50px;height:50px;}
+				
+				.mobAll{width:100%;text-indent:45px;line-height:35px;padding:10px 0 10px;
+						border-top:1px solid #999;color:#fff;font-size:17px;
+						cursor:pointer;}
+				.mobAll a{color:#fff;font-size:17px;}
+				.mobAll span img{width:25px;height:30px;vertical-align:top;}
+				.mobAll .mobC{background-color:rgba(250,250,250,.5);
+							line-height:33px;display:none;}
+						.mobC a{font-size:14px;}
+
+	/* ########### loginWrap + head ############# */
+		#loginWrap{width:90%;margin:30px auto 0;}
+		#loginHead{text-align:center;}
+			#loginHead h3{color:#DC2E8C;font-weight:600;font-size:17px;padding:7px 0;}
+			h2{display:none;}
+
+	/* ########### input ########## */
+		#loginContainer{margin-top:25px;}
+			#loginContainer fieldset{border:none;}
+			#loginContainer legend{display:none;}
+			#loginContainer form p{width:100%;height:47px;text-align:center;}
+			#loginContainer form p input{width:80%;height:47px;
+										font-size:15px;line-height:47px;}
+			#loginContainer form p.float{width:40%;margin-left:10%;}
+			#loginContainer form p.float a.idText{width:90px;height:23px;
+												font-size:14px;line-height:23px;}
+			#loginContainer form p.right{width:41%;margin:0;}
+			#loginContainer form p.btn{width:100%;height:48px;margin-top:50px;}
+			#loginContainer form p #btn{width:80%;height:48px;font-size:18px;}
+
+	/*############ linkArea #############*/
+		.linkArea li a{font-size:12px;padding:3px 10px;}
+
+	}
+	/* ######## 태블릿 PC ######## */
+	@media all and (min-width:768px) and (max-width:1024px){
+		#header{width:100%;}
+		/*############ gnb ################*/
+		#gnb{width:100%;}
+			#gnb ul{width:92%;}
+			#gnb ul li{display:inline;}
+		/* ####### loginArea #######*/
+		#loginWrap{width:500px;margin:75px auto 0;}
+		#loginHead{text-align:center;}
+		#loginHead h3{font-size:17px;}
+		#loginHead h2 img{width:94px;height:48px;}
+
+
+
+	}
+  </style>
+  <script>
+	jQuery(document).ready(function(){
+		
+		//모바일 메뉴
+		$(".mobP").click(function(){
+			//$(".mobC").hide();
+			$(this).children(".mobC").slideToggle(200,"linear");
+		});
+		//모바일 메뉴 - 아이콘 변경
+		var trans=0;
+		$(".mobMenu").click(function(){
+			$("#mobBar").slideToggle(150,"linear");
+			
+			if(trans==0){
+				document.getElementById("change").src="img/close.png";
+				trans=1;
+			}
+			else{
+				document.getElementById("change").src="img/mobMenu3.png";
+				trans=0;
+			}
+		});
+
+
+
+
+	});
+  </script>
+ </head>
+
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="gnb">
+				<h4>로그인페이지 네비게이션</h4>
+				<div class="logos">
+					<p class="firstlogo"><a href="../index.html" title="jtbc"><img src="img/loginHeaderLogo.png" alt="작은로고"/></a></p>
+					<p class="hoverlogo"><a href="../index.html" title="jtbc"><img src="img/loginLogo.png" alt="작은로고"/></a></p>
+				</div>
+				<ul>
+					<li>
+						<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					</li>
+					<li>
+						<a href="footer_AD.html" title="JTBC 미디어컴">JTBC 미디어컴</a>
+					</li>
+					<li>
+						<a href="news.html" title="뉴스">뉴스</a>
+					</li>
+					<li>
+						<a href="pyo.html" title="편성표">편성표</a>
+					</li>
+					<li>
+						<a href="onAir.html" title="온에어">온에어</a>
+					</li>
+					<li>
+						<a href="search.html" title="검색">검색</a>
+					</li>
+				</ul>
+			</div>
+			<div id="mobHeader">
+				<p class="mobMenu">
+					<a href="#" title="menu"><img id="change" src="img/mobMenu5.png" alt="모바일 메뉴"/></a>
+				</p>
+				<p class="mobSearch">
+					<a href="search.html" title="검색"><img src="img/search4.png" alt="검색 이미지"/></a>
+				</p>
+			</div>
+		</header>
+		<div id="mobBar">
+			<div class="mobTop">
+				<p class="moblog">
+					<strong>로그인 해주세요.</strong>
+					<span><a href="jtbcLogin.html" title="로그인">로그인</a></span>
+				</p>
+				<p class="mobOn">
+					<a href="onAir.html" title="온에어">
+						<span><img src="img/mobplay.png" alt="온에어 아이콘"/></span><br/>
+						<em>온에어</em>
+					</a>
+				</p>
+				<p class="mobPro">
+					<a href="pyo.html" title="편성표">
+						<span><img src="img/mobcal.png" alt="편성표 아이콘"/></span><br/>
+						<em>편성표</em>
+					</a>	
+				</p>
+				<p class="mobMy">
+					<a href="sub/jtbcLogin.html" title="마이페이지">
+						<span><img src="img/mobper.png" alt="마이페이지 아이콘"/></span><br/>
+						<em>마이페이지</em>
+					</a>
+				</p>
+			</div>
+			<div id="mobMe">
+				<ul class="mobAll">
+					<li class="mobP">
+							프로그램
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="program.html" title="방영 프로그램">방영 프로그램</a></li>
+							<li><a href="program.html" title="종영 프로그램">종영 프로그램</a></li>
+							<li><a href="program.html" title="전체 프로그램">전체 프로그램</a></li>
+						</ul>
+					</li>
+					<li class="mobP">
+							VOD
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="vod.html" title="추천">추천</a></li>
+							<li><a href="vod.html" title="최신">최신</a></li>
+							<li><a href="vod.html" title="인기">인기</a></li>
+							<li><a href="vod.html" title="프로그램별">프로그램별</a></li>
+							<li><a href="vod.html" title="테마별">테마별</a></li>
+						</ul>
+					</li>
+					<li class="mobP">
+							JTBC 뉴스
+							<span><img src="img/mobarrow.png" alt="화살표"/></span>
+						<ul class="mobC">
+							<li><a href="news.html" title="뉴스">뉴스</a></li>
+							<li><a href="news.html" title="날씨">날씨</a></li>
+							<li><a href="news.html" title="뉴스룸">뉴스룸</a></li>
+							<li><a href="news.html" title="제보">제보</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="event.html" title="이벤트">이벤트</a>
+					</li>
+					<li>
+						<a href="vodTickets.html" title="이용권">이용권</a>
+					</li>
+					<li>
+						<a href="footer_customer.html" title="고객센터">고객센터</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="loginWrap">
+			<h4>로그인</h4>
+			<div id="loginHead">
+				<h2>
+					<a href="../index.html" title="jtbc">
+						<img src="img/loginLogo.png" alt="jtbc로고"/>
+					</a>
+				</h2>
+				<h3>JTBC에 오신 것을 환영합니다.</h3>
+			</div>
+			<div id="loginContainer">
+				<form action="#" method="post">
+					<fieldset>
+						<legend>jtbc 로그인</legend>
+						<p>
+							<input id="userid" type="text" name="userid" title="아이디 입력" placeholder="아이디"/>
+						</p>
+						<p>
+							<input id="userpw" type="password" name="userpw" title="비밀번호 입력" placeholder="비밀번호"/>
+						</p>
+						<p class="float">
+							<a href="#none" title="아이디 저장"><img class="check" src="img/loginBtn1.png" alt="체크박스 이미지"/></a>
+							<a class="idText" href="#" title="아이디 저장"><span>아이디 저장</span></a>
+						</p>
+						<p class="float right">
+							<a class="phone" href="https://safelogin.kr/sauth/regist?site_code=9A&sub_code=0" title="휴대폰 간편 입력"><span>휴대폰 간편 입력</span><img src="img/loginAD.png" alt="AD이미지"/></a>
+						</p>
+						<p class="btn">
+							<input id="btn" type="submit" value="로그인" title="전송"/>
+						</p>
+					</fieldset>
+				</form>
+			</div>
+			<ul class="linkArea">
+				<li>
+					<a href="#" title="아이디 찾기">아이디 찾기</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="#" title="비밀번호 찾기">비밀번호 찾기</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="joins.html" title="회원가입">회원가입</a>
+				</li>
+			</ul>
+			<footer id="loginFooter">
+				<h4>로그인 페이지 푸터</h4>
+				<p class="copy">
+					&copy; JTBC, JTBC Content Hub. All Rights Reserved.
+				</p>
+			</footer>
+		</div>
+	</div>
+  
+ </body>
+</html>

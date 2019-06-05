@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <title> onair </title>
+   <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/onairBack.png") no-repeat;}
+			
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+		
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{position:absolute;left:0;top:25px;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+	/*############# navWrap : hover #############*/
+		#header #navWrap div#searchs:hover p.search1{display:none;}
+		#header #navWrap div#searchs:hover p.search2{display:block;}
+
+	
+
+	/*############ container ##############*/
+	#container{width:100%;margin-top:70px;}
+		#onairArea{width:1265px;height:475px;margin:0 auto;}
+	
+	/*############ onairContent (영상) ##############*/
+		.onairContent{width:840px;height:475px;
+					background:url("img/onairIngBack.jpg") no-repeat center;
+					background-size:cover;overflow:hidden;
+					float:left;}
+		.backrgba{width:840px;height:475px;background-color:rgba(0,0,0,0.5);
+				overflow:hidden;position:relative;}
+
+		.loginText{width:100%;height:30px;font-size:22px;
+				text-align:center;margin-top:165px;color:#eee;}
+
+		.loginJoins{width:370px;margin:15px auto 0;height:64px;}
+		 .loginJoins a{display:block;width:180px;height:64px;float:left;}
+		 .loginJoins a span{display:block;width:180px;height:64px;float:left;}
+
+		 .loginJoins a span.login{background-color:rgba(255,255,255,0.4);
+			border:1px solid #eee;font-size:23px;color:#eee;text-align:center;
+			line-height:64px;}
+		 .loginJoins a span.joins{margin-left:10px;background-color:rgba(220,46,140,0.7);
+		 border:1px solid #DC2E8C;font-size:23px;color:#eee;text-align:center;
+			line-height:64px;}
+
+			
+			.loginJoins a span.login:hover{background-color:rgba(255,255,255,0.7);}
+			.loginJoins a span.joins:hover{background-color:rgba(220,46,140,1);}
+	
+
+
+				/*############ bottomText ##############*/
+				.bottomText{width:100%;height:50px;
+							color:#000;position:absolute;bottom:0;left:0;
+							background-color:rgba(0,0,0,0.7);border-top:1px solid #999;}
+
+				.bottomText span{display:block;width:30px;height:30px;
+				float:left;margin-top:10px;margin-left:20px;}
+				.bottomText span img{width:100%;height:100%;}
+
+				.bottomText .text{display:block;float:left;width:750px;height:30px;
+				font-size:17px;margin-left:15px;margin-top:10px;line-height:30px;
+				color:#eee;}
+
+		/*############ chartArea ##############*/
+			.chartArea{width:350px;height:474px;float:left;
+						margin-left:53px;border:1px solid #ccc;border-top:none;}
+			.chartText{border-top:3px solid #333;
+						width:100%;height:58px;border-bottom:1px solid #ccc;}
+			.chartText .left{float:left;
+							margin-left:25px;line-height:59px;}
+				.left em{font-style:normal;color:#666;}
+			.chartText .right{float:right;margin-right:15px;
+							line-height:58px;}
+					.right a{color:#999;font-size:14px;}
+					.right a:hover{text-decoration:underline;}
+
+		/*############ chartArea ##############*/
+
+			.chart{width:100%;height:425px;}
+				.chart li{width:100%;height:90px;
+						border-bottom:1px solid #ccc;}
+
+				.chart .proIng{background:url("img/onair_ing.png") no-repeat center;
+							color:#eee;}
+				.chart li.first .time{line-height:90px;}
+				.chart li.first .pro{padding-top:25px;}
+				.chart li .time{width:102px;height:80px;
+								text-align:center;line-height:80px;
+								font-weight:bold;float:left;}
+				.chart li .pro{width:163px;height:74px;font-weight:bold;
+							text-align:left;float:left;padding-top:17px;}
+					.chart li .pro span{font-size:14px;color:#ccc;
+										font-weight:normal;}
+				.chart li .ing{width:83px;height:80px;color:#eee;
+							text-align:center;line-height:80px;float:left;}
+
+				.chart li.prodesc{width:100%;height:48px;}
+
+				.chart li.prodesc a{float:left;line-height:35px;
+									margin-left:25px;color:#E86D03;}
+
+				.chart li.prodesc a:hover{color:#0E2F7A;}
+
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:93px auto 0;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+	
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo1.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div id="onairArea">
+				<div class="onairContent">
+					<div class="backrgba">
+						<p class="loginText">로그인이 필요한 서비스입니다.</p>
+						<p class="loginJoins">
+							<a href="jtbcLogin.html" title="로그인"><span class="login">로그인</span></a>
+							<a href="joins.html" title="회원가입"><span class="joins">회원가입</span></a>
+						</p>
+						<p class="bottomText">
+							<span><img src="img/onairIcon.png" alt="icon"/></span>
+							<span class="text">뉴스 프로그램은 'JTBC 뉴스앱'에서 로그인 없이 시청할 수 있습니다.</span>
+						</p>
+					</div>
+				</div>
+				<div class="chartArea">
+					<div class="chartText">
+						<p class="left">
+							<strong>편성표</strong>
+							<em>01.30 (화)</em>
+						</p>
+						<p class="right">
+							<span><a href="#none" title="편성표 전체보기">전체보기 ▷</a></span>
+						</p>
+					</div>
+					<ul class="chart">
+						<li class="first">
+							<p class="time">10:00</p>
+							<p class="pro">
+								슈가맨2<br/>
+								<span>3회</span>
+							</p>
+						</li>
+						<li class="proIng">
+							<p class="time">11:50</p>
+							<p class="pro">
+								아는형님<br/>
+								<span>112회</span>
+							</p>
+							<p class="ing">
+								ON AIR
+							</p>
+						</li>
+						<li>
+							<p class="time">13:10</p>
+							<p class="pro">
+								냉장고를 부탁해<br/>
+								<span>166회</span>
+							</p>
+						</li>
+						<li>
+							<p class="time">14:30</p>
+							<p class="pro">
+								뉴스 현장<br/>
+								<span>news</span>
+							</p>
+						</li>
+						<li class="prodesc">
+							<a href="vod.html" title="VOD시청하기">▶ 
+								JTBC 프로그램 VOD 시청하기
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="#" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+ </body>
+</html>

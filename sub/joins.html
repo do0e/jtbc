@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <title> joins </title>
+  <style>
+	*{margin:0;padding:0;}
+	li{list-style-type:none;}
+	a:link,a:visited{text-decoration:none;color:#333;}
+	body{font-family:맑은고딕,"Malgun Gothic",돋움,Dotum,Tahoma,Geneva,sans-serif;}
+	
+	h4{position:absolute; width:1px; height:1px; font-size:1px; 
+			line-height:0; overflow:hidden; left:-9999px;}
+	/*##############################################*/
+		#wrap{width:1920px;margin:0 auto;}
+		#header{width:100%;background-color:#FAFAFA;height:50px;}
+	/*############ gnb ############################*/
+		#gnb{width:1025px;margin:0 auto;overflow:hidden;height:50px;}
+			#gnb p{width:60px;height:30px;margin-top:10px;float:left;}
+			#gnb ul{width:965px;height:30px;
+					margin-top:10px;text-align:right;float:left;line-height:30px;}
+			#gnb ul li{display:inline;}
+			
+			#gnb ul li a{padding:0 7px;color:#999;font-weight:500;font-size:13px;}
+			#gnb ul li a:hover{color:#DC2E8C;}
+	
+	/*############ gnb + logo + hover############################*/
+			#gnb .logos{width:60px;height:60px;float:left;}
+			#gnb .logos:hover .firstlogo{display:none;}
+			#gnb .logos:hover .hoverlogo{display:block;}
+			#gnb .logos p.hoverlogo{width:60px;height:30px;display:none;}
+			#gnb .logos p.hoverlogo img{width:100%;height:100%;}
+
+	/*############ container + head ############################*/
+		#container{width:100%;margin-top:100px;}
+			#headWrap{width:100%;}
+			#joinsHead{width:1025px;margin:0 auto;}
+				#joinsHead h2{margin-bottom:20px;font-size:27px;color:#333;}
+				#joinsHead h3{font-size:22px;color:#555;}
+					#joinsHead h3 .color{color:#DC2E8C;}
+				#joinsHead p{font-size:18px;padding:5px 0;color:#555;}
+
+	/*############ contentWrap + joinsContent ############################*/
+		#contentWrap{width:100%;padding:50px 0;}
+			#joinsContent{width:1025px;margin:17px auto;}
+				.joinsType{width:990px;height:228px;}
+					.joinsType li{width:235px;height:228px;float:left;border:1px solid #D8D8D8;
+								background-color:#F8F8F8;position:relative;}
+						.joinsType li a{display:block;width:230px;height:200px;
+										position:relative;}
+
+						.joinsType li a .textArea{display:block;width:195px;height:50px;
+												font-size:18px;
+												font-weight:normal;margin:25px 0 0 15px;}
+
+	/*############ joinsType + backimage + general ############################*/
+		.joinsType .general{margin-right:10px;}
+		.joinsType .general a .joins{display:block;width:59px;height:76px;
+								position:absolute;left:130px;top:100px;
+								background-image:url("img/joins0.png");
+								background-repeat:no-repeat;}
+			
+		.joinsType .general a .check{display:block;width:36px;height:35px;
+									position:absolute;left:170px;top:142px;
+									background-image:url("img/joinsbtn.png");}
+		.joinsType .general:hover a .check{background-position:0px 34px;}
+	
+	/*############ joinsType + backimage + child ############################*/
+		.joinsType .child{margin-right:10px;}
+		.joinsType .child a .joins{display:block;width:91px;height:76px;
+								position:absolute;left:100px;top:100px;
+								background-image:url("img/joins1.png");
+								background-repeat:no-repeat;}
+			
+		.joinsType .child a .check{display:block;width:36px;height:35px;
+									position:absolute;left:170px;top:142px;
+									background-image:url("img/joinsbtn.png");}
+		.joinsType .child:hover a .check{background-position:0px 34px;}
+
+	/*############ joinsType + backimage + eng ############################*/
+		.joinsType .eng{margin-right:10px;}
+		.joinsType .eng a .joins{display:block;width:91px;height:76px;
+								position:absolute;left:100px;top:100px;
+								background-image:url("img/joins2.png");
+								background-repeat:no-repeat;}
+			
+		.joinsType .eng a .check{display:block;width:36px;height:35px;
+									position:absolute;left:170px;top:142px;
+									background-image:url("img/joinsbtn.png");}
+		.joinsType .eng:hover a .check{background-position:0px 34px;}
+
+	/*############ joinsType + backimage + company ############################*/
+		.joinsType .company a .joins{display:block;width:83px;height:76px;
+								position:absolute;left:108px;top:100px;
+								background-image:url("img/joins3.png");
+								background-repeat:no-repeat;}
+			
+		.joinsType .company a .check{display:block;width:36px;height:35px;
+									position:absolute;left:170px;top:142px;
+									background-image:url("img/joinsbtn.png");}
+		.joinsType .company:hover a .check{background-position:0px 34px;}
+
+	/*############ logoArea ############################*/
+		#logoAreaWrap{width:100%;padding:25px 0 15px 0;}
+			#joinsLogos{width:1025px;height:65px;margin:0 auto;}
+			#joinsLogos ul{width:1025px;height:60px;
+							line-height:70px;}
+			#joinsLogos ul li{display:inline-block;}
+				#joinsLogos ul li a{display:block;
+									background-repeat:no-repeat;margin-right:76px;}
+				
+				#joinsLogos ul .logo0 a{width:87px;height:21px;
+										background-image:url("img/joinsfooter0.png");}
+				#joinsLogos ul .logo0:hover a{background-position:0px -35px;}
+				
+				#joinsLogos ul .logo1 a{width:36px;height:21px;		
+										background-image:url("img/joinsfooter1.png");}
+				#joinsLogos ul .logo1:hover a{background-position:0px -35px;}				
+				
+				#joinsLogos ul .logo2 a{width:57px;height:21px;
+										background-image:url("img/joinsfooter2.png");}
+				#joinsLogos ul .logo2:hover a{background-position:0px -35px;}							
+				#joinsLogos ul .logo3 a{width:197px;height:21px;
+										background-image:url("img/joinsfooter3.png");}
+				#joinsLogos ul .logo3:hover a{background-position:0px -35px;}
+
+				#joinsLogos ul .logo4 a{width:79px;height:21px;
+										background-image:url("img/joinsfooter4.png");
+										background-repeat:no-repeat;}
+				#joinsLogos ul .logo4:hover a{background-position:0px -35px;}
+
+				#joinsLogos ul .logo5 a{width:108px;height:21px;margin-right:0px;
+										background-image:url("img/joinsfooter5.png");}
+				#joinsLogos ul .logo5:hover a{background-position:0px -40px;}
+	
+	/*############ footer ############################*/
+		#footerWrap{width:100%;}
+			#footer{width:1025px;margin:0 auto;
+					border-top:2px solid #333;}
+			#footer ul{width:100%;padding:15px 0;text-align:center;
+						 border-bottom:1px solid #666;}
+				#footer ul li{display:inline-block;}
+				#footer ul li.bold a{font-weight:600;}
+
+					#footer ul li a{padding:0 5px;font-size:13px;}
+					#footer ul li a:hover{text-decoration:underline;}
+
+						#footer ul li .gray{color:#666;font-size:13px;padding-left:3px;}
+
+		#footer p{margin:10px 0;font-size:12px;text-align:center;
+					color:#666;}
+
+		#footer p span{color:#DC2E8C;}
+  </style>
+ </head>
+ <body>
+	<div id="wrap">
+		<header id="header">
+			<div id="gnb">
+				<h4>회원가입 페이지 네비게이션</h4>
+				<div class="logos">
+					<p class="firstlogo"><a href="../index.html" title="jtbc"><img src="img/loginHeaderLogo.png" alt="작은로고"/></a></p>
+					<p class="hoverlogo"><a href="../index.html" title="jtbc"><img src="img/loginLogo.png" alt="작은로고"/></a></p>
+				</div>
+				<ul>
+					<li>
+						<a href="http://joongang.joins.com/" title="중앙일보">중앙일보</a>
+					</li>
+					<li>
+						<a href="http://news.joins.com/sunday" title="중앙SUNDAY">중앙SUNDAY</a>
+					</li>
+					<li>
+						<a href="http://jtbc.joins.com/" title="JTBC">JTBC</a>
+					</li>
+					<li>
+						<a href="http://isplus.joins.com/" title="일간스포츠">일간스포츠</a>
+					</li>
+					<li>
+						<a href="http://koreajoongangdaily.joins.com/" title="Korea JoongAng Daily">Korea JoongAng Daily</a>
+					</li>
+					<li>
+						<a href="http://www.joonganggroup.com/" title="중앙그룹">중앙그룹</a>
+					</li>
+					<li>
+						<a href="jtbcLogin.html" title="온에어">로그인</a>
+					</li>
+				</ul>
+			</div>
+		</header>
+		<div id="container">
+			<div id="headWrap">
+				<div id="joinsHead">
+					<h2>회원 가입</h2>
+					<h3><span class="color">JTBC</span>에 오신것을 환영합니다!</h3>
+					<p>해당되는 회원 유형을 선택하시고 다양한 혜택과 즐거움을 누리세요.</p>
+				</div>
+			</div>
+			<div id="contentWrap">
+				<div id="joinsContent">
+					<h4>회원 유형 선택</h4>
+					<ul class="joinsType">
+						<li class="general">
+							<a href="joinform.html" title="일반회원">
+								<strong class="textArea">
+									만 14세 이상<br/>
+									일반 회원
+								</strong>
+								<span class="joins"></span>
+								<span class="check"></span>
+							</a>
+						</li>
+						<li class="child">
+							<a href="joinform.html" title="어린이 회원">
+								<strong class="textArea">
+									만 14세 미만<br/>
+									어린이 회원
+								</strong>
+								<span class="joins"></span>
+								<span class="check"></span>
+							</a>
+						</li>
+						<li class="eng">
+							<a href="joinform.html" title="외국인 회원">
+								<strong class="textArea">
+									해외거주국민<br/>
+									및 외국인 회원
+								</strong>
+								<span class="joins"></span>
+								<span class="check"></span>
+							</a>
+						</li>
+						<li class="company">
+							<a href="joinform.html" title="기업 단체 법인 회원">
+								<strong class="textArea">
+									기업/단체<br/>
+									법인 회원
+								</strong>
+								<span class="joins"></span>
+								<span class="check"></span>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="logoAreaWrap">
+				<div id="joinsLogos">
+					<ul>
+						<li class="logo0">
+							<a href="http://joongang.joins.com/" title="중앙일보"></a>
+						</li>
+						<li class="logo1">
+							<a href="http://jtbc.joins.com/" title="JTBC"></a>
+						</li>
+						<li class="logo2">
+							<a href="http://www.joins.com/" title="조인스"></a>
+						</li>
+						<li class="logo3">
+							<a href="http://koreajoongangdaily.joins.com/" title="Korea Joonang Daily"></a>
+						</li>
+						<li class="logo4">
+							<a href="http://isplus.joins.com/" title="일간스포츠"></a>
+						</li>
+						<li class="logo5">
+							<a href="http://jmagazine.joins.com/" title="중앙시사매거진"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="footerWrap">
+			<footer id="footer">
+				<ul>
+					<li><a href="footer_customer.html" title="고객센터">고객센터</a><span class="gray">|</span></li>
+					<li><a href="footer_customer.html" title="온라인 고객센터">온라인 고객센터</a><span class="gray">|</span></li>
+					<li><a href="footer_AD.html" title="광고 안내">광고 안내</a><span class="gray">|</span></li>
+					<li><a href="footer_AD.html" title="지면 광고">지면 광고</a><span class="gray">|</span></li>
+					<li><a href="footer_AD.html" title="제휴문의">제휴문의</a><span class="gray">|</span></li>
+					<li><a href="footer_agreement.html" title="회원약관">회원약관</a><span class="gray">|</span></li>
+					<li class="bold">
+						<a href="footer_Privacy.html" title="개인정보 처리방침">개인정보 처리방침</a><span class="gray">|</span>
+					</li>
+					<li><a href="footer_agreement.html" title="청소년 보호정책">청소년 보호정책</a><span class="gray">|</span></li>
+					<li><a href="footer_customer.html" title="고충처리">고충처리</a></li>
+				</ul>
+				<p>
+					주소 : 서울시 중구 서소문로 100 | 인터넷신문등록번호 : 서울 아01013 | 등록일자 : 2009.11.2 |  발행인 : 김교준 | 편집인 : 오병상<br/>
+					Joongang ilbo의 모든 콘텐트(기사)는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.<br/><br/>
+					<span>Copyright by Joongang ilbo Co.,Ltd. All Rights Reserved.</span>
+				</p>
+			</footer>
+		</div>
+	</div>
+  
+ </body>
+</html>

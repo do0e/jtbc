@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="ko">
+ <head>
+  <meta charset="utf-8"/>
+  <title> table of organization </title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="../js/jquery-1.12.4.min.js"></script>
+  <link rel="shortcut icon" href="../img/back1.png"/>
+  <link rel="icon" href="../img/back1.png"/>
+  <link rel="apple-touch-icon" href="../img/back1.png"/>
+  <link rel="stylesheet" type="text/css" href="../css/reset.css"/>
+    <!--[if lte IE 9]>
+		<link rel="stylesheet" type="text/css" href="../css/lteie9.css"/>
+	<![endif]-->
+  <style>
+	/*############################################*/
+		#wrap{width:1920px;margin:0 auto;overflow:hidden;
+			background:url("img/pyoBack.png") no-repeat;}
+			
+	/*############### headerWrap ####################*/
+	#headerWrap{width:100%;}
+		
+	#header{width:1280px;margin:20px auto 0;position:relative;}
+		h1{position:absolute;left:0;top:25px;}
+			#header ul#infomenu{width:1265px;height:25px;margin-right:15px;
+							text-align:right;}
+			#header ul#infomenu li{display:inline;}
+				#header ul#infomenu li a{padding:3px 10px; font-size:13px; color:#666;}
+				#header ul#infomenu li a:hover{color:#DC2E8C;}
+
+	/*############### navWrap  ####################*/
+	#header #navWrap{width:100%;height:70px;
+					margin-right:20px;}
+		#header #navWrap #gnb{width:1220px;height:100%;text-align:right;
+								float:left;margin-right:10px;}
+			#header #navWrap #gnb li{display:inline;}
+				#header #navWrap #gnb li a{font-size:18px;line-height:70px;
+											font-weight:600;
+											padding:2px 17px;color:#333;}
+
+				#header #navWrap #gnb li a:hover{color:#DC2E8C;}
+				#header #navWrap #searchs p{float:left; width:30px;height:70px; 
+											margin:20px 0;}
+				#header #navWrap #searchs p img{width:100%;}
+				#header #navWrap #searchs p.search2{display:none;}
+
+	/*############# navWrap : hover #############*/
+		#header #navWrap div#searchs:hover p.search1{display:none;}
+		#header #navWrap div#searchs:hover p.search2{display:block;}
+
+	/*############ container ##############*/
+	#container{width:100%;margin-top:70px;}
+	/*############ pyoHead ##############*/
+		.pyoHeaderWrap{width:1245px;height:59px;margin:0 auto;position:relative;}
+			.pyoHeaderWrap a.arrow{display:block;width:10px;height:20px;
+						           position:absolute;top:19px;}
+					.pyoHeaderWrap a.prevArrow{left:0;}
+					.pyoHeaderWrap a.nextArrow{right:0;}
+				.pyoHeaderWrap a.arrow img{width:100%;height:100%;}
+			.pyoHeader{width:870px;height:65px;margin:0 auto;overflow:hidden;}
+			.pyoDate{width:1500px;height:60px;margin:0 auto;}
+			.pyoDate ul{width:1500px;height:60px;}
+			.pyoDate ul li{display:inline-block;width:90px;height:60px;margin-left:12px;text-align:center;}
+				.pyoDate ul li a{display:inline-block;width:100%;height:100%;}
+				.pyoDate ul li a{color:#999;}
+				.pyoDate ul li a.pyoSelected{color:#E86D03;border-bottom:2px solid #E86D03;}
+				.pyoDate ul li a:hover{color:#E86D03;border-bottom:2px solid #E86D03;}
+			.pyoDate ul li a strong{display:block;width:100%;height:28px;font-size:24px;}
+			.pyoDate ul li a em{display:block;width:100%;height:20px;font-size:15px;font-style:normal;
+			                    padding-top:7px;}
+
+	/*############ pyoList ##############*/
+		#pyoList{width:1245px;margin:50px auto 0;}
+		#pyoList ul{width:100%;overflow:hidden;}
+		#pyoList li{width:100%;height:193px;overflow:hidden;border-bottom:1px solid #bbb;}
+		#pyoList li .pyoArea{width:100%;height:130px;margin-top:31px;}
+			#pyoList li p{float:left;}
+			#pyoList li p.pyoTime{width:160px;height:130px;font-size:25px;
+								  line-height:130px;text-align:center;}
+			#pyoList li p.pyoImg{width:256px;height:130px;text-align:left;}
+				#pyoList li p.pyoImg img{width:231px;height:100%;}
+			#pyoList li p.pyoDesc{width:600px;height:130px;}
+				#pyoList li p.pyoDesc strong{display:block;width:100%;height:20px;font-size:20px;}
+				#pyoList li p.pyoDesc em{display:block;width:100%;height:55px;font-style:normal;
+										 padding-top:15px;margin-bottom:20px;font-size:14px;}
+				#pyoList li p.pyoDesc span{width:100%;height:22px;font-size:13px;}
+				#pyoList li p.pyoDesc span span{width:14px;height:20px;line-height:20px;text-align:center;
+												display:inline-block;font-size:12px;padding:0 5px;}
+				#pyoList li p.pyoDesc span .pyoIcon{border:1px solid #f1f1f1;color:#666;}
+				#pyoList li p.pyoDesc span .pyoIcon_on{border:1px solid #ff3091;color:#ff3091;font-size:10px;}
+				#pyoList li p.pyoDesc span .pyoIcon_live{border:1px solid #5fb631;color:#5fb631;font-size:10px;}
+				#pyoList li p.pyoDesc span .pyoIcon_adult{border:1px solid #ff0909;
+														  color:#ff0909;font-size:10px;}
+		/*####### pyoList li:last ####### */
+			#pyoList li.last{height:108px;border:1px solid #f1f1f1;margin-top:50px;}
+			#pyoList li.last .pyoDesc{width:100%;padding:20px;}
+
+	/*  ######### offsetTop ###### */
+			.pyoBack{width:1px;height:1px;font-size:1px;background-color:rgba(204,204,204,0.2);
+			  position:absolute;left:0;top:0;color:rgba(0,0,0,0);text-align:center;
+			  transition:all 0.5s ease 0.2s;}
+
+		/* #### noservice ### */
+			#nodesc{margin-top:100px;width:100%;text-align:center;}
+	/*############ footer ###############*/
+		#footer{width:100%;background-color:#f4f4f4;
+			margin:93px auto 0;height:220px;overflow:hidden;}
+			#footer a{color:#666;}
+		#footer #link{width:1000px;height:50px;margin:0 auto;text-align:center;}
+			#footer #link li{display:inline-block;height:50px;line-height:50px;color:#999;}
+				#footer #link li a{padding:0 5px;color:#999;font-weight:bold;}
+				#footer #link li a:hover{color:#DC2E8C;}
+
+	/*############ footer + logofooter ###############*/
+		#footer .logofooter{width:1000px;height:110px;text-align:center;margin:10px auto;font-size:13px;}
+			#footer p.logoImg{width:75px;height:40px;margin:27px auto 5px;}
+				#footer p.logoImg img{width:100%;}
+
+	/*############ footer + footerDesc + copyright ###############*/
+		#footer .logofooter p.footerDesc{margin:7px auto;color:#999;}
+			#footer .logofooter p.footerDesc a:hover{text-decoration:underline;}
+
+		#footer .logofooter p.copyright{color:#999;}
+			#footer .logofooter p.copyright a{font-weight:bold;}
+			#footer .logofooter p.copyright a:hover{color:#DC2E8C;}
+	/*############ IE 10 ###############*/
+		@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+		img {border:none;}}
+  </style>
+  <script>
+	$(function(){
+		
+		//마우스 박스
+		$("#pyoList li").mouseover(function(){
+			$(".pyoBack").css({"width":$(this).width(),"height":$(this).height(),"left":$(this).offset().left,"top":$(this).offset().top,"fontSize":"16px","lineHeight":$(this).height()+"px","color":"rgba(255,255,255,1)"});
+		});
+		$("#pyoList li.last").mouseover(function(){
+			$(".pyoBack").css({"width":"1px","height":"1px","fontSize":"1px","backgroundColor":"rgba,(232,109,3,0.2)","lineHeight":"1px","color":"rgba(0,0,0,0)"});
+		});
+	
+		//다음버튼
+		
+		$(".nextArrow").click(function(){
+			$(".pyoDate").animate({"marginLeft":"-=102px"},1000);
+		});
+		
+		//이전버튼
+		$(".prevArrow").click(function(){
+			$(".pyoDate").animate({"marginLeft":"+=92px"},1000);
+		});
+		
+	
+		//noservice
+		$("#nodesc").hide();
+		
+		//클릭 카운트 변수 값 지정
+		var count=1;
+
+		$(".scene").click(function(){
+			$(".pyoDate li a").removeClass("pyoSelected");
+			$(this).children("a").addClass("pyoSelected");
+			$("#pyoList").hide();
+			$("#nodesc").show();
+			
+			//클릭 카운트 ++; 이미지 01~04까지므로 클릭카운트 5가 되면 다시 1로 돌아오게 지정
+				count++;
+			if(count == 5){ count=1; }
+			$("#noicon").html("<img src='img/ico_no_service0"+count+".png' alt='이미지'/>");
+		});
+
+		$(".scene:first").click(function(){
+			$("#pyoList").show();
+			$("#nodesc").hide();
+		});
+
+		
+	});
+	//onload noservice 이미지 변경
+	/*	
+		var index = Math.floor(Math.random()*10)%4+1;
+		window.onload=function(){
+		var noicon = document.getElementById("noicon");
+		noicon.innerHTML="<img src='img/ico_no_service0"+index+".png' alt='이미지'/>";}
+	*/
+  </script>
+ </head>
+ <body>
+	<div id="wrap">
+		<div id="headerWrap">
+			<header id="header">
+				<h1>
+					<a href="../index.html" title="jtbc">
+						<img src="img/logo1.png" alt="jtbc 로고"/>
+					</a>
+				</h1>
+				<ul id="infomenu">
+					<li><a href="joins.html" title="회원가입">회원가입</a></li>
+					<li><a href="jtbcLogin.html" title="로그인">로그인</a></li>
+					<li><a href="vodTickets.html" title="이용권">이용권</a></li>
+				</ul>
+				<div id="navWrap">
+					<h2>네비게이션 영역</h2>
+					<ul id="gnb">
+						<li><a href="program.html" title="프로그램">프로그램</a></li>
+						<li><a href="news.html" title="뉴스">뉴스</a></li>
+						<li><a href="vod.html" title="VOD">VOD</a></li>
+						<li><a href="pyo.html" title="편성표">편성표</a></li>
+						<li><a href="event.html" title="이벤트">이벤트</a></li>
+						<li><a href="onAir.html" title="온에어">온에어</a></li>
+					</ul>
+					<div id="searchs">
+						<h4>검색 영역</h4>
+						<p class="search1"><a href="search.html" title="검색"><img src="img/search1.png" alt="검색 이미지"/></a></p>
+						<p class="search2"><a href="search.html" title="검색"><img src="img/search2.png" alt="검색 이미지"/></a></p>
+					</div>
+				</div>
+			</header>
+		</div>
+		<div id="container">
+			<div class="pyoHeaderWrap">
+				<a class="arrow prevArrow" href="#none" title="이전 화살표">
+					<img src="img/pyo_arrow1.png" alt="이전 화살표"/>
+				</a>
+				<a class="arrow nextArrow" href="#none" title="다음 화살표">
+					<img src="img/pyo_arrow2.png" alt="다음 화살표"/>
+				</a>
+				<div class="pyoHeader">
+					<div class="pyoDate">
+						<ul>
+							<li class="scene">
+								<a class="pyoSelected" href="#none" title="월요일">
+									<strong>3.26</strong>
+									<em>월</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="화요일">
+									<strong>3.27</strong>
+									<em>화</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="수요일">
+									<strong>3.28</strong>
+									<em>수</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="목요일">
+									<strong>3.29</strong>
+									<em>목</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="금요일">
+									<strong>3.30</strong>
+									<em>금</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="토요일">
+									<strong>3.31</strong>
+									<em>토</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.1</strong>
+									<em>일</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.2</strong>
+									<em>월</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.3</strong>
+									<em>화</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.4</strong>
+									<em>수</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.5</strong>
+									<em>목</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.6</strong>
+									<em>금</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.7</strong>
+									<em>토</em>
+								</a>
+							</li>
+							<li class="scene">
+								<a href="#none" title="일요일">
+									<strong>4.8</strong>
+									<em>일</em>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div id="pyoList">
+				<ul>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								00:10
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo0.jpg" alt="효리네민박"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>효리네 민박2 4회</strong>
+								<em>
+									'이효리, 이상순 부부' 두 사람이 제주도에서 부부 민박집을 운영하는 프로그램
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								02:00
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo1.jpg" alt="말하는대로"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>말하는대로 16회</strong>
+								<em>
+									말로 하는 버스킹 &#60;말하는대로&#62; 할리우드 버스커 등장! ‘어벤져스' 배우 수현, “할리우드 진출기 최초고백!”
+									평균 수명 120세 시대! 前 대통령 연설비서관 강원국, 퇴직 후 생존 비법 공개! ‘말 천재’ 작가 조승연의 “작심삼일 신년 계획의 함정!”
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon">해</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								03:30
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo2.jpg" alt="잡스"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>잡스 9회</strong>
+								<em>
+									밥벌이 연구소 &#60;잡스&#62;의 아홉 번째 연구 대상 ‘소방관’ 가장 존경받는 직업 1위! 가장 신뢰하는 직업 1위! 각종 화재 및 사고로부터 국민의 안전을 지켜주는 우리들의 영웅! &#60;잡스&#62; 사상 최대 인원 출연! 10
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon">해</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								04:50
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo3.jpg" alt="내 이름을 불러줘 - 한名회"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>내 이름을 불러줘 - 한名회 9회</strong>
+								<em>
+									☆마지막 이야기 &#60;별난 이름 특집 - 이 이름 실화냐?&#62;☆ 이름표에 있는 그림을 보고 출연자의 이름을 맞혀라!! 눈과 귀를 의심하게 하는 8인의 별난 이름 등장이오~! 별난 이름의 무게를 견뎌야 하는 사람들 
+								</em>
+								<span>
+									<span class="pyoIcon">12</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon">해</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								05:50
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo2.jpg" alt="잡스"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>잡스 10회</strong>
+								<em>
+									밥벌이 연구소 &#60;잡스&#62;의 열 번째 연구 대상 ‘연예인 매니저’ 묵묵히 뒤에서 스타가 빛날 수 있도록 도와주는 스타의 빛과 그림자! 배우, 가수, 예능인! 각 분야의 연예인과 그들의 매니저 동반 출연! 
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon">해</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								07:00
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo4.jpg" alt="아침&#38;"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>아침&#38;</strong>
+								<em>
+									매일 아침 생생한 국제뉴스와 인터넷 소식 등을 전해드립니다.
+								</em>
+								<span>
+									<span class="pyoIcon">A</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon_live">생</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon">수</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								08:30
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo5.jpg" alt="수빈스토리2"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>수빈스토리2 2회</strong>
+								<em>
+									꿈과 희망이 가득한 JTBC 만화세상~★
+								</em>
+								<span>
+									<span class="pyoIcon">7</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								09:00
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo6.jpg" alt="차이나는 클라스"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>차이나는 클라스 50회</strong>
+								<em>
+									차이나는 클라스 역사상 최초의 음악과 함께하는 강연! 춤추고 두드려라! 사물놀이 대중화에 바친 40년! 더 이상의 설명이 필요 없는 신명 전도사 김덕수가 왔다! 다섯 살 꼬마의 남사당패 새미 데뷔! 전국을 사로잡을 국가대표 광대의 탄생을 알리다!
+								</em>
+								<span>
+									<span class="pyoIcon">A</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								10:00
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo7.jpg" alt="으라차차 와이키키"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>으라차차 와이키키 5회</strong>
+								<em>
+									우주최강 순수남 봉두식! 에로 시나리오 작가 되다! 일생 연애 한번 못 해본 모태솔로 두식에게 에로시나리오 의뢰가 들어오고 그로인해 두식의 멘탈은 우주로 날아가기 시작한다.
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								11:20
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo7.jpg" alt="으라차차 와이키키"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>으라차차 와이키키 6회</strong>
+								<em>
+									생계형 배우 이준기의 스펙터클한 베드신 대역 도전기! 청순 글래머 신수정의 배드신 상대역이 되기 위해 눈이 뒤집힌 준기는 극한의 다이어트에 돌입한다. 한편 윤아에게 대쉬하는 초특급 벤츠남! 
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								12:40
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo8.jpg" alt="이방인"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>이방인 12회</strong>
+								<em>
+									▶타임지 선정 세계적인 탑 고딩 모델 한현민의 일상 대공개! 모델계 핫루키! 급식이(?) 한현민이 ‘이방인’에 떴다?! 최초 공개! 장동건(?)과 함께하는 현민의 은밀한 숙소 생활부터 급식체가 난무하는 리얼 학교생활 모습까지!
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								14:30
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo9.jpg" alt="뉴스 현장"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>뉴스 현장</strong>
+								<em>
+									현장의 생생함 그대로... 오후의'뉴스현장'
+								</em>
+								<span>
+									<span class="pyoIcon">A</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon_live">생</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								15:50
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo10.jpg" alt="사건반장"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>사건반장</strong>
+								<em>
+									세상을 향한 날선 시각으로 우리 사회 숨은 진실을 추적한다! '사건 반장'의 명쾌한 해설. 각 분야 전문가로 구성된 '분석단'의 날카로운 분석이 있는 &lt;신개념 시사정보 프로그램&gt;
+								</em>
+								<span>
+									<span class="pyoIcon">A</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon_live">생</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								17:10
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo14.jpg" alt="정치부 회의"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>정치부 회의</strong>
+								<em>
+									JTBC 정치부 기자들의 취재 보고
+								</em>
+								<span>
+									<span class="pyoIcon">A</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon_live">생</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								18:30
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo11.jpg" alt="아는 형님"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>아는 형님 116회</strong>
+								<em>
+									116회 '형님학교-박세영&정혜성'
+									▶ 형님학교에 러블리 끝판왕 전학생들 등장!
+									‘내 딸 금사월’부터 ‘돈꽃’까지~ 
+									&lt;아는 형님&gt;을 괴롭혀온 반전 매력의 배우 ‘박세영’
+									종잡을 수 없는 상큼한 매력의 전학생!
+									아형을 너무 좋아해~ 팔 부상에도 찾아온 배우 ‘정혜성’
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon">재</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								19:55
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo12.jpg" alt="JTBC 뉴스룸"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>JTBC 뉴스룸</strong>
+								<em>
+									사실, 공정, 균형, 품위! 한걸음 더 들어가는 뉴스, JTBC 뉴스룸에서는 진실이 뉴스가 됩니다
+								</em>
+								<span>
+									<span class="pyoIcon">A</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon_live">생</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								21:30
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo13.jpg" alt="냉장고를 부탁해"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>냉장고를 부탁해 170회</strong>
+								<em>
+									대한민국 최고의 셰프 군단이 그날의 게스트를 위한 고품격 요리 배틀을 펼치는 푸드 토크쇼
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li>
+						<div class="pyoArea">
+							<p class="pyoTime">
+								23:00
+							</p>
+							<p class="pyoImg">
+								<img src="img/pyo7.jpg" alt="으라차차 와이키키"/>
+							</p>
+							<p class="pyoDesc">
+								<strong>으라차차 와이키키 7회</strong>
+								<em>
+									영화감독을 꿈꾸는 불운의 아이콘 동구, 똘기 충만 생계형 배우 준기, 반백수 프리랜서 작가 두식, 세 청춘이 망할 위기에 처한 게스트하우스 와이키키에서 펼치는 골 때리고 빡센 포복절도 청춘 드라마
+								</em>
+								<span>
+									<span class="pyoIcon">15</span>
+									<span class="pyoIcon">HD</span>
+									<span class="pyoIcon_on">본</span>
+									<span class="pyoIcon">자</span>
+									<span class="pyoIcon_on">ON</span>
+								</span>
+							</p>
+						</div>
+					</li>
+					<li class="last">
+						<p class="pyoDesc">
+							<span>
+								<span class="pyoIcon">A</span>&nbsp;&nbsp;전체등급&nbsp;&nbsp;
+								<span class="pyoIcon">7</span>&nbsp;&nbsp;7세이상&nbsp;&nbsp;
+								<span class="pyoIcon">12</span>&nbsp;&nbsp;12세이상&nbsp;&nbsp;
+								<span class="pyoIcon">15</span>&nbsp;&nbsp;15세이상&nbsp;&nbsp;
+								<span class="pyoIcon_adult">19</span>&nbsp;&nbsp;19세이상<br/><br/>
+								<span class="pyoIcon">HD</span>&nbsp;&nbsp;HD방송&nbsp;&nbsp;
+								<span class="pyoIcon_on">본</span>&nbsp;&nbsp;본방송&nbsp;&nbsp;
+								<span class="pyoIcon">재</span>&nbsp;&nbsp;재방송&nbsp;&nbsp;
+								<span class="pyoIcon_live">생</span>&nbsp;&nbsp;생방송&nbsp;&nbsp;
+								<span class="pyoIcon">자</span>&nbsp;&nbsp;자막방송&nbsp;&nbsp;
+								<span class="pyoIcon">수</span>&nbsp;&nbsp;수화방송&nbsp;&nbsp;
+								<span class="pyoIcon">해</span>&nbsp;&nbsp;해설방송&nbsp;&nbsp;
+								<span class="pyoIcon_on">ON</span>&nbsp;&nbsp;온에어
+							</span>
+						</p>
+					</li>
+				</ul>
+				<p class="pyoBack"></p>
+			</div>
+			<div id="nodesc">
+				<p id="noicon"></p>
+				<p>해당 날짜에 편성 정보가 없습니다.</p>
+			</div>
+		</div>
+		<footer id="footer">
+			<h2>footer영역</h2>
+			<p class="logoImg">
+					<a href="../index.html" title="JTBC">
+						<img src="img/loginLogo.png" alt="JTBC로고"/>
+					</a>
+			</p>
+			<ul id="link">
+				<li>
+					<a href="footer_company.html" title="JTBC 소개">JTBC 소개</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_AD.html" title="방송광고">방송광고</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_agreement.html" title="이용약관">이용약관</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_Privacy.html" title="개인정보처리방침">개인정보처리방침</a>
+					<span class="gray">|</span>
+				</li>
+				<li>
+					<a href="footer_customer.html" title="고객센터">고객센터</a>
+					<span class="gray">|</span>
+				</li>
+			</ul>
+			<div class="logofooter">
+				<p class="footerDesc">
+					(주)제이티비씨&nbsp;|&nbsp;대표이사:김수길&nbsp;|&nbsp;서울특별시 마포구 상암산로 48-6 (02)751-6000&nbsp;|&nbsp;<a href="#" title="오시는길">오시는길</a>
+				</p>
+				<p class="copyright">
+					JTBC,JTBC Content Hub의 모든 콘텐트는 저작권법의 보호를 받은바, 무단 전재, 복사, 배포 등을 금합니다.
+				</p>
+				<p class="copyright">
+					Copyright by <a href="../index.html" title="JTBC">JTBC</a> ,JTBC Content Hub Co.,Ltd.All Rights Reserved.
+				</p>
+			</div>
+		</footer>
+	</div>
+  
+ </body>
+</html>
